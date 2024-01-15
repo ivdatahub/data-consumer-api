@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  dw-service:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: SVC_DW
+      POSTGRES_PASSWORD: SVC_DW
+      POSTGRES_DB: DW
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-airflow-volume:/var/lib/postgresql/data
+
+volumes:
+  postgres-airflow-volume:
+
+
