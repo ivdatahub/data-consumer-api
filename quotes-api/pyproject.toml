@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "awesome-data-ingestion"
+version = "0.1.0"
+description = "Data Ingestion from public endpoint with Beam"
+authors = ["ivanildo.barauna <ivanildo.jnr@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+apache-beam = "^2.53.0"
+requests = "^2.31.0"
+logging = "^0.4.9.6"
+ipykernel = "^6.28.0"
+psycopg2-binary = "^2.9.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
