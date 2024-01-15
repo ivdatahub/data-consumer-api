@@ -22,11 +22,16 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
 ## How to Run
 
 1. Install project dependencies using `poetry`:
-
    ```bash
    poetry install
 
 2. Run de main.py script
-
   ```python
   python -m main.py
+
+This command will execute the main script of the project, initiating the ETL process for currency quotes data.
+Note: Ensure that you have Python 3.x installed on your system.
+
+## Requirements
+Python 3.x
+Dependencies listed in pyproject.toml, poetry.lock, and requirements.txt.
