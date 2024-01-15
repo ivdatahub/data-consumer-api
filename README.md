@@ -6,9 +6,7 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
 
 - `config/`: Contains project configuration files.
 - `data/raw/`: Stores raw data in Parquet format.
-  - `BTC-USD-1705097387-00000-of-00001.parquet`: Raw data for BTC-USD quotes.
-  - `ETH-USD-1705097387-00000-of-00001.parquet`: Raw data for ETH-USD quotes.
-  - `USD-BRL-1705097387-00000-of-00001.parquet`: Raw data for USD-BRL quotes.
+  - `BTC-USD-1705097387-00000-of-00001.parquet`: Ex: Raw data for BTC-USD quotes.
 - `notebooks/`: Contains the `data_explorer.ipynb` notebook for data exploration.
 - `src/`: Holds the project source code.
   - `etl/`: ETL module.
@@ -26,14 +24,13 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
    poetry install
 
 2. Run de main.py script
-  ```python
-  python -m main.py
+   ```python
+   python -m main.py
 
-
-This command will execute the main script of the project, initiating the ETL process for currency quotes data.
-Note: Ensure that you have Python 3.x installed on your system.
+3. This command will execute the main script of the project, initiating the ETL process for currency quotes data.
+Note: Ensure that you have Python 3.9 installed on your system.
 
 ## Requirements
 
-Python 3.x
+Python 3.9
 Dependencies listed in pyproject.toml, poetry.lock, and requirements.txt.
