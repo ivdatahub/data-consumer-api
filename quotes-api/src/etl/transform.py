@@ -26,8 +26,6 @@ class TransformAPIData:
             'password': 'SVC_DW'}
         
     def WriteToPostGres(self):
-        files = os.listdir(self.path)
-        
         conn = {
                 'host': 'localhost',
                 'port': '5432',
@@ -39,13 +37,13 @@ class TransformAPIData:
         with psycopg2.connect(**conn) as conn:
             # Abra um cursor para executar comandos SQL
             with conn.cursor() as cursor:
-                for file in files:
+                for file in os.listdir(self.path):
                     file_schema = pq.read_schema(self.path + file, memory_map=True)
                     schema_processing = [item + " text" for item in file_schema.names]
                     table_schema = ', '.join(schema_processing)
                 
                     table_name = '-'.join(file.split("-")[0:2])
-                    query = f"""CREATE TABLE IF NOT EXISTS "STG"."{table_name}" ({table_schema});"""
+                    query = f"""CREATE TABLE IF NOT EXISTS "STG"."{table_name}" ({table_schema + ", filename text, ts_execution timestamp with timezone"});"""
                     
                     cursor.execute(query)
                     
