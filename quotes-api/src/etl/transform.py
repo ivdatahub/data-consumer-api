@@ -5,6 +5,11 @@ import apache_beam as beam
 ## PostGres
 import psycopg2
 
+## PyArrow for read .parquet file
+import pyarrow.parquet as pq
+
+import os
+
 # Custom Logs
 from .logs import ConsoleInfo, ConsoleError, ConsoleWarning
 
@@ -12,26 +17,41 @@ from .logs import ConsoleInfo, ConsoleError, ConsoleWarning
 class TransformAPIData:
     def __init__(self, FolderFiles) -> None:
         self.path =  FolderFiles
-        self.pipe_options = PipelineOptions([
-            '--runner', 'Direct'
-        ])
-        
-    def WriteToPostGres(self, element):        
-        connection_params = {
+        self.pipe_options = PipelineOptions(['--runner', 'Direct'])
+        self.postgres_conn =  {
             'host': 'localhost',
             'port': '5432',
             'database': 'DW',
             'user': 'SVC_DW',
             'password': 'SVC_DW'}
         
-         # Conecte-se ao PostgreSQL
-        with psycopg2.connect(**connection_params) as conn:
+    def WriteToPostGres(self):
+        files = os.listdir(self.path)
+        
+        conn = {
+                'host': 'localhost',
+                'port': '5432',
+                'database': 'DW',
+                'user': 'SVC_DW',
+                'password': 'SVC_DW'}
+                
+        # Conecte-se ao PostgreSQL
+        with psycopg2.connect(**conn) as conn:
             # Abra um cursor para executar comandos SQL
             with conn.cursor() as cursor:
-                # Exemplo de inserção de dados (substitua isso com sua lógica específica)
-                query = "select 1"
-                # values = (element['coluna1'], element['coluna2'])
-                cursor.execute(query)
+                for file in files:
+                    file_schema = pq.read_schema(self.path + file, memory_map=True)
+                    schema_processing = [item + " text" for item in file_schema.names]
+                    table_schema = ', '.join(schema_processing)
+                
+                    table_name = '-'.join(file.split("-")[0:2])
+                    query = f"""CREATE TABLE IF NOT EXISTS "STG"."{table_name}" ({table_schema});"""
+                    
+                    cursor.execute(query)
+                    
+                    query = f"""
+                        SELECT COUNT(1) FROM "STG"."{table_name}"
+                    """
         
     def PipelineRun(self):
         ConsoleInfo("Starting pipeline")
