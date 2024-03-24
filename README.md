@@ -34,3 +34,7 @@ Note: Ensure that you have Python 3.9 installed on your system.
 
 Python 3.9
 Dependencies listed in pyproject.toml, poetry.lock, and requirements.txt.
+
+## Arch
+Edit: https://www.mermaidchart.com/app/projects/3480ce6f-5ebf-4a74-8a0f-eec93105fae4/diagrams/547dca06-883b-44e8-9bfa-cdbc59864f40/version/v0.1/edit
+View: https://www.mermaidchart.com/raw/547dca06-883b-44e8-9bfa-cdbc59864f40?theme=dark&version=v0.1&format=svg
