@@ -31,9 +31,7 @@ class ExtractDataAPI:
     def __init__(self, endpoint: str, output_path: str) -> None:
         self.endpoint = endpoint
         self.output_path = output_path
-        self.pipe_options = PipelineOptions(
-            ["--runner", "Direct", "--direct_num_workers=1"]
-        )
+        self.pipe_options = PipelineOptions(["--runner", "Direct", "--direct_num_workers=1"])
         self.ExtractedFilePath = []
         self.ValidParams = []
 
