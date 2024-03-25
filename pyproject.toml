@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-apache-beam = "^2.53.0"
+apache-beam = "^2.54.0"
 requests = "^2.31.0"
 logging = "^0.4.9.6"
 ipykernel = "^6.28.0"

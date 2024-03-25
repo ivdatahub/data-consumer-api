@@ -8,9 +8,9 @@ import requests
 from datetime import datetime
 
 # Custom Logs
-from .logs import ConsoleInfo, ConsoleError, ConsoleWarning
+from utils.logs import ConsoleInfo, ConsoleError, ConsoleWarning
 
-class ExtractDataAPI:
+class Save:
     """
     ** Summary **: 
         ExtractDataAPI is class for extract data from endpoint and export in .parquet file for processing.
@@ -28,12 +28,13 @@ class ExtractDataAPI:
         
     """
     
-    def __init__(self, endpoint: str, output_path: str) -> None:
+    def __init__(self, endpoint: str) -> None:
         self.endpoint = endpoint
-        self.output_path = output_path
+        self.output_path = "../../data/"
         self.pipe_options = PipelineOptions(["--runner", "Direct", "--direct_num_workers=1"])
         self.ExtractedFilePath = []
         self.ValidParams = []
+        self.PipelineRun()
 
     def APIToDicionary(self):
         """

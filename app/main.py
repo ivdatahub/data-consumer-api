@@ -1,9 +1,6 @@
-from .extract import ExtractDataAPI
-from .transform import TransformAPIData
-import os
+from extract import ApiToParquetFile
+# from .transform import TransformAPIData
 
-api = "https://economia.awesomeapi.com.br/last/BTC-USD,ETH-USD,USD-BRL"
-path = "/Users/ivsouza/repos/github.com/IvanildoBarauna/ETL-awesome-api/quotes-api/data/raw/"
+api = "https://economia.awesomeapi.com.br/last/BTC-USD"
 
-NewTransform = TransformAPIData(FolderFiles=path)
-NewTransform.PipelineRun()
+myExtract = ApiToParquetFile.Save(api)
