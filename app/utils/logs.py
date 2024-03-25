@@ -26,4 +26,3 @@ def ConsoleError(msg):
 
 def ConsoleWarning(msg):
     return logger_warn.warning(msg)
-

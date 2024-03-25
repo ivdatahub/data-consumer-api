@@ -2,7 +2,6 @@ from extract import (
     beam
     ,os
     ,requests
-    ,PipelineOptions
     ,ConsoleWarning
     ,ConsoleInfo
     ,ConsoleError
@@ -10,67 +9,19 @@ from extract import (
     ,pyarrow
 )
 
-class extraction:
-    """
-    ** Summary **: 
-        ExtractDataAPI is class for extract data from endpoint and export in .parquet file for processing.
-    
+from config import BeamDirectRunnerOptions, OutputFolder
 
-    *** args ***:
-        endpoint (string), output_path (string)
-        
-        Use:
-        
-        MyAPI = 'https://economia.awesomeapi.com.br/last/USD-BRL'
-    
-        NewExtract = ExtractDataAPI(endpoint=api, output_path="/.DataSource/")
-        NewExtract.PipelineRun()
-        
-    """
-    
+class extraction:    
     def __init__(self, endpoint: str) -> None:
         self.endpoint = endpoint
-        self.output_path = os.path.join(os.path.dirname(__file__), "../../data/")
-        self.pipe_options = PipelineOptions(["--runner", "Direct", "--direct_num_workers=1"])
+        self.output_path = OutputFolder
+        self.pipe_options = BeamDirectRunnerOptions(workers=1)
         self.ExtractedFilePath = []
         self.ValidParams = []
         self.PipelineRun()
         
     def APIToDicionary(self):
-        """
-        ** Summary **: 
-            APIToDicionary is a method for return valid dicionary and params for extract Currency awesomeAPI.
-        
-
-        *** noargs ***:
-            -- 
-            
-            Use:
-            
-                dic = APIToDicionary()
-        
-            returns:
-
-                response_list = dic["responseData] with reponse data in JSON
-                params_list = dic["params] with valid currencys for JSON filter
-        """
         def ValidListOfParams():
-            """
-            ** Summary **: 
-                ValidListOfParams is a method for return validate list of params.
-                OBS: Use "https://economia.awesomeapi.com.br/json/available" with datasource for define if currency is valid or not. 
-            
-            *** noargs ***:
-                -- 
-                
-                Use:
-                
-                    MyValidParams = ValidListOfParams()
-            
-                returns:
-
-                    List of params without transform. Ex
-            """
             arr_endpoint = self.endpoint.split("/")
             params = arr_endpoint[len(arr_endpoint) - 1]
             lstParams = params.split(",")
@@ -100,25 +51,10 @@ class extraction:
                 ConsoleError(f"Response failed >>> {response}")
 
     def CurrentTimestampStr(self) -> str:
-        """ 
-            CurrentTimestampStr is a method for return actual timestamp as string.
-            Use case: For name of .parquet file
-            
-            returns: 
-                actual timestamp as string
-        """
         current = datetime.now().timestamp()
         return str(int(current))
 
     def ParquetSchemaLoad(self, element: dict):
-        """ 
-        ParquetSchemaLoad is a method for return ParquetSchema using pyarrow lib
-        
-        args: 
-            element (dicionary)
-        returns: 
-            pyarrow.schema of element arg
-        """
         try:
             api_header = list(element.keys())
             schema = []
@@ -136,47 +72,6 @@ class extraction:
             ConsoleInfo(f"Schema - Error >>>> {Err}")
 
     def PipelineRun(self):
-        """ 
-        Sumary: 
-            PipelineRun: The main method of extract API Data
-        
-        noargs:
-        
-        returns:
-        
-            Apache Beam read and map the dictionary of API and export for prefered path (passed as arg, see ExtractDataAPI )
-            Export Format: for each currency passed as args will generated one file per each currency, follow examples: 
-            
-            Ex1: 
-                api = "https://economia.awesomeapi.com.br/last/USD-BRL"
-                NewExtract = ExtractDataAPI(endpoint=api, output_path="./")
-            return Will generated only USD-BRL file
-            
-            like this:
-            .
-            └── USDBRL_1705088794-00000-of-00001.parquet
-            
-            
-            Ex2:
-                api = "https://economia.awesomeapi.com.br/last/USD-BRL,BTC-BRL,ETH-USD"
-                NewExtract = ExtractDataAPI(endpoint=api, output_path="./")
-            return Will generated tree files one for each currency
-            
-            like this:
-            .
-            ├── BTCBRL_1705089414-00000-of-00001.parquet
-            ├── ETHUSD_1705089414-00000-of-00001.parquet
-            └── USDBRL_1705089414-00000-of-00001.parquet
-
-            Ex3:
-                api = "https://economia.awesomeapi.com.br/last/hahaah"
-                NewExtract = ExtractDataAPI(endpoint=api, output_path="./")
-                return log in console and not execute request and pipeline
-                
-            like this:
-            2024-01-12 16:59:05,071 - INFO -  Param: hahaah is not valid for call
-            
-        """
         response = self.APIToDicionary()
         if response:
             json_data = response["responseData"]

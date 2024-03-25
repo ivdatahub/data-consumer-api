@@ -127,10 +127,6 @@ class TransformAPIData:
                         p 
                         | "ReadParquet" >> beam.io.ReadFromParquetBatched(file_pattern=file)
                         | "ProcessFile" >> beam.ParDo(self.WriteToPostGress(self.connection))
-                        # | "ReadFromParquetFile" >> beam.io.ReadFromParquetBatched(self.path)
-                        # | "Parquet to Pandas" >> beam.Map(lambda x: x.to_pandas())
-                        # | "ProcessarDados" >> beam.Map(processar_dados)
-                        # | "Printing DataFrame" >> beam.Map(lambda x: print(x.to_pandas()))
                     )
                 ConsoleInfo(f"Writed >>>> {file}")
             except Exception as err:
