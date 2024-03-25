@@ -1,14 +1,14 @@
-# Apache Beam Dependencies
-import apache_beam as beam
-from apache_beam.options.pipeline_options import PipelineOptions
-
-# Auxiliar Dependencies
-import pyarrow
-import requests
-from datetime import datetime
-
-# Custom Logs
-from utils.logs import ConsoleInfo, ConsoleError, ConsoleWarning
+from extract import (
+    beam
+    ,os
+    ,requests
+    ,PipelineOptions
+    ,ConsoleWarning
+    ,ConsoleInfo
+    ,ConsoleError
+    ,datetime
+    ,pyarrow
+)
 
 class Save:
     """
@@ -30,7 +30,7 @@ class Save:
     
     def __init__(self, endpoint: str) -> None:
         self.endpoint = endpoint
-        self.output_path = "/Users/ivsouza/repos/ETL-awesome-api/data/"
+        self.output_path = os.path.join(os.path.dirname(__file__), "../../data/")
         self.pipe_options = PipelineOptions(["--runner", "Direct", "--direct_num_workers=1"])
         self.ExtractedFilePath = []
         self.ValidParams = []

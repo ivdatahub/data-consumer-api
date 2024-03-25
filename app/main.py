@@ -1,6 +1,6 @@
 from extract import ApiToParquetFile
 # from .transform import TransformAPIData
 
-api = "https://economia.awesomeapi.com.br/last/BTC-USD"
+endpoint_uri = "https://economia.awesomeapi.com.br/last/BTC-USD"
 
-myExtract = ApiToParquetFile.Save(api)
+myExtract = ApiToParquetFile.Save(endpoint_uri)
