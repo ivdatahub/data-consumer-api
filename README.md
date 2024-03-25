@@ -1,4 +1,4 @@
-# Awesome ETL Project
+# Awesome API ETL Project
 
 This repository houses the Awesome project, dedicated to the ETL process of currency quotes data.
 
