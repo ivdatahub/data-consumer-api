@@ -10,7 +10,7 @@ from extract import (
     ,pyarrow
 )
 
-class Save:
+class extraction:
     """
     ** Summary **: 
         ExtractDataAPI is class for extract data from endpoint and export in .parquet file for processing.
@@ -35,7 +35,7 @@ class Save:
         self.ExtractedFilePath = []
         self.ValidParams = []
         self.PipelineRun()
-
+        
     def APIToDicionary(self):
         """
         ** Summary **: 
@@ -217,6 +217,10 @@ class Save:
                         self.ExtractedFilePath.append(
                             f"{self.output_path}{param}-{insert_date}-00000-of-00001.parquet"
                         )
+                        
 
                     except Exception as err:
                         ConsoleError(f"{param} - Pipeline Execution Error >>>  {err}")
+
+def PipelineExecute(uri: str): 
+    extraction(endpoint=uri)
