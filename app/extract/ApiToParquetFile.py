@@ -30,7 +30,7 @@ class Save:
     
     def __init__(self, endpoint: str) -> None:
         self.endpoint = endpoint
-        self.output_path = "../../data/"
+        self.output_path = "/Users/ivsouza/repos/ETL-awesome-api/data/"
         self.pipe_options = PipelineOptions(["--runner", "Direct", "--direct_num_workers=1"])
         self.ExtractedFilePath = []
         self.ValidParams = []
