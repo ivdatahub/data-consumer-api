@@ -9,3 +9,5 @@ def BeamDirectRunnerOptions(workers: int):
 def OutputFolder():
     import os
     return os.path.join(os.path.dirname(__file__), "../../data/")
+
+
