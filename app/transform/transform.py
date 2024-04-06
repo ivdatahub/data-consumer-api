@@ -35,7 +35,7 @@ class TransformAPIData:
         try:                
         
             with psycopg2.connect(**self.connection) as conn:
-                ## Refatorar para pegar de um componente que devolve o cursor
+                ## Refatorar para pegar de um componente que devolve o cursor e conector
                 with conn.cursor() as cursor:
                     for file in files:
                         file_schema = pq.read_schema(self.path + file, memory_map=True)
@@ -64,7 +64,7 @@ class TransformAPIData:
                 
         
         with psycopg2.connect(**self.connection) as conn:
-            ## Refatorar para pegar de um componente que devolve o cursor
+            ## Refatorar para pegar de um componente que devolve o cursor e conector
             with conn.cursor() as cursor:
                 for table in tables:
                     table  = '-'.join(table)
@@ -91,7 +91,7 @@ class TransformAPIData:
         def process(self, element):
             ConsoleInfo("InsertNewFileToPostgres: Start")
             try:
-                ## Refatorar para pegar de um componente que devolve o cursor
+                ## Refatorar para pegar de um componente que devolve o cursor e conector
                 with psycopg2.connect(**self.conn) as conn:
                     
                     with conn.cursor() as cursor:
