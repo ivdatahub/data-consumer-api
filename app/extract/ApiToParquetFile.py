@@ -35,7 +35,6 @@ class extraction:
                 
                 self.endpoint = self.endpoint.replace(''.join(params), ','.join(valParams))
                 return valParams
-            ## Se for válido segue
             
             ParamsValidate = ValidListOfParams()
             if ParamsValidate:
@@ -79,7 +78,7 @@ class extraction:
                 
                 ## For generate schema is necessary extract one currency from dicionary
                 extract_index_params = [item.replace("-", "") for item in params]      
-                ## Extract Schema              
+                
                 FileSchema = self.ParquetSchemaLoad(json_data[extract_index_params[0]]
                                                     )
                 insert_date = self.CurrentTimestampStr()

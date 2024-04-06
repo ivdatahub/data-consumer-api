@@ -1,17 +1,17 @@
-## Apache Beam imports
+
 from apache_beam.options.pipeline_options import PipelineOptions
 import apache_beam as beam
 
-## PostGres
+
 import psycopg2
 
-## PyArrow for read .parquet file
+
 import pyarrow.parquet as pq
 
 import os
 
-# Custom Logs
-from .logs import ConsoleInfo, ConsoleError, ConsoleWarning
+
+from utils.logs import ConsoleInfo, ConsoleError, ConsoleWarning
 
 
 class TransformAPIData:
@@ -29,16 +29,13 @@ class TransformAPIData:
         self.CreateDynamicTable()
             
     def CreateDynamicTable(self):
-        """ 
-        SUMMARY: Create dynamic table from new extracted files.
-        """
         files = self.files
         ConsoleInfo("CreateDynamicTable: Start")
         
         try:                
-        # Conecte-se ao PostgreSQL
+        
             with psycopg2.connect(**self.connection) as conn:
-                # Abra um cursor para executar comandos SQL
+                ## Refatorar para pegar de um componente que devolve o cursor
                 with conn.cursor() as cursor:
                     for file in files:
                         file_schema = pq.read_schema(self.path + file, memory_map=True)
@@ -65,9 +62,9 @@ class TransformAPIData:
         tables =  [item.split("-")[0:2] for item in files]
         tables = set(tuple(elemento) for elemento in tables)
                 
-        # Conecte-se ao PostgreSQL
+        
         with psycopg2.connect(**self.connection) as conn:
-            # Abra um cursor para executar comandos SQL
+            ## Refatorar para pegar de um componente que devolve o cursor
             with conn.cursor() as cursor:
                 for table in tables:
                     table  = '-'.join(table)
@@ -80,7 +77,6 @@ class TransformAPIData:
                     files_in_db = cursor.fetchall()
                     files_in_db = [item[0] for item in files_in_db]
                     
-                    # if len(files_in_db) >0: 
                     NewFiles =  list(set(files) -  set(files_in_db)) 
                     NewFiles = [self.path + item for item in NewFiles]
                     ConsoleInfo(f"ListNewFiles: Files for Extract: >>> {[print(item) for item in NewFiles]}")
@@ -95,9 +91,9 @@ class TransformAPIData:
         def process(self, element):
             ConsoleInfo("InsertNewFileToPostgres: Start")
             try:
-                # Conecte-se ao PostgreSQL
+                ## Refatorar para pegar de um componente que devolve o cursor
                 with psycopg2.connect(**self.conn) as conn:
-                    # Abra um cursor para executar comandos SQL
+                    
                     with conn.cursor() as cursor:
                         columns = ', '.join(element.column_names)
                         placeholders = ', '.join(['%s'] * len(element))
@@ -107,7 +103,7 @@ class TransformAPIData:
                             VALUES ({placeholders})
                         """
                         
-                        ## BREAK: Adicionar a lógica que lê os dados do parquet com um loop e monta a string da query dinamicamente.
+                        ## TODO: Adicionar a lógica que lê os dados do parquet com um loop e monta a string da query dinamicamente.
                         values = tuple(element.values())
                         
                         cursor.execute(query, values)
