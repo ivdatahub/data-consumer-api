@@ -5,4 +5,5 @@ class CustomBeam:
     def BeamObj(): return beam
     
     def PipelineDirectRunner():
-        return PipelineOptions([f"--runner", "Direct", f"--direct_num_workers={1}"])
+        opts = PipelineOptions([f"--runner", "Direct", f"--direct_num_workers={1}"])
+        return beam.Pipeline(options=opts)
