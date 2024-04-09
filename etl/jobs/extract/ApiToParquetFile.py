@@ -1,4 +1,7 @@
-from extract import ConsoleError, ConsoleInfo, ConsoleWarning
+from etl.jobs.extract import (
+    pyarrow, requests, ConsoleInfo, ConsoleError, ConsoleWarning
+    ,datetime, DefaultOutputFolder, DefaultTimestampStr, CustomBeam
+)
 
 class extraction: 
 
@@ -7,11 +10,8 @@ class extraction:
     
     class ExecutePipeline():
         def __init__(self, uri: str) -> None:
-            from config import BeamDirectRunnerOptions, OutputFolder
             
             self.endpoint = uri
-            self.output_path = OutputFolder()
-            self.pipe_options = BeamDirectRunnerOptions(workers=1)
             self.ExtractedFilePath = []
             self.ValidParams = []
             self.PipelineRun()
@@ -91,12 +91,12 @@ class extraction:
                             ConsoleInfo(
                                 f"Starting pipeline {index + 1} of {len(params)} - {param} - Starting!"
                             )
-                            with beam.Pipeline(options=self.pipe_options) as pipe:
+                            with CustomBeam.PipelineDirectRunner() as pipe:
                                 input_pcollection = (
                                     pipe
-                                    | "Create" >> beam.Create([dic])
+                                    | "Create" >> CustomBeam.BeamObj().Create([dic])
                                     | "WriteToParquet"
-                                    >> beam.io.WriteToParquet(
+                                    >> CustomBeam.BeamObj().io.WriteToParquet(
                                         file_path_prefix=f"{self.output_path}{param}-{insert_date}",
                                         file_name_suffix=".parquet",
                                         num_shards=1,
