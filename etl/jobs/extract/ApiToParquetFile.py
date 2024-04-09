@@ -6,7 +6,7 @@ from etl.jobs.extract import (
 
 class extraction: 
     def __init__(self, *xargs: str) -> None:
-        self.params = xargs
+        self.params = xargs[0]
         self.PipelineRun()
         
     def APIToDicionary(self):
