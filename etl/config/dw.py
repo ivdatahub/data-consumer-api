@@ -1,31 +1,30 @@
-import psycopg2
+# import psycopg2
 import yaml
+import psycopg2
 
-class dbEnviroment:
+class dbConnect:
     def __init__(self) -> None:
-        self.dbParameters = self.dbParams()
-        self.HOST = self.dbParams()
-        self.PORT = 5432
-    
-    def dbParams():
-        pass
-    
-    
-with open('docker-compose.yaml', 'r') as DockerComposeFile:
-    FileContent = yaml.safe_load(DockerComposeFile)
-    dbEnvParams = FileContent["services"]["dw-service"]["environment"]
-    
-print(dbEnvParams.keys())
-
-conn = {
-            'host': 'localhost',
-            'port': '5432',
-            'database': 'DW',
-            'user': 'SVC_DW',
-            'password': 'SVC_DW'}
-
-
-# def dbConnection():
-#     return psycopg2.connect(
+        self.conn =  GetConnectionsParameters()
         
-#     )    
+        def GetConnectionsParameters() -> dict:
+            with open('docker-compose.yaml', 'r') as DockerComposeFile:
+                FileContent = yaml.safe_load(DockerComposeFile)
+                dwService = FileContent["services"]["dw-service"]
+                dbEnvParams = dwService["environment"]
+                
+            PORT = dwService["ports"][0].split(":")[0]
+            USER = dbEnvParams["POSTGRES_USER"]
+            PASS = dbEnvParams["POSTGRES_PASSWORD"]
+            DB_NAME = dbEnvParams["POSTGRES_DB"]
+            
+            return  {
+                'host': 'localhost',
+                'port': PORT,
+                'database': DB_NAME,
+                'user': USER,
+                'password': PASS
+                }
+        
+    def NewConnection(self): 
+        return psycopg2.connect(self.conn)
+        
