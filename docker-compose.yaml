@@ -6,9 +6,9 @@ services:
     image: postgres
     restart: always
     environment:
-      POSTGRES_USER: SVC_DW
-      POSTGRES_PASSWORD: SVC_DW
-      POSTGRES_DB: DW
+      POSTGRES_USER: ${DW_SERVICE_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${DW_SERVICE_POSTGRES_PASSWORD}
+      POSTGRES_DB: ${DW_SERVICE_POSTGRES_DATABASE}
     ports:
       - 5432:5432
     volumes:
