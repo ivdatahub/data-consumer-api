@@ -1,23 +1,9 @@
-
-from apache_beam.options.pipeline_options import PipelineOptions
-import apache_beam as beam
-
-
-import psycopg2
-
-
-import pyarrow.parquet as pq
-
-import os
-
-
-from utils.logs import ConsoleInfo, ConsoleError, ConsoleWarning
-
+from etl.jobs.transform import (
+    DefaultOutputFolder, CustomBeam, pyArrowParquet, ConsoleError, ConsoleInfo, ConsoleWarning
+)
 
 class TransformAPIData:
-    def __init__(self, FolderFiles: str) -> None:
-        self.path =  FolderFiles
-        self.pipe_options = PipelineOptions(['--runner', 'Direct'])
+    def __init__(self) -> None:
         self.connection =  {
             'host': 'localhost',
             'port': '5432',
