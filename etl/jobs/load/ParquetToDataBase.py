@@ -1,10 +1,11 @@
 from etl.jobs.load import (
-    DefaultOutputFolder, CustomBeam, pyArrowParquet, ConsoleError, ConsoleInfo, ConsoleWarning, NewDBConnection 
+    DefaultOutputFolder, CustomBeam, pyArrowParquet, ConsoleError, ConsoleInfo, ConsoleWarning, NewDBConnection
+    ,QUOTES_API_SCHEMA
 )
 
 import os
 
-class TransformAPIData:
+class pgLoading:
     def __init__(self) -> None:
         self.CreateDynamicTable()
         self.NewFilesForLoad = self.ListNewFiles()
@@ -16,12 +17,9 @@ class TransformAPIData:
         ConsoleInfo("CreateDynamicTable: Start")
         
         for file in files:
-            file_schema = pyArrowParquet.read_schema(output_path + file, memory_map=True)
-            schema_processing = [item + " text" for item in file_schema.names]
-            table_schema = ', '.join(schema_processing)
             table_name = file.split("-")[0:2]
             table_name = '-'.join(table_name)
-            query = f"""CREATE TABLE IF NOT EXISTS "STG"."{table_name}" ({table_schema + ", filename text, ts_execution timestamp with time zone"});"""
+            query = f"""CREATE TABLE IF NOT EXISTS "STG"."{table_name}" ({QUOTES_API_SCHEMA + ", filename text, ts_execution timestamp with time zone"});"""
         
         #  try:                            
         #     with NewDBConnection.pgConnection() as conn:            
@@ -62,7 +60,7 @@ class TransformAPIData:
 
                     return NewFiles
                 
-    class WriteToPostGress(CustomBeam.BeamObj().BeamObj().DoFn): 
+    class WriteToPostGress(CustomBeam.BeamObj().DoFn): 
         def __init__(self, postgres_config):
             self.conn = postgres_config
             
