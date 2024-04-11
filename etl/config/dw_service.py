@@ -2,7 +2,7 @@
 import yaml
 import psycopg2
 
-class dbConnect:
+class NewDBConnection:
     def __init__(self) -> None:
         self.conn =  GetConnectionsParameters()
         
@@ -25,6 +25,6 @@ class dbConnect:
                 'password': PASS
                 }
         
-    def NewConnection(self): 
+    def pgConnection(self): 
         return psycopg2.connect(self.conn)
         
