@@ -1,43 +1,37 @@
 from etl.jobs.load import (
-    DefaultOutputFolder, CustomBeam, pyArrowParquet, ConsoleError, ConsoleInfo, ConsoleWarning
+    DefaultOutputFolder, CustomBeam, pyArrowParquet, ConsoleError, ConsoleInfo, ConsoleWarning, NewDBConnection 
 )
+
+import os
 
 class TransformAPIData:
     def __init__(self) -> None:
-        self.connection =  {
-            'host': 'localhost',
-            'port': '5432',
-            'database': 'DW',
-            'user': 'SVC_DW',
-            'password': 'SVC_DW'}
-        self.files = os.listdir(self.path)
-        
         self.CreateDynamicTable()
+        self.NewFilesForLoad = self.ListNewFiles()
+        self.PipelineRun()
             
     def CreateDynamicTable(self):
-        files = self.files
+        output_path = DefaultOutputFolder()
+        files = os.listdir(output_path)
         ConsoleInfo("CreateDynamicTable: Start")
         
-        try:                
+        for file in files:
+            file_schema = pyArrowParquet.read_schema(output_path + file, memory_map=True)
+            schema_processing = [item + " text" for item in file_schema.names]
+            table_schema = ', '.join(schema_processing)
+            table_name = file.split("-")[0:2]
+            table_name = '-'.join(table_name)
+            query = f"""CREATE TABLE IF NOT EXISTS "STG"."{table_name}" ({table_schema + ", filename text, ts_execution timestamp with time zone"});"""
         
-            with psycopg2.connect(**self.connection) as conn:
-                ## Refatorar para pegar de um componente que devolve o cursor e conector
-                with conn.cursor() as cursor:
-                    for file in files:
-                        file_schema = pq.read_schema(self.path + file, memory_map=True)
-                        schema_processing = [item + " text" for item in file_schema.names]
-                        table_schema = ', '.join(schema_processing)
-
-
-                        table_name = file.split("-")[0:2]
-                        table_name = '-'.join(table_name)
-                        query = f"""CREATE TABLE IF NOT EXISTS "STG"."{table_name}" ({table_schema + ", filename text, ts_execution timestamp with time zone"});"""
+        #  try:                            
+        #     with NewDBConnection.pgConnection() as conn:            
+        #         with conn.cursor() as cursor:
+                
+        #             cursor.execute(query)
                         
-                        cursor.execute(query)
-                        
-                        ConsoleInfo(f"CreateDynamicTable: Table Created: >>> 'STG'.{table_name}")
-        except Exception as err:
-            ConsoleError(f"CreateDynamicTable: >>> {err}")      
+        #             ConsoleInfo(f"CreateDynamicTable: Table Created: >>> 'STG'.{table_name}")
+        # except Exception as err:
+        #     ConsoleError(f"CreateDynamicTable: >>> {err}")      
         
     def ListNewFiles(self):
         """
@@ -49,8 +43,7 @@ class TransformAPIData:
         tables = set(tuple(elemento) for elemento in tables)
                 
         
-        with psycopg2.connect(**self.connection) as conn:
-            ## Refatorar para pegar de um componente que devolve o cursor e conector
+        with NewDBConnection.pgConnection() as conn:
             with conn.cursor() as cursor:
                 for table in tables:
                     table  = '-'.join(table)
@@ -69,7 +62,7 @@ class TransformAPIData:
 
                     return NewFiles
                 
-    class WriteToPostGress(beam.DoFn): 
+    class WriteToPostGress(CustomBeam.BeamObj().BeamObj().DoFn): 
         def __init__(self, postgres_config):
             self.conn = postgres_config
             
@@ -78,7 +71,7 @@ class TransformAPIData:
             ConsoleInfo("InsertNewFileToPostgres: Start")
             try:
                 ## Refatorar para pegar de um componente que devolve o cursor e conector
-                with psycopg2.connect(**self.conn) as conn:
+                with NewDBConnection.pgConnection() as conn:
                     
                     with conn.cursor() as cursor:
                         columns = ', '.join(element.column_names)
@@ -99,16 +92,17 @@ class TransformAPIData:
                     
         
     def PipelineRun(self):
-        NewFilesForExtract = self.ListNewFiles()
+        self.CreateDynamicTable()
+        files = self.NewFilesForLoad 
         ConsoleInfo("Starting pipeline")
-        for file in NewFilesForExtract:
+        for file in files:
             ConsoleInfo(f"Reading >>> {file}")
             try:
-                with beam.Pipeline(options=self.pipe_options) as p:
+                with CustomBeam.PipelineDirectRunner() as p:
                     beam_pipe = (
                         p 
-                        | "ReadParquet" >> beam.io.ReadFromParquetBatched(file_pattern=file)
-                        | "ProcessFile" >> beam.ParDo(self.WriteToPostGress(self.connection))
+                        | "ReadParquet" >> CustomBeam.BeamObj().io.ReadFromParquetBatched(file_pattern=file)
+                        | "ProcessFile" >> CustomBeam.BeamObj().ParDo(self.WriteToPostGress(self.connection))
                     )
                 ConsoleInfo(f"Writed >>>> {file}")
             except Exception as err:
