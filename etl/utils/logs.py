@@ -1,28 +1,27 @@
 import logging
+import os
+import sys
 
-# Configurar o logger
-logging.basicConfig(
-    level=logging.CRITICAL,  # Defina o nível globalmente como CRITICAL
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    datefmt='%Y-%m-%d %H:%M:%S'  # Formato da data e hora
-)
+WORK_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.dirname(WORK_DIR))
 
-# Criar um logger para cada nível desejado
-logger_error = logging.getLogger('error_logger')
-logger_warn = logging.getLogger('warn_logger')
-logger_info = logging.getLogger('info_logger')
+def LogConfig(module: str):    
+    return logging.basicConfig(
+        filename=f"etl/logs/{module}.log",
+        level=logging.DEBUG, 
+        format='%(asctime)s :: %(levelname)s :: %(filename)s :: %(lineno)d :: %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S' 
+    )
 
-# Configurar os níveis desejados para cada logger
-logger_error.setLevel(logging.ERROR)
-logger_warn.setLevel(logging.WARNING)
-logger_info.setLevel(logging.INFO)
+def loggingInfo(msg, module):
+    LogConfig(module)
+    return logging.info(msg)
 
+def loggingError(msg, module):
+    LogConfig(module)
+    return logging.error(msg)
 
-def ConsoleInfo(msg):
-    return logger_info.info(msg)
+def loggingWarn(msg,module):
+    LogConfig(module)
+    return logging.warning(msg)
 
-def ConsoleError(msg):
-    return logger_error.error(msg)
-
-def ConsoleWarning(msg):
-    return logger_warn.warning(msg)
