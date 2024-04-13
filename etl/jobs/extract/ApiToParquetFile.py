@@ -1,8 +1,9 @@
 from etl.jobs.extract import (
-    pyarrow, requests, ConsoleInfo, ConsoleError, ConsoleWarning
+    pyarrow, requests, loggingInfo, loggingError, loggingWarn
      ,DefaultOutputFolder, DefaultTimestampStr, CustomBeam
-    ,ENDPOINT_LIST_AVALIABLE_PARITYS, ENDPOINT_QUOTES_AWESOME_API
+    ,ENDPOINT_LIST_AVALIABLE_PARITYS, ENDPOINT_QUOTES_AWESOME_API, WORK_DIR
 )
+
 
 class extraction: 
     def __init__(self, *xargs: str) -> None:
@@ -17,16 +18,16 @@ class extraction:
             if param in list_of_avaliable:
                 valParams.append(param)
             else:
-                ConsoleWarning(f"Param: {param} is not valid for call")
+                loggingWarn(f"Param: {param} is not valid for call", WORK_DIR)
     
         if valParams:
-            ConsoleInfo(f"Parameters OK >>> {valParams}")
+            loggingInfo(f"Parameters OK >>> {valParams}", WORK_DIR)
             response = requests.get(ENDPOINT_QUOTES_AWESOME_API + ','.join(valParams))
             if response.ok:
-                ConsoleInfo(f"Response OK >>> {response}")
+                loggingInfo(f"Response OK >>> {response}", WORK_DIR)
                 return dict(responseData=response.json(), params=valParams)
             else:
-                ConsoleError(f"Response failed >>> {response}")
+                loggingError(f"Response failed >>> {response}", WORK_DIR)
 
     def ParquetSchemaLoad(self, element: dict):
         try:
@@ -37,12 +38,12 @@ class extraction:
                 schema += [(field, pyarrow.string())]
 
             beam_schema = pyarrow.schema(schema)
-            ConsoleInfo("Schema - 200 OK")
+            loggingInfo("Schema - 200 OK", WORK_DIR)
 
             return beam_schema
 
         except Exception as Err:
-            ConsoleInfo(f"Schema - Error >>>> {Err}")
+            loggingError(f"Schema - Error >>>> {Err}", WORK_DIR)
 
     def PipelineRun(self):
         response = self.APIToDicionary()
@@ -64,7 +65,7 @@ class extraction:
                     beam = CustomBeam.BeamObj()
                     extracted_files = []
                     try:
-                        ConsoleInfo(f"Starting pipeline {index + 1} of {len(params)} - {param} - Starting!")
+                        loggingInfo(f"Starting pipeline {index + 1} of {len(params)} - {param} - Starting!", WORK_DIR)
                         
                         with CustomBeam.PipelineDirectRunner() as pipe:
                             input_pcollection = (
@@ -79,10 +80,10 @@ class extraction:
                                 )
                             )
 
-                        ConsoleInfo(f"Pipeline execution OK >> {index + 1} of {len(params)} - {param} - Extracted!")
+                        loggingInfo(f"Pipeline execution OK >> {index + 1} of {len(params)} - {param} - Extracted!", WORK_DIR)
 
                         extracted_files.append(f"{output_path}{param}-{insert_timestamp}-00000-of-00001.parquet")
                     
                     except Exception as err:
-                        ConsoleError(f"{param} - Pipeline Execution Error >>>  {err}")
+                        loggingError(f"{param} - Pipeline Execution Error >>>  {err}", WORK_DIR)
                         
