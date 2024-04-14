@@ -4,13 +4,13 @@ from etl.jobs.extract import (
     ,ENDPOINT_LIST_AVALIABLE_PARITYS, ENDPOINT_QUOTES_AWESOME_API, WORK_DIR
 )
 
-
 class extraction: 
     def __init__(self, *xargs: str) -> None:
         self.params = xargs[0]
         self.PipelineRun()
         
     def APIToDicionary(self):
+        loggingInfo(msg="[STARTING NEW PIPELINE]", module=WORK_DIR)
         valParams = []
         list_of_avaliable = requests.get(ENDPOINT_LIST_AVALIABLE_PARITYS).json()
         
@@ -28,6 +28,8 @@ class extraction:
                 return dict(responseData=response.json(), params=valParams)
             else:
                 loggingError(f"Response failed >>> {response}", WORK_DIR)
+        else:
+            loggingError("There are not valid params for extract.",  WORK_DIR)
 
     def ParquetSchemaLoad(self, element: dict):
         try:
