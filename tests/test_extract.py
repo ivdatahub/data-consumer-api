@@ -8,9 +8,6 @@ from etl.utils.logs import loggingInfo
 from etl.jobs.extract.ApiToParquetFile import extraction
 
 def test_extraction():
-    params = extraction("test").params
+    params = extraction("USD-BRL").params
     
-    if isinstance(params, str):
-        print("OK")
-    else:
-        raise
+    if not isinstance(params, str): raise
