@@ -10,4 +10,3 @@ import os
 
 current_dir = os.path.dirname(os.path.relpath(__file__))
 WORK_DIR = current_dir.split("/")[-1:][0]
-
