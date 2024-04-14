@@ -5,7 +5,7 @@ import requests
 from etl.utils.logs import loggingInfo, loggingError, loggingWarn
 from etl.utils.common import DefaultTimestampStr, DefaultOutputFolder
 from etl.config.beam import CustomBeam
-from etl.utils.constants import ENDPOINT_LIST_AVALIABLE_PARITYS, ENDPOINT_QUOTES_AWESOME_API
+from etl.utils.constants import ENDPOINT_QUOTES_AWESOME_API
 import os
 
 current_dir = os.path.dirname(os.path.relpath(__file__))
