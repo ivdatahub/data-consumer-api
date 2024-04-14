@@ -16,7 +16,7 @@ class ExecutePipeline:
                 totalInvalidParams += 1
                 
         if totalInvalidParams == self.params_count:
-            raise TypeError("Invalid parameters")
+            raise TypeError(f"Invalid parameters >>>> {self.params}")
             
         self.ValidParams = self.ValidParamsForCall()
         self.pipelineExecute()
@@ -38,4 +38,4 @@ class ExecutePipeline:
             extraction(self.ValidParams)
             # pgLoading()
         else:
-            raise KeyError(f"The informed params are not disponible for extract, see avaliable list in: {ENDPOINT_LIST_AVALIABLE_PARITYS}")
+            raise KeyError(f"The informed params: {self.params} are not disponible for extract, see avaliable list in: {ENDPOINT_LIST_AVALIABLE_PARITYS}")

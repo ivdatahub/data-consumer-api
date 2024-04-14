@@ -3,7 +3,7 @@ import pyarrow
 import requests
 # Custom Logs
 from etl.utils.logs import loggingInfo, loggingError, loggingWarn
-from etl.utils.common import DefaultTimestampStr, DefaultOutputFolder
+from etl.utils.common import DefaultTimestampStr, DefaultOutputFolder, DefaultQuotesAPISchema
 from etl.config.beam import CustomBeam
 from etl.utils.constants import ENDPOINT_QUOTES_AWESOME_API
 import os
