@@ -1,7 +1,7 @@
 from etl.jobs.extract import (
     pyarrow, requests, loggingInfo, loggingError, loggingWarn
      ,DefaultOutputFolder, DefaultTimestampStr, CustomBeam
-    ,ENDPOINT_LIST_AVALIABLE_PARITYS, ENDPOINT_QUOTES_AWESOME_API, WORK_DIR
+    , ENDPOINT_QUOTES_AWESOME_API, WORK_DIR
 )
 
 class extraction: 
