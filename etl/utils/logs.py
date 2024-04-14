@@ -1,27 +1,48 @@
 import logging
-import os
-import sys
 
-WORK_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.dirname(WORK_DIR))
+LOG_FORMAT='%(asctime)s :: %(levelname)s :: %(message)s'
 
-def LogConfig(module: str):    
-    return logging.basicConfig(
+def consoleLogger(module):
+    # logger = logging.getLogger("debugLogger")
+    logging.basicConfig(
         filename=f"etl/logs/{module}.log",
-        level=logging.DEBUG, 
-        format='%(asctime)s :: %(levelname)s :: %(filename)s :: %(lineno)d :: %(message)s',
+        level=logging.DEBUG,
+        format=LOG_FORMAT,
         datefmt='%Y-%m-%d %H:%M:%S' 
     )
-
+    
+    consoleLog = logging.getLogger("consoleLogger")
+    consoleLog.setLevel(logging.INFO)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.INFO)
+    formatter = logging.Formatter(LOG_FORMAT)
+    ch.setFormatter(formatter)
+    
+    consoleLog.addHandler(ch)
+    
+    return consoleLog
+        
 def loggingInfo(msg, module):
-    LogConfig(module)
-    return logging.info(msg)
+    if logging.getLogger("consoleLogger").hasHandlers():
+        logger = logging.getLogger("consoleLogger")
+    else:
+        logger = consoleLogger(module=module)
+    
+    logger.info(msg=msg)
+
 
 def loggingError(msg, module):
-    LogConfig(module)
-    return logging.error(msg)
-
+    if logging.getLogger("consoleLogger").hasHandlers():
+        logger = logging.getLogger("consoleLogger")
+    else:
+        logger = consoleLogger(module=module)
+    
+    logger.error(msg=msg)
+    
 def loggingWarn(msg,module):
-    LogConfig(module)
-    return logging.warning(msg)
-
+    if logging.getLogger("consoleLogger").hasHandlers():
+        logger = logging.getLogger("consoleLogger")
+    else:
+        logger = consoleLogger(module=module)
+    
+    logger.warning(msg=msg)    
