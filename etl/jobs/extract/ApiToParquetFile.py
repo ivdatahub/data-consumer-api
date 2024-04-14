@@ -5,7 +5,7 @@ from etl.jobs.extract import (
 )
 
 class extraction: 
-    def __init__(self, *xargs: str) -> None:
+    def __init__(self, *xargs: list) -> None:
         self.params = xargs[0]
         self.PipelineRun()
         
