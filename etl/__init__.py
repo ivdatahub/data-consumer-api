@@ -9,6 +9,7 @@ class ExecutePipeline:
     def __init__(self, *xargs) -> None:
         self.params =  list(xargs)
         self.params_count = len(self.params)
+        self.extractedFiles =  []
         
         totalInvalidParams = 0
         for arg in self.params:
@@ -35,7 +36,11 @@ class ExecutePipeline:
     
     def pipelineExecute(self):
         if self.ValidParams:
-            extraction(self.ValidParams)
+            NewExt = extraction(self.ValidParams)
+            self.extractedFiles = NewExt.GetExtractedFilesList()
             # pgLoading()
         else:
             raise KeyError(f"The informed params: {self.params} are not disponible for extract, see avaliable list in: {ENDPOINT_LIST_AVALIABLE_PARITYS}")
+        
+    def GetExtractedFiles(self) -> list:
+        return self.extractedFiles

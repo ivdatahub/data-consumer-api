@@ -7,9 +7,9 @@ from etl.jobs.extract import (
 class extraction: 
     def __init__(self, ValidParams: list) -> None:
         self.params = ValidParams
-        self.PipelineRun()
+        self.extractedFiles = self.PipelineRun()
 
-    def PipelineRun(self):
+    def PipelineRun(self) -> list:
         response = requests.get(ENDPOINT_QUOTES_AWESOME_API + ','.join(self.params))
 
         if response.ok:
@@ -43,5 +43,11 @@ class extraction:
                 )
 
             loggingInfo(f"{index + 1} of {len(params)} - {param} - file extracted: {output_path}{param}-{insert_timestamp}", WORK_DIR)
+            extracted_files.append(f"{output_path}{param}-{insert_timestamp}-00000-of-00001.parquet")
+        loggingInfo(f"All files extracted in: {output_path}", WORK_DIR)    
             
-        loggingInfo(f"All files extracted in: {output_path}", WORK_DIR)
+        return extracted_files
+            
+    def GetExtractedFilesList(self) -> list:
+        return self.extractedFiles
+    

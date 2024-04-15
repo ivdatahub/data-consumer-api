@@ -7,4 +7,4 @@ sys.path.append(os.path.dirname(WORK_DIR))
 from etl import ExecutePipeline
 
 if __name__ == "__main__":
-    ExecutePipeline("USD-BRL", "USD-BRLT")
+    NewExec = ExecutePipeline("USD-BRL", "USD-BRLT")
