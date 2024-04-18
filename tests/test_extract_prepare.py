@@ -12,9 +12,6 @@ def test_pipelines_params_with_two_param():
     ExecutePipeline("USD-BRL", "USD-BRLT")
     
 def test_pipelines_params_with_one_invalid_params():
-    ExecutePipeline("USD-BRL", "BTC-BRLT", 1)
-    
-def test_pipelines_params_with_one_invalid_params():
     with pytest.raises(expected_exception=TypeError):
         ExecutePipeline(1)
         

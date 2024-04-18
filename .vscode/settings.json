@@ -10,5 +10,7 @@
         "./tests",
         "-p",
         "*test*.py"
-    ]
+    ],
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.typeCheckingMode": "basic"
 }

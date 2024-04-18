@@ -21,7 +21,7 @@ class extraction:
         FileSchema = DefaultQuotesAPISchema()
         output_path = DefaultOutputFolder()
         insert_timestamp = DefaultTimestampStr()
-        beam = CustomBeam.BeamObj()
+        beam = CustomBeam().BeamObj()
         extracted_files = []
 
         for index, param in enumerate(params):
@@ -29,7 +29,7 @@ class extraction:
     
             loggingInfo(f"{index + 1} of {len(params)} - {param} - Starting", WORK_DIR)
             
-            with CustomBeam.PipelineDirectRunner() as pipe:
+            with CustomBeam().PipelineDirectRunner() as pipe:
                 input_pcollection = (
                     pipe
                     | "Create" >> beam.Create([dic])
