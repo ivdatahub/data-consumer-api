@@ -28,12 +28,13 @@ class extraction:
         insert_timestamp = DefaultTimestampStr()
         extracted_files = []
 
+        ## Processing data
         for index, param in enumerate(params):
             dic = json_data[param.replace("-", "")]
     
             loggingInfo(f"{index + 1} of {len(params)} - {param} - Starting", WORK_DIR)
             
-             # Convert 'dic' to a Pandas DataFrame
+            # Convert 'dic' to a Pandas DataFrame
             df = pd.DataFrame([dic])
 
             # Write the DataFrame to a Parquet file
