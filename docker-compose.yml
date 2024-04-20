@@ -1,0 +1,9 @@
+version: '3'
+services:
+  etl-pandas:
+    build: .
+    container_name: python-etl
+    volumes:
+      - .:/app
+    command: python
+    tty: true
