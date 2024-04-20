@@ -1,18 +1,17 @@
 version: '3.1'
 
 services:
-
-  dw-service:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_USER: DW_SVC
-      POSTGRES_PASSWORD: DW_SVC
-      POSTGRES_DB: DW
+  minio:
+    image: minio/minio
+    container_name: minio
     ports:
-      - 5432:5432
+      - "9000:9000"
+    environment:
+      MINIO_ACCESS_KEY: "minio"
+      MINIO_SECRET_KEY: "minio"
     volumes:
-      - postgres-volume:/var/lib/postgresql/data
+      - ./data:/data
 
-volumes:
-  postgres-volume:
+  my-python-app:
+    build: .
+    container_name: my-python-app
