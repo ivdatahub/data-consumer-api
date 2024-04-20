@@ -1,7 +1,10 @@
-from etl.jobs.extract import (
-    pyarrow, requests, loggingInfo, loggingError, loggingWarn
-     ,DefaultOutputFolder, DefaultTimestampStr, DefaultQuotesAPISchema
-     ,CustomBeam, ENDPOINT_QUOTES_AWESOME_API, WORK_DIR
+from etl.jobs.ExtractApiData import (
+    requests
+    ,pandas as pd
+    ,loggingInfo
+    ,DefaultOutputFolder
+    ,DefaultTimestampStr
+    ,ENDPOINT_QUOTES_AWESOME_API, WORK_DIR
 )
 
 class extraction: 
@@ -10,7 +13,10 @@ class extraction:
         self.extractedFiles = self.PipelineRun()
 
     def PipelineRun(self) -> list:
-        response = requests.get(ENDPOINT_QUOTES_AWESOME_API + ','.join(self.params))
+        ## extract Data
+        maked_endpoint = ENDPOINT_QUOTES_AWESOME_API + ','.join(self.params)
+        loggingInfo(f"Sending request: {maked_endpoint}", WORK_DIR)
+        response = requests.get(maked_endpoint)
 
         if response.ok:
             json_data = response.json()
@@ -18,10 +24,8 @@ class extraction:
         else:
             raise ConnectionError(f"endpoint connection: {ENDPOINT_QUOTES_AWESOME_API}. status_code: {response.status_code}")
                 
-        FileSchema = DefaultQuotesAPISchema()
         output_path = DefaultOutputFolder()
         insert_timestamp = DefaultTimestampStr()
-        beam = CustomBeam().BeamObj()
         extracted_files = []
 
         for index, param in enumerate(params):
@@ -29,25 +33,19 @@ class extraction:
     
             loggingInfo(f"{index + 1} of {len(params)} - {param} - Starting", WORK_DIR)
             
-            with CustomBeam().PipelineDirectRunner() as pipe:
-                input_pcollection = (
-                    pipe
-                    | "Create" >> beam.Create([dic])
-                    | "WriteToParquet"
-                    >> beam.io.WriteToParquet(
-                        file_path_prefix=f"{output_path}{param}-{insert_timestamp}",
-                        file_name_suffix=".parquet",
-                        num_shards=1,
-                        schema=FileSchema,
-                    )
-                )
+             # Convert 'dic' to a Pandas DataFrame
+            df = pd.DataFrame([dic])
+
+            # Write the DataFrame to a Parquet file
+            df.to_parquet(f"{output_path}{param}-{insert_timestamp}.parquet")
 
             loggingInfo(f"{index + 1} of {len(params)} - {param} - file extracted: {output_path}{param}-{insert_timestamp}", WORK_DIR)
+
             extracted_files.append(f"{output_path}{param}-{insert_timestamp}-00000-of-00001.parquet")
+            
         loggingInfo(f"All files extracted in: {output_path}", WORK_DIR)    
             
         return extracted_files
             
     def GetExtractedFilesList(self) -> list:
         return self.extractedFiles
-    

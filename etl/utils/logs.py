@@ -1,11 +1,18 @@
 import logging
+import os
 
 LOG_FORMAT='%(asctime)s :: %(levelname)s :: %(message)s'
 
 def consoleLogger(module):
-    # logger = logging.getLogger("debugLogger")
+    
+    dir_name = f"etl/logs/"
+    os.makedirs(dir_name, exist_ok=True)
+    
+    with open(dir_name + f"{module}.log", "w") as f:
+        f.write("")
+    
     logging.basicConfig(
-        filename=f"etl/logs/{module}.log",
+        filename=dir_name + f"{module}.log",
         level=logging.DEBUG,
         format=LOG_FORMAT,
         datefmt='%Y-%m-%d %H:%M:%S' 

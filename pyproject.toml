@@ -1,17 +1,18 @@
 [tool.poetry]
 name = "awesome-data-ingestion"
 version = "0.1.0"
-description = "Data Ingestion from public endpoint with Beam"
+description = "Data Ingestion from public endpoint with pandas"
 authors = ["ivanildo.barauna <ivanildo.jnr@outlook.com>"]
 readme = "README.md"
+package-mode = false
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
 requests = "^2.31.0"
-apache-beam = "^2.55.1"
-pyyaml = "^6.0.1"
-pytest = "^8.1.1"
-
+pandas = "^2.2.2"
+pyarrow = "^15.0.2"
+fastparquet = "^2024.2.0"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,6 +1,6 @@
 FROM python:3.9.6
 
-WORKDIR /usr/src/etl
+WORKDIR /usr/src/app
 
 RUN python -m pip install --upgrade pip
 

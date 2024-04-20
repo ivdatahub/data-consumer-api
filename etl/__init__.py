@@ -1,7 +1,7 @@
 import requests
 from etl.utils.constants import ENDPOINT_LIST_AVALIABLE_PARITYS
 from etl.utils.logs import loggingWarn
-from etl.jobs.extract.ApiToParquetFile import extraction
+from etl.jobs.ExtractApiData.ApiToParquetFile import extraction
 
 mdName = "extract_prepare"
 
