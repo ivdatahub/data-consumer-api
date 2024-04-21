@@ -16,7 +16,7 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
     - `common.py`: Package for common tasks in the code
     - `constants.py`: Constants used in the code
 
-## If you want run this project:
+## If you want run this project and verify time of execution:
 
 <details>
   <summary>Click here:</summary>
@@ -40,7 +40,7 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
   4. Alternatively, you can run the project using Docker or Docker Compose. To build and run the Docker image, use the following command:
 
     ```bash
-    docker build -t myproject . && docker run myproject
+    docker build -t etl-awesome-api . && docker run etl-awesome-api
     ```
 
     To run the project with Docker Compose, use the following command:
@@ -55,6 +55,6 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
   Dependencies listed in pyproject.toml and requirements.txt.
 </details>
 
-## The extracted and analysed files
+## The results of ETL and Data Analysis, look the Jupyter Notebook bellow:
 
 You can see the complete Data Analysis [here](notebooks/data_explorer.ipynb)
