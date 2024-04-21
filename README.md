@@ -36,6 +36,6 @@ Dependencies listed in pyproject.toml and requirements.txt.
 
 ## The extracted and analysed files
 
-You can see the complete Data Analysis [here](https://nbviewer.org/github/IvanildoBarauna/ETL-awesome-api/blob/main/notebooks/data_explorer.ipynb)
+You can see the complete Data Analysis [here]([https://nbviewer.org/github/IvanildoBarauna/ETL-awesome-api/blob/main/notebooks/data_explorer.ipynb](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/notebooks/data_explorer.ipynb))
 
 
