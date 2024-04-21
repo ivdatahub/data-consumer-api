@@ -5,5 +5,5 @@ services:
     container_name: python-etl
     volumes:
       - .:/app
-    command: python
+    command: python ./etl/main.py
     tty: true
