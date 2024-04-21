@@ -4,6 +4,7 @@ from etl.jobs.ExtractApiData import (
     ,loggingInfo
     ,DefaultOutputFolder
     ,DefaultTimestampStr
+    ,DefaultUTCDatetime
     ,ENDPOINT_QUOTES_AWESOME_API, WORK_DIR
 )
 
@@ -36,6 +37,12 @@ class extraction:
             
             # Convert 'dic' to a Pandas DataFrame
             df = pd.DataFrame([dic])
+            
+            # Add new columns to the DataFrame
+            df["symbol"] = param
+            
+            # Adde two columns with the current date and time           
+            df["extracted_at"] = DefaultUTCDatetime()
 
             # Write the DataFrame to a Parquet file
             df.to_parquet(f"{output_path}{param}-{insert_timestamp}.parquet")
