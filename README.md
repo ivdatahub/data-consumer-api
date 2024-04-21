@@ -16,25 +16,45 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
     - `common.py`: Package for common tasks in the code
     - `constants.py`: Constants used in the code
 
-## If you want run this projetc:
+## If you want run this project:
 
-1. Install project dependencies using `poetry`:
-   ```bash
-   poetry install
+<details>
+  <summary>Clique para expandir!</summary>
+  
+  ## Step by Step
+  1. Install project dependencies using `poetry`:
+  
+    ```bash
+    poetry install
+    ```
 
-2. Run de main.py script
-   ```python
-   poetry run python etl/main.py
+  2. Run de main.py script
+  
+    ```python
+    poetry run python etl/main.py
+    ```
 
-3. This command will execute the main script of the project, initiating the ETL process for currency quotes data.
-Note: Ensure that you have Python 3.9 installed on your system.
+  3. This command will execute the main script of the project, initiating the ETL process for currency quotes data.
+    Note: Ensure that you have Python 3.9 installed on your system.
 
-## Requirements
+  4. Alternatively, you can run the project using Docker or Docker Compose. To build and run the Docker image, use the following command:
 
-Python 3.9
-Dependencies listed in pyproject.toml and requirements.txt.
+    ```bash
+    docker build -t myproject . && docker run myproject
+    ```
+
+    To run the project with Docker Compose, use the following command:
+
+    ```bash
+    docker-compose up
+    ```
+
+  ## Requirements
+
+  Python 3.9
+  Dependencies listed in pyproject.toml and requirements.txt.
+</details>
 
 ## The extracted and analysed files
 
 You can see the complete Data Analysis [here](notebooks/data_explorer.ipynb)
-
