@@ -23,40 +23,25 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
   
   ## Step by Step
   1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/IvanildoBarauna/ETL-awesome-api.git
-    ```
-
     `$ git clone https://github.com/IvanildoBarauna/ETL-awesome-api.git`
 
-
   2. Install project dependencies using `poetry`:
-  
-    ```bash
-    poetry install
-    ```
-
+    `$ poetry install`
+    
   3. Run de main.py script
-  
-    ```python
-    poetry run python etl/main.py
-    ```
-
+    `$ poetry run python etl/main.py`
+    
   4. This command will execute the main script of the project, initiating the ETL process for currency quotes data.
     Note: Ensure that you have Python 3.9 installed on your system.
 
   5. Alternatively, you can run the project using Docker or Docker Compose. To build and run the Docker image, use the following command:
-
-    ```bash
-    docker build -t etl-awesome-api . && docker run etl-awesome-api
-    ```
-
+     Note: Note: Ensure that you have Docker installed on your system.
+     
+    `$ docker build -t etl-awesome-api . && docker run etl-awesome-api`
+    
     To run the project with Docker Compose, use the following command:
 
-    ```bash
-    docker-compose up
-    ```
+    `$ docker-compose up`
 
 </details>
 
