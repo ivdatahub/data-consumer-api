@@ -19,7 +19,7 @@ def GenerateRandomParams(ParamsQty: int) -> list:
     return AvaliableList[min:max]
 
 if __name__ == "__main__":
-    NewExec = ExecutePipeline(*GenerateRandomParams(10))
+    NewExec = ExecutePipeline(*GenerateRandomParams(100))
     
 end_time = time.time()
 print(f"Execution time: {end_time - start_time} seconds")
