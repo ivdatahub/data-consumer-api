@@ -28,6 +28,9 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
     git clone https://github.com/IvanildoBarauna/ETL-awesome-api.git
     ```
 
+    `$ git clone https://github.com/IvanildoBarauna/ETL-awesome-api.git`
+
+
   2. Install project dependencies using `poetry`:
   
     ```bash
