@@ -19,7 +19,7 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
 ## If you want run this project:
 
 <details>
-  <summary>Clique para expandir!</summary>
+  <summary>Click here:</summary>
   
   ## Step by Step
   1. Install project dependencies using `poetry`:
