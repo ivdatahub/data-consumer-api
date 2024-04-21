@@ -16,7 +16,7 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
     - `common.py`: Package for common tasks in the code
     - `constants.py`: Constants used in the code
 
-## How to Run
+## If you want run this projetc:
 
 1. Install project dependencies using `poetry`:
    ```bash
@@ -34,4 +34,8 @@ Note: Ensure that you have Python 3.9 installed on your system.
 Python 3.9
 Dependencies listed in pyproject.toml and requirements.txt.
 
-# Arch
+## The extracted and analysed files
+
+You can see the complete Data Analysis [here](https://nbviewer.org/github/IvanildoBarauna/ETL-awesome-api/blob/main/notebooks/data_explorer.ipynb)
+
+
