@@ -2,7 +2,7 @@
 import requests
 # Custom Logs
 from etl.utils.logs import loggingInfo, loggingError, loggingWarn
-from etl.utils.common import DefaultTimestampStr, DefaultOutputFolder
+from etl.utils.common import DefaultTimestampStr, DefaultOutputFolder, DefaultUTCDatetime
 from etl.utils.constants import ENDPOINT_QUOTES_AWESOME_API
 import pandas
 import os
