@@ -3,18 +3,18 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
 
 ## Project Structure
 
-- /data: Stores raw data in Parquet format.
+- [data](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/data): Stores raw data in Parquet format.
   - ETH-EUR-1713658884.example: Ex: Raw data for ETH-EUR quotes.
 - [`notebooks/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/notebooks): Contains the `data_explorer.ipynb` notebook for data exploration.
-- `etl/`: Holds the project source code.
-  - `main.py`: The  entrypoint for ETL Module
-  - `jobs/`: ETL Modules   
-    - `ExtractApiData/`: Module for data extraction from API.
-      - `ApiToParquetFile.py`: Extract API data to Parquet File and storage in /data
-  - `utils/`
-    - `logs.py`: Package for managing logs.
-    - `common.py`: Package for common tasks in the code
-    - `constants.py`: Constants used in the code
+- [`etl/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl): Holds the project source code.
+  - [`main.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/main.py): The  entrypoint for ETL Module
+  - [`jobs/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/jobs): ETL Modules   
+    - [`ExtractApiData/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/jobs/ExtractApiData): Module for data extraction from API.
+      - [`ApiToParquetFile.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/jobs/ExtractApiData/ApiToParquetFile.py): Extract API data to Parquet File and storage in /data
+  - [`utils/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/utils)
+    - [`logs.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/utils/logs.py): Package for managing logs.
+    - [`common.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/utils/common.py): Package for common tasks in the code
+    - [`constants.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/utils/constants.py): Constants used in the code
 
 ## If you want run this project and verify time of execution:
 
