@@ -3,9 +3,9 @@ This repository houses the Awesome project, dedicated to the ETL process of curr
 
 ## Project Structure
 
-- data: Stores raw data in Parquet format.
+- /data: Stores raw data in Parquet format.
   - ETH-EUR-1713658884.example: Ex: Raw data for ETH-EUR quotes.
-- `notebooks/`: Contains the `data_explorer.ipynb` notebook for data exploration.
+- [`notebooks/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/notebooks): Contains the `data_explorer.ipynb` notebook for data exploration.
 - `etl/`: Holds the project source code.
   - `main.py`: The  entrypoint for ETL Module
   - `jobs/`: ETL Modules   
