@@ -10,10 +10,25 @@ from etl.jobs.ExtractApiData import (
 
 class extraction: 
     def __init__(self, ValidParams: list) -> None:
+        """
+        Initializes the extraction class.
+
+        Args:
+            ValidParams (list): A list of valid parameters.
+
+        Returns:
+            None
+        """
         self.params = ValidParams
         self.extractedFiles = self.PipelineRun()
 
     def PipelineRun(self) -> list:
+        """
+        Runs the data extraction pipeline.
+
+        Returns:
+            list: A list of extracted file paths.
+        """
         ## extract Data
         maked_endpoint = ENDPOINT_QUOTES_AWESOME_API + ','.join(self.params)
         loggingInfo(f"Sending request: {maked_endpoint}", WORK_DIR)
@@ -56,4 +71,10 @@ class extraction:
         return extracted_files
             
     def GetExtractedFilesList(self) -> list:
+        """
+        Returns the list of extracted files.
+
+        Returns:
+            list: A list of extracted file paths.
+        """
         return self.extractedFiles

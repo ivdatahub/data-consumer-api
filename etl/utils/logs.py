@@ -4,7 +4,15 @@ import os
 LOG_FORMAT='%(asctime)s :: %(levelname)s :: %(message)s'
 
 def consoleLogger(module):
-    
+    """
+    Creates a console logger for logging messages to the console and a log file.
+
+    Args:
+        module (str): The name of the module.
+
+    Returns:
+        logging.Logger: The console logger instance.
+    """
     dir_name = f"etl/logs/"
     os.makedirs(dir_name, exist_ok=True)
     
@@ -30,6 +38,16 @@ def consoleLogger(module):
     return consoleLog
         
 def loggingInfo(msg, module):
+    """
+    Logs an informational message.
+
+    Args:
+        msg (str): The message to be logged.
+        module (str): The name of the module.
+
+    Returns:
+        None
+    """
     if logging.getLogger("consoleLogger").hasHandlers():
         logger = logging.getLogger("consoleLogger")
     else:
@@ -39,6 +57,16 @@ def loggingInfo(msg, module):
 
 
 def loggingError(msg, module):
+    """
+    Logs an error message.
+
+    Args:
+        msg (str): The message to be logged.
+        module (str): The name of the module.
+
+    Returns:
+        None
+    """
     if logging.getLogger("consoleLogger").hasHandlers():
         logger = logging.getLogger("consoleLogger")
     else:
@@ -47,9 +75,19 @@ def loggingError(msg, module):
     logger.error(msg=msg)
     
 def loggingWarn(msg,module):
+    """
+    Logs a warning message.
+
+    Args:
+        msg (str): The message to be logged.
+        module (str): The name of the module.
+
+    Returns:
+        None
+    """
     if logging.getLogger("consoleLogger").hasHandlers():
         logger = logging.getLogger("consoleLogger")
     else:
         logger = consoleLogger(module=module)
     
-    logger.warning(msg=msg)    
+    logger.warning(msg=msg)

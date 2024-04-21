@@ -13,6 +13,15 @@ from etl import ExecutePipeline
 from etl.utils.constants import ENDPOINT_LIST_AVALIABLE_PARITYS
 
 def GenerateRandomParams(ParamsQty: int) -> list: 
+    """
+    Generate a list of random parameters from the available list of parities.
+    
+    Args:
+        ParamsQty (int): The number of random parameters to generate.
+        
+    Returns:
+        list: A list of randomly generated parameters.
+    """
     AvaliableList = list(requests.get(ENDPOINT_LIST_AVALIABLE_PARITYS).json())
     min = random.randint(0, len(AvaliableList) - ParamsQty)
     max = min + ParamsQty
