@@ -9,4 +9,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+## The entrypoint of pipeline
 CMD [ "python", "./etl/main.py" ]
