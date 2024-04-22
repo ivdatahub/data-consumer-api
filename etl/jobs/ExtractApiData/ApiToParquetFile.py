@@ -8,6 +8,8 @@ from etl.jobs.ExtractApiData import (
     ,ENDPOINT_QUOTES_AWESOME_API, WORK_DIR
 )
 
+import concurrent.futures
+
 class extraction: 
     def __init__(self, ValidParams: list) -> None:
         """
@@ -45,10 +47,10 @@ class extraction:
         insert_timestamp = DefaultTimestampStr()
         extracted_files = []
 
-        ## Processing data
-        for index, param in enumerate(params):
+        def process_param(args):
+            index, param = args
             dic = json_data[param.replace("-", "")]
-    
+            
             loggingInfo(f"{index + 1} of {len(params)} - {param} - Transforming..", WORK_DIR)
             
             # Convert 'dic' to a Pandas DataFrame
@@ -57,7 +59,7 @@ class extraction:
             # Add new columns to the DataFrame
             df["symbol"] = param
             
-            # Adde two columns with the current date and time           
+            # Add two columns with the current date and time           
             df["extracted_at"] = DefaultUTCDatetime()
             
             loggingInfo(f"{index + 1} of {len(params)} - {param} - Loading...", WORK_DIR)
@@ -67,7 +69,16 @@ class extraction:
 
             loggingInfo(f"{index + 1} of {len(params)} - {param} - saved file: {output_path}{param}-{insert_timestamp}", WORK_DIR)
 
-            extracted_files.append(f"{output_path}{param}-{insert_timestamp}.parquet")
+        ## Processing data
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            list(executor.map(process_param, enumerate(params)))
+            
+            
+            #### old
+            
+            
+
+            extracted_files = []
             
         loggingInfo(f"All files extracted in: {output_path}", WORK_DIR)    
             
