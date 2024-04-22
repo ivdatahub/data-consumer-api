@@ -8,6 +8,11 @@ from etl.jobs.ExtractApiData import (
     ,ENDPOINT_QUOTES_AWESOME_API, WORK_DIR
 )
 
+import concurrent.futures
+import threading
+
+counter = 0
+
 class extraction: 
     def __init__(self, ValidParams: list) -> None:
         """
@@ -21,6 +26,7 @@ class extraction:
         """
         self.params = ValidParams
         self.extractedFiles = self.PipelineRun()
+        
 
     def PipelineRun(self) -> list:
         """
@@ -44,12 +50,20 @@ class extraction:
         output_path = DefaultOutputFolder()
         insert_timestamp = DefaultTimestampStr()
         extracted_files = []
+        totalParams = len(params)
 
-        ## Processing data
-        for index, param in enumerate(params):
+
+        def process_param(args):
+            global counter
+            
+            index, param = args
             dic = json_data[param.replace("-", "")]
-    
-            loggingInfo(f"{index + 1} of {len(params)} - {param} - Transforming..", WORK_DIR)
+            
+            with threading.Lock():
+                thread_num = counter
+                counter += 1
+            
+            loggingInfo(f"{index + 1} of {totalParams} - {param} - Transforming using thread: {thread_num}", WORK_DIR)
             
             # Convert 'dic' to a Pandas DataFrame
             df = pd.DataFrame([dic])
@@ -57,17 +71,23 @@ class extraction:
             # Add new columns to the DataFrame
             df["symbol"] = param
             
-            # Adde two columns with the current date and time           
+            # Add two columns with the current date and time           
             df["extracted_at"] = DefaultUTCDatetime()
             
-            loggingInfo(f"{index + 1} of {len(params)} - {param} - Loading...", WORK_DIR)
+            loggingInfo(f"{index + 1} of {totalParams} - {param} - Loading using thread: {thread_num}", WORK_DIR)
             
             # Write the DataFrame to a Parquet file
             df.to_parquet(f"{output_path}{param}-{insert_timestamp}.parquet")
-
-            loggingInfo(f"{index + 1} of {len(params)} - {param} - saved file: {output_path}{param}-{insert_timestamp}", WORK_DIR)
-
+            
+            # Append list with the file path
             extracted_files.append(f"{output_path}{param}-{insert_timestamp}.parquet")
+
+            loggingInfo(f"{index + 1} of {totalParams} - {param} - saved file using thread: {thread_num}", WORK_DIR)
+
+        ## Parallel Processing data
+        with concurrent.futures.ThreadPoolExecutor(4) as executor:
+            list(executor.map(process_param, enumerate(params)))
+
             
         loggingInfo(f"All files extracted in: {output_path}", WORK_DIR)    
             
