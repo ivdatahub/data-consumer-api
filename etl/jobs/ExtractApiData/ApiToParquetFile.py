@@ -35,6 +35,7 @@ class extraction:
         response = requests.get(maked_endpoint)
 
         if response.ok:
+            loggingInfo(f"Request finished", WORK_DIR)
             json_data = response.json()
             params = self.params
         else:
@@ -48,7 +49,7 @@ class extraction:
         for index, param in enumerate(params):
             dic = json_data[param.replace("-", "")]
     
-            loggingInfo(f"{index + 1} of {len(params)} - {param} - Starting", WORK_DIR)
+            loggingInfo(f"{index + 1} of {len(params)} - {param} - Transforming..", WORK_DIR)
             
             # Convert 'dic' to a Pandas DataFrame
             df = pd.DataFrame([dic])
@@ -58,13 +59,15 @@ class extraction:
             
             # Adde two columns with the current date and time           
             df["extracted_at"] = DefaultUTCDatetime()
-
+            
+            loggingInfo(f"{index + 1} of {len(params)} - {param} - Loading...", WORK_DIR)
+            
             # Write the DataFrame to a Parquet file
             df.to_parquet(f"{output_path}{param}-{insert_timestamp}.parquet")
 
-            loggingInfo(f"{index + 1} of {len(params)} - {param} - file extracted: {output_path}{param}-{insert_timestamp}", WORK_DIR)
+            loggingInfo(f"{index + 1} of {len(params)} - {param} - saved file: {output_path}{param}-{insert_timestamp}", WORK_DIR)
 
-            extracted_files.append(f"{output_path}{param}-{insert_timestamp}-00000-of-00001.parquet")
+            extracted_files.append(f"{output_path}{param}-{insert_timestamp}.parquet")
             
         loggingInfo(f"All files extracted in: {output_path}", WORK_DIR)    
             
