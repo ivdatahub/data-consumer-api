@@ -1,0 +1,204 @@
+2024-04-20 18:22:31 :: INFO :: Sending request: https://economia.awesomeapi.com.br/last/EUR-DJF,EUR-DOP,EUR-DZD,EUR-EGP,EUR-ETB,EUR-FJD,EUR-GHS,EUR-GMD,EUR-GNF,EUR-GTQ,EUR-HNL,EUR-HRK,EUR-HTG,EUR-IDR,EUR-INR,EUR-IQD,EUR-IRR,EUR-ISK,EUR-JMD,EUR-JOD,EUR-KES,EUR-KHR,EUR-KWD,EUR-KYD,EUR-KZT,EUR-LAK,EUR-LBP,EUR-LKR,EUR-LSL,EUR-LYD,EUR-MAD,EUR-MDL,EUR-MGA,EUR-MKD,EUR-MMK,EUR-MOP,EUR-MRO,EUR-MUR,EUR-MWK,EUR-MYR,EUR-NAD,EUR-NGN,EUR-NIO,EUR-NPR,EUR-OMR,EUR-PAB,EUR-PEN,EUR-PGK,EUR-PHP,EUR-PKR,EUR-PYG,EUR-QAR,EUR-RON,EUR-RSD,EUR-RWF,EUR-SAR,EUR-SCR,EUR-SDG,EUR-SDR,EUR-SOS,EUR-STD,EUR-SVC,EUR-SYP,EUR-SZL,EUR-TND,EUR-TTD,EUR-TWD,EUR-TZS,EUR-UAH,EUR-UGX,EUR-UYU,EUR-UZS,EUR-VEF,EUR-VND,EUR-XAF,EUR-XOF,EUR-XPF,EUR-ZMK,GHS-EUR,NZD-EUR,SGD-EUR,AED-EUR,DKK-EUR,EUR-XCD,HKD-EUR,MXN-EUR,NOK-EUR,PLN-EUR,RUB-EUR,SAR-EUR,SEK-EUR,TRY-EUR,TWD-EUR,VEF-EUR,ZAR-EUR,MAD-EUR,KRW-EUR,EGP-EUR,EUR-MZN,INR-EUR
+2024-04-20 18:22:31 :: DEBUG :: Starting new HTTPS connection (1): economia.awesomeapi.com.br:443
+2024-04-20 18:22:32 :: DEBUG :: https://economia.awesomeapi.com.br:443 "GET /last/EUR-DJF,EUR-DOP,EUR-DZD,EUR-EGP,EUR-ETB,EUR-FJD,EUR-GHS,EUR-GMD,EUR-GNF,EUR-GTQ,EUR-HNL,EUR-HRK,EUR-HTG,EUR-IDR,EUR-INR,EUR-IQD,EUR-IRR,EUR-ISK,EUR-JMD,EUR-JOD,EUR-KES,EUR-KHR,EUR-KWD,EUR-KYD,EUR-KZT,EUR-LAK,EUR-LBP,EUR-LKR,EUR-LSL,EUR-LYD,EUR-MAD,EUR-MDL,EUR-MGA,EUR-MKD,EUR-MMK,EUR-MOP,EUR-MRO,EUR-MUR,EUR-MWK,EUR-MYR,EUR-NAD,EUR-NGN,EUR-NIO,EUR-NPR,EUR-OMR,EUR-PAB,EUR-PEN,EUR-PGK,EUR-PHP,EUR-PKR,EUR-PYG,EUR-QAR,EUR-RON,EUR-RSD,EUR-RWF,EUR-SAR,EUR-SCR,EUR-SDG,EUR-SDR,EUR-SOS,EUR-STD,EUR-SVC,EUR-SYP,EUR-SZL,EUR-TND,EUR-TTD,EUR-TWD,EUR-TZS,EUR-UAH,EUR-UGX,EUR-UYU,EUR-UZS,EUR-VEF,EUR-VND,EUR-XAF,EUR-XOF,EUR-XPF,EUR-ZMK,GHS-EUR,NZD-EUR,SGD-EUR,AED-EUR,DKK-EUR,EUR-XCD,HKD-EUR,MXN-EUR,NOK-EUR,PLN-EUR,RUB-EUR,SAR-EUR,SEK-EUR,TRY-EUR,TWD-EUR,VEF-EUR,ZAR-EUR,MAD-EUR,KRW-EUR,EGP-EUR,EUR-MZN,INR-EUR HTTP/1.1" 200 None
+2024-04-20 18:22:32 :: INFO :: 1 of 100 - EUR-DJF - Starting
+2024-04-20 18:22:32 :: INFO :: 1 of 100 - EUR-DJF - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-DJF-1713648152
+2024-04-20 18:22:32 :: INFO :: 2 of 100 - EUR-DOP - Starting
+2024-04-20 18:22:32 :: INFO :: 2 of 100 - EUR-DOP - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-DOP-1713648152
+2024-04-20 18:22:32 :: INFO :: 3 of 100 - EUR-DZD - Starting
+2024-04-20 18:22:32 :: INFO :: 3 of 100 - EUR-DZD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-DZD-1713648152
+2024-04-20 18:22:32 :: INFO :: 4 of 100 - EUR-EGP - Starting
+2024-04-20 18:22:32 :: INFO :: 4 of 100 - EUR-EGP - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-EGP-1713648152
+2024-04-20 18:22:32 :: INFO :: 5 of 100 - EUR-ETB - Starting
+2024-04-20 18:22:32 :: INFO :: 5 of 100 - EUR-ETB - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-ETB-1713648152
+2024-04-20 18:22:32 :: INFO :: 6 of 100 - EUR-FJD - Starting
+2024-04-20 18:22:32 :: INFO :: 6 of 100 - EUR-FJD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-FJD-1713648152
+2024-04-20 18:22:32 :: INFO :: 7 of 100 - EUR-GHS - Starting
+2024-04-20 18:22:32 :: INFO :: 7 of 100 - EUR-GHS - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-GHS-1713648152
+2024-04-20 18:22:32 :: INFO :: 8 of 100 - EUR-GMD - Starting
+2024-04-20 18:22:32 :: INFO :: 8 of 100 - EUR-GMD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-GMD-1713648152
+2024-04-20 18:22:32 :: INFO :: 9 of 100 - EUR-GNF - Starting
+2024-04-20 18:22:32 :: INFO :: 9 of 100 - EUR-GNF - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-GNF-1713648152
+2024-04-20 18:22:32 :: INFO :: 10 of 100 - EUR-GTQ - Starting
+2024-04-20 18:22:32 :: INFO :: 10 of 100 - EUR-GTQ - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-GTQ-1713648152
+2024-04-20 18:22:32 :: INFO :: 11 of 100 - EUR-HNL - Starting
+2024-04-20 18:22:32 :: INFO :: 11 of 100 - EUR-HNL - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-HNL-1713648152
+2024-04-20 18:22:32 :: INFO :: 12 of 100 - EUR-HRK - Starting
+2024-04-20 18:22:32 :: INFO :: 12 of 100 - EUR-HRK - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-HRK-1713648152
+2024-04-20 18:22:32 :: INFO :: 13 of 100 - EUR-HTG - Starting
+2024-04-20 18:22:32 :: INFO :: 13 of 100 - EUR-HTG - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-HTG-1713648152
+2024-04-20 18:22:32 :: INFO :: 14 of 100 - EUR-IDR - Starting
+2024-04-20 18:22:32 :: INFO :: 14 of 100 - EUR-IDR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-IDR-1713648152
+2024-04-20 18:22:32 :: INFO :: 15 of 100 - EUR-INR - Starting
+2024-04-20 18:22:32 :: INFO :: 15 of 100 - EUR-INR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-INR-1713648152
+2024-04-20 18:22:32 :: INFO :: 16 of 100 - EUR-IQD - Starting
+2024-04-20 18:22:32 :: INFO :: 16 of 100 - EUR-IQD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-IQD-1713648152
+2024-04-20 18:22:32 :: INFO :: 17 of 100 - EUR-IRR - Starting
+2024-04-20 18:22:32 :: INFO :: 17 of 100 - EUR-IRR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-IRR-1713648152
+2024-04-20 18:22:32 :: INFO :: 18 of 100 - EUR-ISK - Starting
+2024-04-20 18:22:32 :: INFO :: 18 of 100 - EUR-ISK - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-ISK-1713648152
+2024-04-20 18:22:32 :: INFO :: 19 of 100 - EUR-JMD - Starting
+2024-04-20 18:22:32 :: INFO :: 19 of 100 - EUR-JMD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-JMD-1713648152
+2024-04-20 18:22:32 :: INFO :: 20 of 100 - EUR-JOD - Starting
+2024-04-20 18:22:32 :: INFO :: 20 of 100 - EUR-JOD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-JOD-1713648152
+2024-04-20 18:22:32 :: INFO :: 21 of 100 - EUR-KES - Starting
+2024-04-20 18:22:32 :: INFO :: 21 of 100 - EUR-KES - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-KES-1713648152
+2024-04-20 18:22:32 :: INFO :: 22 of 100 - EUR-KHR - Starting
+2024-04-20 18:22:32 :: INFO :: 22 of 100 - EUR-KHR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-KHR-1713648152
+2024-04-20 18:22:32 :: INFO :: 23 of 100 - EUR-KWD - Starting
+2024-04-20 18:22:32 :: INFO :: 23 of 100 - EUR-KWD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-KWD-1713648152
+2024-04-20 18:22:32 :: INFO :: 24 of 100 - EUR-KYD - Starting
+2024-04-20 18:22:32 :: INFO :: 24 of 100 - EUR-KYD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-KYD-1713648152
+2024-04-20 18:22:32 :: INFO :: 25 of 100 - EUR-KZT - Starting
+2024-04-20 18:22:32 :: INFO :: 25 of 100 - EUR-KZT - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-KZT-1713648152
+2024-04-20 18:22:32 :: INFO :: 26 of 100 - EUR-LAK - Starting
+2024-04-20 18:22:32 :: INFO :: 26 of 100 - EUR-LAK - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-LAK-1713648152
+2024-04-20 18:22:32 :: INFO :: 27 of 100 - EUR-LBP - Starting
+2024-04-20 18:22:32 :: INFO :: 27 of 100 - EUR-LBP - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-LBP-1713648152
+2024-04-20 18:22:32 :: INFO :: 28 of 100 - EUR-LKR - Starting
+2024-04-20 18:22:32 :: INFO :: 28 of 100 - EUR-LKR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-LKR-1713648152
+2024-04-20 18:22:32 :: INFO :: 29 of 100 - EUR-LSL - Starting
+2024-04-20 18:22:32 :: INFO :: 29 of 100 - EUR-LSL - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-LSL-1713648152
+2024-04-20 18:22:32 :: INFO :: 30 of 100 - EUR-LYD - Starting
+2024-04-20 18:22:32 :: INFO :: 30 of 100 - EUR-LYD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-LYD-1713648152
+2024-04-20 18:22:32 :: INFO :: 31 of 100 - EUR-MAD - Starting
+2024-04-20 18:22:32 :: INFO :: 31 of 100 - EUR-MAD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MAD-1713648152
+2024-04-20 18:22:32 :: INFO :: 32 of 100 - EUR-MDL - Starting
+2024-04-20 18:22:33 :: INFO :: 32 of 100 - EUR-MDL - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MDL-1713648152
+2024-04-20 18:22:33 :: INFO :: 33 of 100 - EUR-MGA - Starting
+2024-04-20 18:22:33 :: INFO :: 33 of 100 - EUR-MGA - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MGA-1713648152
+2024-04-20 18:22:33 :: INFO :: 34 of 100 - EUR-MKD - Starting
+2024-04-20 18:22:33 :: INFO :: 34 of 100 - EUR-MKD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MKD-1713648152
+2024-04-20 18:22:33 :: INFO :: 35 of 100 - EUR-MMK - Starting
+2024-04-20 18:22:33 :: INFO :: 35 of 100 - EUR-MMK - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MMK-1713648152
+2024-04-20 18:22:33 :: INFO :: 36 of 100 - EUR-MOP - Starting
+2024-04-20 18:22:33 :: INFO :: 36 of 100 - EUR-MOP - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MOP-1713648152
+2024-04-20 18:22:33 :: INFO :: 37 of 100 - EUR-MRO - Starting
+2024-04-20 18:22:33 :: INFO :: 37 of 100 - EUR-MRO - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MRO-1713648152
+2024-04-20 18:22:33 :: INFO :: 38 of 100 - EUR-MUR - Starting
+2024-04-20 18:22:33 :: INFO :: 38 of 100 - EUR-MUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 39 of 100 - EUR-MWK - Starting
+2024-04-20 18:22:33 :: INFO :: 39 of 100 - EUR-MWK - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MWK-1713648152
+2024-04-20 18:22:33 :: INFO :: 40 of 100 - EUR-MYR - Starting
+2024-04-20 18:22:33 :: INFO :: 40 of 100 - EUR-MYR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MYR-1713648152
+2024-04-20 18:22:33 :: INFO :: 41 of 100 - EUR-NAD - Starting
+2024-04-20 18:22:33 :: INFO :: 41 of 100 - EUR-NAD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-NAD-1713648152
+2024-04-20 18:22:33 :: INFO :: 42 of 100 - EUR-NGN - Starting
+2024-04-20 18:22:33 :: INFO :: 42 of 100 - EUR-NGN - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-NGN-1713648152
+2024-04-20 18:22:33 :: INFO :: 43 of 100 - EUR-NIO - Starting
+2024-04-20 18:22:33 :: INFO :: 43 of 100 - EUR-NIO - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-NIO-1713648152
+2024-04-20 18:22:33 :: INFO :: 44 of 100 - EUR-NPR - Starting
+2024-04-20 18:22:33 :: INFO :: 44 of 100 - EUR-NPR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-NPR-1713648152
+2024-04-20 18:22:33 :: INFO :: 45 of 100 - EUR-OMR - Starting
+2024-04-20 18:22:33 :: INFO :: 45 of 100 - EUR-OMR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-OMR-1713648152
+2024-04-20 18:22:33 :: INFO :: 46 of 100 - EUR-PAB - Starting
+2024-04-20 18:22:33 :: INFO :: 46 of 100 - EUR-PAB - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-PAB-1713648152
+2024-04-20 18:22:33 :: INFO :: 47 of 100 - EUR-PEN - Starting
+2024-04-20 18:22:33 :: INFO :: 47 of 100 - EUR-PEN - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-PEN-1713648152
+2024-04-20 18:22:33 :: INFO :: 48 of 100 - EUR-PGK - Starting
+2024-04-20 18:22:33 :: INFO :: 48 of 100 - EUR-PGK - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-PGK-1713648152
+2024-04-20 18:22:33 :: INFO :: 49 of 100 - EUR-PHP - Starting
+2024-04-20 18:22:33 :: INFO :: 49 of 100 - EUR-PHP - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-PHP-1713648152
+2024-04-20 18:22:33 :: INFO :: 50 of 100 - EUR-PKR - Starting
+2024-04-20 18:22:33 :: INFO :: 50 of 100 - EUR-PKR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-PKR-1713648152
+2024-04-20 18:22:33 :: INFO :: 51 of 100 - EUR-PYG - Starting
+2024-04-20 18:22:33 :: INFO :: 51 of 100 - EUR-PYG - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-PYG-1713648152
+2024-04-20 18:22:33 :: INFO :: 52 of 100 - EUR-QAR - Starting
+2024-04-20 18:22:33 :: INFO :: 52 of 100 - EUR-QAR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-QAR-1713648152
+2024-04-20 18:22:33 :: INFO :: 53 of 100 - EUR-RON - Starting
+2024-04-20 18:22:33 :: INFO :: 53 of 100 - EUR-RON - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-RON-1713648152
+2024-04-20 18:22:33 :: INFO :: 54 of 100 - EUR-RSD - Starting
+2024-04-20 18:22:33 :: INFO :: 54 of 100 - EUR-RSD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-RSD-1713648152
+2024-04-20 18:22:33 :: INFO :: 55 of 100 - EUR-RWF - Starting
+2024-04-20 18:22:33 :: INFO :: 55 of 100 - EUR-RWF - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-RWF-1713648152
+2024-04-20 18:22:33 :: INFO :: 56 of 100 - EUR-SAR - Starting
+2024-04-20 18:22:33 :: INFO :: 56 of 100 - EUR-SAR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-SAR-1713648152
+2024-04-20 18:22:33 :: INFO :: 57 of 100 - EUR-SCR - Starting
+2024-04-20 18:22:33 :: INFO :: 57 of 100 - EUR-SCR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-SCR-1713648152
+2024-04-20 18:22:33 :: INFO :: 58 of 100 - EUR-SDG - Starting
+2024-04-20 18:22:33 :: INFO :: 58 of 100 - EUR-SDG - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-SDG-1713648152
+2024-04-20 18:22:33 :: INFO :: 59 of 100 - EUR-SDR - Starting
+2024-04-20 18:22:33 :: INFO :: 59 of 100 - EUR-SDR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-SDR-1713648152
+2024-04-20 18:22:33 :: INFO :: 60 of 100 - EUR-SOS - Starting
+2024-04-20 18:22:33 :: INFO :: 60 of 100 - EUR-SOS - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-SOS-1713648152
+2024-04-20 18:22:33 :: INFO :: 61 of 100 - EUR-STD - Starting
+2024-04-20 18:22:33 :: INFO :: 61 of 100 - EUR-STD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-STD-1713648152
+2024-04-20 18:22:33 :: INFO :: 62 of 100 - EUR-SVC - Starting
+2024-04-20 18:22:33 :: INFO :: 62 of 100 - EUR-SVC - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-SVC-1713648152
+2024-04-20 18:22:33 :: INFO :: 63 of 100 - EUR-SYP - Starting
+2024-04-20 18:22:33 :: INFO :: 63 of 100 - EUR-SYP - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-SYP-1713648152
+2024-04-20 18:22:33 :: INFO :: 64 of 100 - EUR-SZL - Starting
+2024-04-20 18:22:33 :: INFO :: 64 of 100 - EUR-SZL - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-SZL-1713648152
+2024-04-20 18:22:33 :: INFO :: 65 of 100 - EUR-TND - Starting
+2024-04-20 18:22:33 :: INFO :: 65 of 100 - EUR-TND - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-TND-1713648152
+2024-04-20 18:22:33 :: INFO :: 66 of 100 - EUR-TTD - Starting
+2024-04-20 18:22:33 :: INFO :: 66 of 100 - EUR-TTD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-TTD-1713648152
+2024-04-20 18:22:33 :: INFO :: 67 of 100 - EUR-TWD - Starting
+2024-04-20 18:22:33 :: INFO :: 67 of 100 - EUR-TWD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-TWD-1713648152
+2024-04-20 18:22:33 :: INFO :: 68 of 100 - EUR-TZS - Starting
+2024-04-20 18:22:33 :: INFO :: 68 of 100 - EUR-TZS - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-TZS-1713648152
+2024-04-20 18:22:33 :: INFO :: 69 of 100 - EUR-UAH - Starting
+2024-04-20 18:22:33 :: INFO :: 69 of 100 - EUR-UAH - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-UAH-1713648152
+2024-04-20 18:22:33 :: INFO :: 70 of 100 - EUR-UGX - Starting
+2024-04-20 18:22:33 :: INFO :: 70 of 100 - EUR-UGX - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-UGX-1713648152
+2024-04-20 18:22:33 :: INFO :: 71 of 100 - EUR-UYU - Starting
+2024-04-20 18:22:33 :: INFO :: 71 of 100 - EUR-UYU - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-UYU-1713648152
+2024-04-20 18:22:33 :: INFO :: 72 of 100 - EUR-UZS - Starting
+2024-04-20 18:22:33 :: INFO :: 72 of 100 - EUR-UZS - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-UZS-1713648152
+2024-04-20 18:22:33 :: INFO :: 73 of 100 - EUR-VEF - Starting
+2024-04-20 18:22:33 :: INFO :: 73 of 100 - EUR-VEF - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-VEF-1713648152
+2024-04-20 18:22:33 :: INFO :: 74 of 100 - EUR-VND - Starting
+2024-04-20 18:22:33 :: INFO :: 74 of 100 - EUR-VND - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-VND-1713648152
+2024-04-20 18:22:33 :: INFO :: 75 of 100 - EUR-XAF - Starting
+2024-04-20 18:22:33 :: INFO :: 75 of 100 - EUR-XAF - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-XAF-1713648152
+2024-04-20 18:22:33 :: INFO :: 76 of 100 - EUR-XOF - Starting
+2024-04-20 18:22:33 :: INFO :: 76 of 100 - EUR-XOF - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-XOF-1713648152
+2024-04-20 18:22:33 :: INFO :: 77 of 100 - EUR-XPF - Starting
+2024-04-20 18:22:33 :: INFO :: 77 of 100 - EUR-XPF - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-XPF-1713648152
+2024-04-20 18:22:33 :: INFO :: 78 of 100 - EUR-ZMK - Starting
+2024-04-20 18:22:33 :: INFO :: 78 of 100 - EUR-ZMK - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-ZMK-1713648152
+2024-04-20 18:22:33 :: INFO :: 79 of 100 - GHS-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 79 of 100 - GHS-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/GHS-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 80 of 100 - NZD-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 80 of 100 - NZD-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/NZD-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 81 of 100 - SGD-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 81 of 100 - SGD-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/SGD-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 82 of 100 - AED-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 82 of 100 - AED-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/AED-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 83 of 100 - DKK-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 83 of 100 - DKK-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/DKK-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 84 of 100 - EUR-XCD - Starting
+2024-04-20 18:22:33 :: INFO :: 84 of 100 - EUR-XCD - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-XCD-1713648152
+2024-04-20 18:22:33 :: INFO :: 85 of 100 - HKD-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 85 of 100 - HKD-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/HKD-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 86 of 100 - MXN-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 86 of 100 - MXN-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/MXN-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 87 of 100 - NOK-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 87 of 100 - NOK-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/NOK-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 88 of 100 - PLN-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 88 of 100 - PLN-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/PLN-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 89 of 100 - RUB-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 89 of 100 - RUB-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/RUB-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 90 of 100 - SAR-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 90 of 100 - SAR-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/SAR-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 91 of 100 - SEK-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 91 of 100 - SEK-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/SEK-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 92 of 100 - TRY-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 92 of 100 - TRY-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/TRY-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 93 of 100 - TWD-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 93 of 100 - TWD-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/TWD-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 94 of 100 - VEF-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 94 of 100 - VEF-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/VEF-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 95 of 100 - ZAR-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 95 of 100 - ZAR-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/ZAR-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 96 of 100 - MAD-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 96 of 100 - MAD-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/MAD-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 97 of 100 - KRW-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 97 of 100 - KRW-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/KRW-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 98 of 100 - EGP-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 98 of 100 - EGP-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EGP-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: 99 of 100 - EUR-MZN - Starting
+2024-04-20 18:22:33 :: INFO :: 99 of 100 - EUR-MZN - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/EUR-MZN-1713648152
+2024-04-20 18:22:33 :: INFO :: 100 of 100 - INR-EUR - Starting
+2024-04-20 18:22:33 :: INFO :: 100 of 100 - INR-EUR - file extracted: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/INR-EUR-1713648152
+2024-04-20 18:22:33 :: INFO :: All files extracted in: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/

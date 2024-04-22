@@ -73,7 +73,6 @@ class ExecutePipeline:
         if self.ValidParams:
             NewExt = extraction(self.ValidParams)
             self.extractedFiles = NewExt.GetExtractedFilesList()
-            # pgLoading()
         else:
             raise KeyError(
                 f"The informed params: {self.params} are not available for extract, see available list in: {ENDPOINT_LIST_AVALIABLE_PARITYS}"
