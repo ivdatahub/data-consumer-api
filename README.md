@@ -1,5 +1,13 @@
-# Awesome API ETL Project
-This repository houses the Awesome project, dedicated to the ETL process of currency quotes data.
+# Awesome Project: ETL Process for Currency Quotes Data
+
+Project description
+This project, called "Awesome Project: ETL Process for Currency Quotes Data", is a solution dedicated to extracting, transforming and loading (ETL) currency quote data. It makes a single request to a specific endpoint to obtain quotes for multiple currencies.
+
+The request response is then processed, where each currency quote is separated and stored in individual files in Parquet format. This makes it easier to organize data and efficiently retrieve it for future analysis.
+
+Additionally, the project includes a Jupyter Notebook for data exploration. This notebook is responsible for consolidating all individual Parquet files into a single dataset. From there, the data can be explored and analyzed to gain valuable insights into currency quotes.
+
+In summary, this project provides a complete solution for collecting, processing and analyzing currency quote data.
 
 ## Project Structure
 
