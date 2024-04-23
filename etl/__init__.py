@@ -40,8 +40,8 @@ class ExecutePipeline:
         if totalInvalidParams == self.params_count:
             raise TypeError(f"Invalid parameters >>>> {self.params}")
 
-        self.ValidParams = self.ValidParamsForCall()
-        self.pipelineExecute()
+        ValidParams = self.ValidParamsForCall()
+        self.pipelineExecute(ValidParameters=ValidParams)
 
     def ValidParamsForCall(self) -> list:
         """
@@ -59,10 +59,15 @@ class ExecutePipeline:
                 valParams.append(param)
             else:
                 loggingWarn(f"Param: {param} is not valid for call", mdName)
+                
+        if valParams:
+            return valParams
+        else: 
+            raise KeyError(
+                f"The informed params: {self.params} are not available for extract, see available list in: {ENDPOINT_LIST_AVALIABLE_PARITYS}"
+            )
 
-        return valParams
-
-    def pipelineExecute(self):
+    def pipelineExecute(self, ValidParameters: list):
         """
         Executes the pipeline.
 
@@ -70,13 +75,8 @@ class ExecutePipeline:
             KeyError: If the informed parameters are not available for extraction.
 
         """
-        if self.ValidParams:
-            NewExt = extraction(self.ValidParams)
-            self.extractedFiles = NewExt.GetExtractedFilesList()
-        else:
-            raise KeyError(
-                f"The informed params: {self.params} are not available for extract, see available list in: {ENDPOINT_LIST_AVALIABLE_PARITYS}"
-            )
+        NewExt = extraction(ValidParameters)
+        self.extractedFiles = NewExt.GetGeneratedFiles()
 
     def GetExtractedFiles(self) -> list:
         """
@@ -87,3 +87,4 @@ class ExecutePipeline:
 
         """
         return self.extractedFiles
+    
