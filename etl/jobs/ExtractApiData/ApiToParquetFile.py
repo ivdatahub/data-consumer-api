@@ -2,6 +2,7 @@ from etl.jobs.ExtractApiData import (
     requests
     ,pandas as pd
     ,loggingInfo
+    ,loggingWarn
     ,DefaultOutputFolder
     ,DefaultTimestampStr
     ,DefaultUTCDatetime
@@ -10,6 +11,7 @@ from etl.jobs.ExtractApiData import (
 
 import concurrent.futures
 import threading
+import time
 
 counter = 0
 
@@ -24,11 +26,10 @@ class extraction:
         Returns:
             None
         """
-        self.params = ValidParams
-        self.extractedFiles = self.PipelineRun()
+        self.extractedFiles = self.PipelineRun(ValidParams)
         
 
-    def PipelineRun(self) -> list:
+    def PipelineRun(self, params: list) -> list:
         """
         Runs the data extraction pipeline.
 
@@ -36,22 +37,29 @@ class extraction:
             list: A list of extracted file paths.
         """
         ## extract Data
-        maked_endpoint = ENDPOINT_QUOTES_AWESOME_API + ','.join(self.params)
+        maked_endpoint = ENDPOINT_QUOTES_AWESOME_API + ','.join(params)
         loggingInfo(f"Sending request: {maked_endpoint}", WORK_DIR)
         response = requests.get(maked_endpoint)
 
-        if response.ok:
-            loggingInfo(f"Request finished", WORK_DIR)
-            json_data = response.json()
-            params = self.params
-        else:
-            raise ConnectionError(f"endpoint connection: {ENDPOINT_QUOTES_AWESOME_API}. status_code: {response.status_code}")
-                
+        for tryNumber in range(3):
+            try:
+                if response.ok:
+                    loggingInfo(f"Request finished", WORK_DIR)
+                    json_data = response.json()
+                    break
+                else:
+                    raise ConnectionError(f"endpoint connection: {ENDPOINT_QUOTES_AWESOME_API}.status_code: {response.status_code}")
+            except ConnectionError as e:
+                if tryNumber <2:
+                    loggingWarn(f"{e}, retrying again in 5 seconds...", WORK_DIR)
+                    time.sleep(5)
+                else:
+                    raise e
+                    
         output_path = DefaultOutputFolder()
         insert_timestamp = DefaultTimestampStr()
         extracted_files = []
         totalParams = len(params)
-
 
         def process_param(args):
             global counter
@@ -88,16 +96,16 @@ class extraction:
         with concurrent.futures.ThreadPoolExecutor(4) as executor:
             list(executor.map(process_param, enumerate(params)))
 
-            
         loggingInfo(f"All files extracted in: {output_path}", WORK_DIR)    
             
         return extracted_files
             
-    def GetExtractedFilesList(self) -> list:
+    def GetGeneratedFiles(self) -> list:
         """
-        Returns the list of extracted files.
+        Returns the generated files.
 
         Returns:
-            list: A list of extracted file paths.
+            list: A list of generated file paths.
         """
         return self.extractedFiles
+    
