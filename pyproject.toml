@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "Data Ingestion from public endpoint with pandas"
 authors = ["ivanildo.barauna <ivanildo.jnr@outlook.com>"]
 readme = "README.md"
-package-mode = false
 license = "MIT"
 
 [tool.poetry.dependencies]
@@ -15,8 +14,6 @@ pyarrow = "^15.0.2"
 fastparquet = "^2024.2.0"
 pytest = "^8.1.1"
 pandasql = "^0.7.3"
-
-[tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.4"
 
 [build-system]
