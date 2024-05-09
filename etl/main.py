@@ -1,4 +1,3 @@
-import time
 import sys
 import os
 import requests
@@ -11,8 +10,6 @@ SRV_URL = str(os.getenv("SERVER_URL"))
 
 WORK_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(WORK_DIR))
-
-start_time = time.time()
 
 from etl import ExecutePipeline
 
@@ -32,7 +29,5 @@ def GenerateRandomParams(ParamsQty: int) -> list:
     return AvaliableList[min:max]
 
 if __name__ == "__main__":
-    NewExec = ExecutePipeline(*GenerateRandomParams(2))
+    NewExec = ExecutePipeline(*GenerateRandomParams(300))
     
-end_time = time.time()
-print(f"Execution time: {end_time - start_time} seconds")
