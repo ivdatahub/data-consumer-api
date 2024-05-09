@@ -5,6 +5,7 @@ description = "Data Ingestion from public endpoint with pandas"
 authors = ["ivanildo.barauna <ivanildo.jnr@outlook.com>"]
 readme = "README.md"
 license = "MIT"
+package-mode=false
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -15,6 +16,7 @@ fastparquet = "^2024.2.0"
 pytest = "^8.1.1"
 pandasql = "^0.7.3"
 ipykernel = "^6.29.4"
+python-dotenv = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core"]

@@ -6,7 +6,8 @@ from etl.jobs.ExtractApiData import (
     ,DefaultOutputFolder
     ,DefaultTimestampStr
     ,DefaultUTCDatetime
-    ,ENDPOINT_QUOTES_AWESOME_API, WORK_DIR
+    ,SRV_URL
+    ,WORK_DIR
 )
 
 import concurrent.futures
@@ -37,7 +38,7 @@ class extraction:
             list: A list of extracted file paths.
         """
         ## extract Data
-        maked_endpoint = ENDPOINT_QUOTES_AWESOME_API + ','.join(params)
+        maked_endpoint = SRV_URL + '/last/,'.join(params)
         loggingInfo(f"Sending request: {maked_endpoint}", WORK_DIR)
         response = requests.get(maked_endpoint)
 
@@ -48,7 +49,7 @@ class extraction:
                     json_data = response.json()
                     break
                 else:
-                    raise ConnectionError(f"endpoint connection: {ENDPOINT_QUOTES_AWESOME_API}.status_code: {response.status_code}")
+                    raise ConnectionError(f"endpoint connection: {SRV_URL}.status_code: {response.status_code}")
             except ConnectionError as e:
                 if tryNumber <2:
                     loggingWarn(f"{e}, retrying again in 5 seconds...", WORK_DIR)
