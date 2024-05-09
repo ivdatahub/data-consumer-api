@@ -49,7 +49,7 @@ In summary, this project provides a complete solution for collecting, processing
     
     To run the project with Docker Compose, use the following command:
 
-    `$ docker-compose up`
+    `$ docker-compose up --build`
 
 </details>
 
