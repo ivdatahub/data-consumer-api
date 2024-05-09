@@ -5,7 +5,7 @@
 
 ![Python Version](https://img.shields.io/badge/python-3.9-blue) ![License](https://img.shields.io/badge/license-MIT-blue)
 
-![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/run_tests.yaml.yaml/badge.svg) 
+![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/run_tests.yaml/badge.svg) 
 ![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/docker-image.yaml/badge.svg) 
 
 
