@@ -23,6 +23,8 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        # Gerar o arquivo .env
+        echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env
 
     - name: Run script
       run: python etl/main.py
