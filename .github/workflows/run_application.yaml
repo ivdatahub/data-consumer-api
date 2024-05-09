@@ -26,5 +26,26 @@ jobs:
         # Gerar o arquivo .env
         echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env
 
+    - name: Run tests
+      run: pytest 
+
     - name: Run script
-      run: python etl/main.py
+      run: | 
+        python etl/main.py
+        
+    - name: Build Docker image
+      run: | 
+        docker build . --file Dockerfile --tag etl-awesome-api
+
+    - name: Run Docker image using Dockerfile
+      run: | 
+        docker run etl-awesome-api
+
+    - name: Run Docker Compose
+      run: | 
+        docker-compose up --build -d
+
+    - name: Run Docker image
+      run: | 
+        docker run etl-awesome-api-compose
+
