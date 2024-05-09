@@ -17,6 +17,7 @@ pytest = "^8.1.1"
 pandasql = "^0.7.3"
 ipykernel = "^6.29.4"
 python-dotenv = "^1.0.1"
+tqdm = "^4.66.4"
 
 [build-system]
 requires = ["poetry-core"]
