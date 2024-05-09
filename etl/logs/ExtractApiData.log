@@ -1,11 +1,11 @@
-2024-04-26 09:35:00 :: INFO :: Sending request: https://economia.awesomeapi.com.br/last/USD-BIF,USD-BND
-2024-04-26 09:35:00 :: DEBUG :: Starting new HTTPS connection (1): economia.awesomeapi.com.br:443
-2024-04-26 09:35:02 :: DEBUG :: https://economia.awesomeapi.com.br:443 "GET /last/USD-BIF,USD-BND HTTP/1.1" 200 None
-2024-04-26 09:35:02 :: INFO :: Request finished
-2024-04-26 09:35:02 :: INFO :: 1 of 2 - USD-BIF - Transforming using thread: 0
-2024-04-26 09:35:02 :: INFO :: 2 of 2 - USD-BND - Transforming using thread: 1
-2024-04-26 09:35:02 :: INFO :: 1 of 2 - USD-BIF - Loading using thread: 0
-2024-04-26 09:35:02 :: INFO :: 2 of 2 - USD-BND - Loading using thread: 1
-2024-04-26 09:35:02 :: INFO :: 1 of 2 - USD-BIF - saved file using thread: 0
-2024-04-26 09:35:02 :: INFO :: 2 of 2 - USD-BND - saved file using thread: 1
-2024-04-26 09:35:02 :: INFO :: All files extracted in: /Users/ivbarauna/repos/ETL-awesome-api/etl/utils/../../data/
+2024-05-09 10:27:21 :: INFO :: Sending request: https://economia.awesomeapi.com.br/last/EUR-HKD,EUR-CZK
+2024-05-09 10:27:21 :: DEBUG :: Starting new HTTPS connection (1): economia.awesomeapi.com.br:443
+2024-05-09 10:27:21 :: DEBUG :: https://economia.awesomeapi.com.br:443 "GET /last/EUR-HKD,EUR-CZK HTTP/1.1" 200 None
+2024-05-09 10:27:21 :: INFO :: Request finished
+2024-05-09 10:27:21 :: INFO :: 1 of 2 - EUR-HKD - Transforming using thread: 0
+2024-05-09 10:27:21 :: INFO :: 1 of 2 - EUR-HKD - Loading using thread: 0
+2024-05-09 10:27:21 :: INFO :: 2 of 2 - EUR-CZK - Transforming using thread: 1
+2024-05-09 10:27:21 :: INFO :: 2 of 2 - EUR-CZK - Loading using thread: 1
+2024-05-09 10:27:22 :: INFO :: 1 of 2 - EUR-HKD - saved file using thread: 0
+2024-05-09 10:27:22 :: INFO :: 2 of 2 - EUR-CZK - saved file using thread: 1
+2024-05-09 10:27:22 :: INFO :: All files extracted in: /Users/ivsouza/repos/personal_repos/ETL-awesome-api/etl/utils/../../data/

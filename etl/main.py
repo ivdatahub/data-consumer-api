@@ -3,6 +3,11 @@ import sys
 import os
 import requests
 import random
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SRV_URL = str(os.getenv("SERVER_URL"))
 
 WORK_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(WORK_DIR))
@@ -10,7 +15,6 @@ sys.path.append(os.path.dirname(WORK_DIR))
 start_time = time.time()
 
 from etl import ExecutePipeline
-from etl.utils.constants import ENDPOINT_LIST_AVALIABLE_PARITYS
 
 def GenerateRandomParams(ParamsQty: int) -> list: 
     """
@@ -22,7 +26,7 @@ def GenerateRandomParams(ParamsQty: int) -> list:
     Returns:
         list: A list of randomly generated parameters.
     """
-    AvaliableList = list(requests.get(ENDPOINT_LIST_AVALIABLE_PARITYS).json())
+    AvaliableList = list(requests.get(SRV_URL + '/json/available').json())
     min = random.randint(0, len(AvaliableList) - ParamsQty)
     max = min + ParamsQty
     return AvaliableList[min:max]

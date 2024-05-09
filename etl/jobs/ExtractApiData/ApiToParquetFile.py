@@ -38,7 +38,7 @@ class extraction:
             list: A list of extracted file paths.
         """
         ## extract Data
-        maked_endpoint = SRV_URL + '/last/,'.join(params)
+        maked_endpoint = SRV_URL + '/last/' + ','.join(params)
         loggingInfo(f"Sending request: {maked_endpoint}", WORK_DIR)
         response = requests.get(maked_endpoint)
 
