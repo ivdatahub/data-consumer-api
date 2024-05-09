@@ -1,7 +1,13 @@
 import requests
-from etl.utils.constants import ENDPOINT_LIST_AVALIABLE_PARITYS
 from etl.utils.logs import loggingWarn
 from etl.jobs.ExtractApiData.ApiToParquetFile import extraction
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+SRV_URL = str(os.getenv("SERVER_URL"))
+""" Reference for Server URL from enviroment variable """
 
 mdName = "extract_prepare"
 
@@ -52,7 +58,7 @@ class ExecutePipeline:
 
         """
         valParams = []
-        AvaliableList = requests.get(ENDPOINT_LIST_AVALIABLE_PARITYS).json()
+        AvaliableList = requests.get(SRV_URL + '/json/available').json()
 
         for param in self.params:
             if param in AvaliableList:
@@ -64,7 +70,7 @@ class ExecutePipeline:
             return valParams
         else: 
             raise KeyError(
-                f"The informed params: {self.params} are not available for extract, see available list in: {ENDPOINT_LIST_AVALIABLE_PARITYS}"
+                f"The informed params: {self.params} are not avaliable for extract, see available list in: {SRV_URL + '/json/available'}"
             )
 
     def pipelineExecute(self, ValidParameters: list):
