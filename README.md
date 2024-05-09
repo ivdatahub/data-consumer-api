@@ -1,6 +1,6 @@
 # Awesome Project: ETL Process for Currency Quotes Data
 
-![Python Version](https://img.shields.io/badge/python-3.9-blue%20|%20) ![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/run_application.yaml/badge.svg)
+![Python Version](https://img.shields.io/badge/python-3.9-blue) ![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/run_application.yaml/badge.svg)
 
 Project description
 This project, called "Awesome Project: ETL Process for Currency Quotes Data", is a solution dedicated to extracting, transforming and loading (ETL) currency quote data. It makes a single request to a specific endpoint to obtain quotes for multiple currencies.
