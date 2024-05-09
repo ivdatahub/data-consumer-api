@@ -4,6 +4,16 @@ on:
   pull_request:
     branches:
       - main
+    paths-ignore:
+      - '**/README.md'
+      - '**/CONTRIBUTING.md'
+      - '**/CODE_OF_CONDUCT.md'
+      - '.github/**'
+      - 'docs/**'
+      - '**/.editorconfig'
+      - '**/.gitignore'
+      - '**/LICENSE'
+      - '**/CREDITS'
 
 jobs:
   tests:
