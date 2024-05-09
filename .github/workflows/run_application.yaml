@@ -1,0 +1,51 @@
+name: Run Python script
+
+on:
+  push:
+    branches:
+      - main
+      - devel
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        # Gerar o arquivo .env
+        echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env
+
+    - name: Run tests
+      run: pytest 
+
+    - name: Run script
+      run: | 
+        python etl/main.py
+        
+    - name: Build Docker image
+      run: | 
+        docker build . --file Dockerfile --tag etl-awesome-api
+
+    - name: Run Docker image using Dockerfile
+      run: | 
+        docker run etl-awesome-api
+
+    - name: Run Docker Compose
+      run: | 
+        docker-compose up --build -d
+
+    - name: Run Docker image
+      run: | 
+        docker run etl-awesome-api-compose
+
