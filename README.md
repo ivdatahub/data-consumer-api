@@ -1,9 +1,10 @@
 # Awesome Project: ETL Process for Currency Quotes Data
 
 ![Project Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)  ![License](https://img.shields.io/badge/license-MIT-blue)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/IvanildoBarauna/ETL-awesome-api)
-![Python Version](https://img.shields.io/badge/python-3.9-blue) ![License](https://img.shields.io/badge/license-MIT-blue)
-![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/run_application.yaml/badge.svg) 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/IvanildoBarauna/ETL-awesome-api) ![Python Version](https://img.shields.io/badge/python-3.9-blue) 
+
+![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/run_tests.yaml/badge.svg) 
+![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/docker-image.yaml/badge.svg) 
 
 
 Project description
