@@ -20,17 +20,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: minor
           RELEASE_BRANCHES: '*'
-          # Configura para ignorar branches main ou qualquer outra que desejar
           EXCLUDE_BRANCHES: 'main'
-          # Ativa logs para debug se necessário
           WITH_V: true
+
+      # Usando GITHUB_OUTPUT para passar variáveis entre steps
+      - name: Set new tag output
+        run: echo "new_tag=${{ steps.tag_version.outputs.new_tag }}" >> $GITHUB_OUTPUT
 
       - name: Create Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.tag_version.outputs.new_tag }}
-          release_name: Release ${{ steps.tag_version.outputs.new_tag }}
+          tag_name: ${{ env.new_tag }}
+          release_name: Release ${{ env.new_tag }}
           draft: false
           prerelease: false
