@@ -1,6 +1,18 @@
 name: Release Generate
 
-- name: Bump version and push tag
+on:
+  push:
+    branches-ignore: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Bump version and push tag
       id: bump_version
       uses: anothrNick/github-tag-action@1.33.1
       with:
