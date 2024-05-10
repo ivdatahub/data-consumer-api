@@ -73,7 +73,7 @@ jobs:
   
       - name: Convert notebook to HTML
         run: |
-          jupyter nbconvert --to html ./notebooks/data_explorer.ipynb --output ./docs/index.html
+          jupyter nbconvert --to html notebooks/data_explorer.ipynb --output-dir=docs --output=index
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
