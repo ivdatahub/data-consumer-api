@@ -19,9 +19,12 @@ on:
 
 jobs:
   test:
+    if: github.actor != 'actions[bot]'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
 
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -40,9 +43,12 @@ jobs:
 
   build:
     needs: test
+    if: github.actor != 'actions[bot]'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
 
     - name: Build Docker Image
       run: | 
@@ -55,13 +61,16 @@ jobs:
   
   deploy:
     needs: build
+    if: github.actor != 'actions[bot]'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -74,6 +83,21 @@ jobs:
       - name: Convert notebook to HTML
         run: |
           jupyter nbconvert --to html notebooks/data_explorer.ipynb --output-dir=docs --output=index
+        
+      - name: Setup Git
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+        
+      - name: Commit and Push
+        run: |
+          git add docs/index.html
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add generated HTML"
+            git push
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
