@@ -1,0 +1,36 @@
+name: Criar e Incrementar Release
+
+on:
+  push:
+    branches-ignore:
+      - 'main'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Bump version and push tag
+        id: tag_version
+        uses: anothrNick/github-tag-action@1.36.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: minor
+          RELEASE_BRANCHES: '*'
+          # Configura para ignorar branches main ou qualquer outra que desejar
+          EXCLUDE_BRANCHES: 'main'
+          # Ativa logs para debug se necessário
+          WITH_V: true
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.tag_version.outputs.new_tag }}
+          release_name: Release ${{ steps.tag_version.outputs.new_tag }}
+          draft: false
+          prerelease: false
