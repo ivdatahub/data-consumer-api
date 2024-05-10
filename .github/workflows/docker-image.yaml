@@ -1,14 +1,13 @@
 name: Build Docker Image CI
 
 on:
+  pull_request:
+    branches:
+      - main
   workflow_run:
     workflows: ["Tests CI"]
     types:
       - completed
-  pull_request:
-    branches:
-      - main
-    
 
 jobs:
   build:
