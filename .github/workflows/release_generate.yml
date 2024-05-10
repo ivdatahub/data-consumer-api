@@ -1,30 +1,25 @@
-name: Release Generate
+name: Create Release
 
 on:
   push:
-    branches-ignore: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Bump version and push tag
-      id: bump_version
-      uses: anothrNick/github-tag-action@1.26.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        default_bump: minor
-
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      with:
-        tag_name: ${{ steps.bump_version.outputs.new_tag }}
-        release_name: Release ${{ steps.bump_version.outputs.new_tag }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        draft: false
-        prerelease: false
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: ${{ github.sha }}
+          release_name: Release ${{ github.sha }}
+          draft: false
+          prerelease: false
