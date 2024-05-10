@@ -92,8 +92,12 @@ jobs:
       - name: Commit and Push
         run: |
           git add docs/index.html
-          git commit -m "Add generated HTML"
-          git push
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add generated HTML"
+            git push
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
