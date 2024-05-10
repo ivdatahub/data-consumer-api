@@ -1,3 +1,5 @@
+name: Tests CI
+
 - name: Bump version and push tag
       id: bump_version
       uses: anothrNick/github-tag-action@1.33.1
