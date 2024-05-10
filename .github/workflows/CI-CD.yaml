@@ -90,7 +90,7 @@ jobs:
         run: |
           git add docs/index.html
           git commit -m "Add generated HTML"
-          git push
+          git push https://${{ secrets.REPO_ACCESS_TOKEN }}@github.com/IvanildoBarauna/ETL-awesome-api.git
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
