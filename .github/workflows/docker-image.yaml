@@ -1,18 +1,23 @@
 name: Build Docker Image CI
 
 on:
-  workflow_run:
-    workflows: ["Tests CI"]
-    types:
-      - completed
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+    paths-ignore:
+      - '**/README.md'
+      - '**/CONTRIBUTING.md'
+      - '**/CODE_OF_CONDUCT.md'
+      - '.github/**'
+      - 'docs/**'
+      - '**/.editorconfig'
+      - '**/.gitignore'
+      - '**/LICENSE'
+      - '**/CREDITS'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
     - uses: actions/checkout@v2
 
