@@ -1,0 +1,87 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - '**/README.md'
+      - '**/CONTRIBUTING.md'
+      - '**/CODE_OF_CONDUCT.md'
+      - '.github/**'
+      - 'docs/**'
+      - '**/.editorconfig'
+      - '**/.gitignore'
+      - '**/LICENSE'
+      - '**/CREDITS'
+    
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        # Gerar o arquivo .env
+        echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env
+    
+    - name: Run tests
+      run: pytest
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build Docker Image
+      run: | 
+        docker-compose up --build -d
+
+    - name: Run Docker image
+      run: | 
+        docker run etl-awesome-api-compose
+  
+  
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install Jupyter
+        run: pip install notebook
+  
+      - name: Convert notebook to HTML
+        run: |
+          jupyter nbconvert --to html ./notebooks/data_explorer.ipynb --output ./docs/index.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
