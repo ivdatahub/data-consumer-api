@@ -40,8 +40,10 @@ In summary, this project provides a complete solution for collecting, processing
   2. Create a virtual environment and install dependencies:
      ```sh
      $ cd ETL-awesome-api
-     $ python -m venv venv
-     $ source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+     $ python -m venv .venv
+     $ source .venv/bin/activate  # On Windows use `venv\Scripts\activate`
+     $ .venv/bin/python -m pip install --upgrade pip  # Optional, but recommended`
+     $ echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env # Create enviroment variable for server URL`
      $ pip install -r requirements.txt
      ```
 
