@@ -45,13 +45,15 @@ In summary, this project provides a complete solution for collecting, processing
      $ pip install -r requirements.txt
      ```
 
+     Learn more about [venv module in python](https://docs.python.org/pt-br/3/library/venv.html)
+
   3. Run the project's main script:
      ```sh
      $ python etl/main.py
      ```
      Ensure you have Python 3.9 installed on your system.
 
-  4. Alternatively, you can run the project using Docker or Docker Compose. To build and run the Docker image, use the following command:
+  4. Alternatively, you can run the project using [`Dockerfile`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/Dockerfile) or [`docker-compose`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/docker-compose.yml). To build and run the Docker image, use the following command:
      ```sh
      $ docker build -t etl-awesome-api . && docker run etl-awesome-api
      ```
@@ -59,6 +61,7 @@ In summary, this project provides a complete solution for collecting, processing
      ```sh
      $ docker-compose up --build
      ```
+     Learn more about [docker](https://docs.docker.com/)
 
   5. Or you can install and run the project using the dependency manager [`poetry`](https://python-poetry.org/):
      ```sh
