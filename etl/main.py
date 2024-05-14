@@ -8,6 +8,9 @@ load_dotenv()
 
 SRV_URL = str(os.getenv("SERVER_URL"))
 
+if not SRV_URL:
+    raise Exception("SERVER_URL is not defined in the .env file.")
+
 WORK_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(WORK_DIR))
 
