@@ -5,7 +5,7 @@ description = "Data Ingestion from public endpoint with pandas"
 authors = ["ivanildo.barauna <ivanildo.jnr@outlook.com>"]
 readme = "README.md"
 license = "MIT"
-package-mode=false
+packages = [{ include = "etl" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
