@@ -9,7 +9,7 @@ load_dotenv()
 
 SRV_URL = str(os.getenv("SERVER_URL"))
 
-if not SRV_URL:
+if SRV_URL == "None" or SRV_URL == "":
     raise Exception("SERVER_URL is not defined in the .env file.")
 
 def GenerateRandomParams(ParamsQty: int) -> list:
