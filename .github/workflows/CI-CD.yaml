@@ -79,7 +79,6 @@ jobs:
       run: | 
         pip install poetry
         poetry install
-        poetry shell
         poetry run python etl/main.py
        
   deploy:
