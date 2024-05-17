@@ -1,10 +1,8 @@
 import os
 import random
 import sys
-
 import requests
 from dotenv import load_dotenv
-
 from etl import ExecutePipeline
 
 load_dotenv()
@@ -13,10 +11,6 @@ SRV_URL = str(os.getenv("SERVER_URL"))
 
 if not SRV_URL:
     raise Exception("SERVER_URL is not defined in the .env file.")
-
-# WORK_DIR = os.path.dirname(os.path.abspath(__file__))
-# sys.path.append(os.path.dirname(WORK_DIR))
-
 
 def GenerateRandomParams(ParamsQty: int) -> list:
     """
@@ -36,3 +30,4 @@ def GenerateRandomParams(ParamsQty: int) -> list:
 
 if __name__ == "__main__":
     NewExec = ExecutePipeline(*GenerateRandomParams(300))
+    
