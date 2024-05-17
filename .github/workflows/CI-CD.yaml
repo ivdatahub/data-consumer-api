@@ -50,11 +50,19 @@ jobs:
       with:
         ref: ${{ github.head_ref }}
 
-    - name: Build Docker Image
+    - name: Build Docker Image using Dockerfile
+      run: | 
+        docker build -t etl-awesome-api .
+    
+    - name: Run Docker Image using Dockerfile
+      run: | 
+        docker run etl-awesome-api
+
+    - name: Build Docker Image using Docker Compose
       run: | 
         docker-compose up --build -d
 
-    - name: Run Docker image
+    - name: Run Docker image using Docker Compose
       run: | 
         docker run etl-awesome-api-compose
   
