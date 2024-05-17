@@ -38,24 +38,20 @@ In summary, this project provides a complete solution for collecting, processing
      ```
 
   2. Create a virtual environment and install dependencies:
+   Ensure you have Python 3.9 installed on your system.
      ```sh
      $ cd ETL-awesome-api
      $ python -m venv .venv
      $ source .venv/bin/activate  # On Windows use `venv\Scripts\activate`
-     $ .venv/bin/python -m pip install --upgrade pip  # Optional, but recommended`
+     $ .venv/bin/python -m pip install --upgrade pip 
      $ echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env # Create enviroment variable for server URL`
-     $ pip install -r requirements.txt
+     $ pip install -e .
+     $ python etl/main.py
      ```
 
      Learn more about [venv module in python](https://docs.python.org/pt-br/3/library/venv.html)
 
-  3. Run the project's main script:
-     ```sh
-     $ python etl/main.py
-     ```
-     Ensure you have Python 3.9 installed on your system.
-
-  4. Alternatively, you can run the project using [`Dockerfile`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/Dockerfile) or [`docker-compose`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/docker-compose.yml). To build and run the Docker image, use the following command:
+  3. Alternatively, you can run the project using [`Dockerfile`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/Dockerfile) or [`docker-compose`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/docker-compose.yml). To build and run the Docker image, use the following command:
      ```sh
      $ docker build -t etl-awesome-api . && docker run etl-awesome-api
      ```
@@ -65,7 +61,7 @@ In summary, this project provides a complete solution for collecting, processing
      ```
      Learn more about [docker](https://docs.docker.com/)
 
-  5. Or you can install and run the project using the dependency manager [`poetry`](https://python-poetry.org/):
+  4. Or you can install and run the project using the dependency manager [`poetry`](https://python-poetry.org/):
      ```sh
      $ poetry install && poetry run python etl/main.py
      ```
