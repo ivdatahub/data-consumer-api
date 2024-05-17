@@ -65,8 +65,23 @@ jobs:
     - name: Run Docker image using Docker Compose
       run: | 
         docker run etl-awesome-api-compose
-  
-  
+
+    - name: Run Application using Python Native
+      run: | 
+        python -m venv .venv
+        source .venv/bin/activate
+        .venv/bin/python -m pip install --upgrade pip
+        echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env
+        pip install -e .
+        python etl/main.py
+    
+    - name: Run Application using Poetry
+      run: | 
+        pip install poetry
+        poetry install
+        poetry shell
+        poetry run python etl/main.py
+       
   deploy:
     needs: build
     if: github.actor != 'actions[bot]'
