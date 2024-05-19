@@ -128,9 +128,3 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: './docs/'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
