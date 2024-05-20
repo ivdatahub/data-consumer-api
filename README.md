@@ -70,8 +70,4 @@ In summary, this project provides a complete solution for collecting, processing
 
 ## ETL and Data Analysis Results:
 You can see the complete data analysis, see: 
-<details>
-  <summary>Click here:</summary>
-  - [`Jupyter-Notebook`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/feature-MVCImplement/notebooks/data_explorer.ipynb)
-  - [`HTML-Version`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/feature-MVCImplement/etl/views/index.html)
-</details>
+
