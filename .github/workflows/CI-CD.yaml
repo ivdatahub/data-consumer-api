@@ -106,17 +106,9 @@ jobs:
         run: |
           jupyter nbconvert --to html notebooks/data_explorer.ipynb --output-dir=views --output=index
 
-      - name: Install pandoc
-        run: |
-          sudo apt-get install pandoc
-      
-      - name: Convert HTML to Markdown
-        run: |
-          pandoc -s views/index.html -o views/index.md
-
       - name: Append to README
         run: |
-          cat views/index.md >> README.md
+          cat views/index.html >> README.md
       
       - name: Setup Git
         run: |
