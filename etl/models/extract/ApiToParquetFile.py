@@ -1,4 +1,4 @@
-from etl.jobs.ExtractApiData import (
+from etl.models.extract import (
     requests
     ,pandas as pd
     ,loggingInfo

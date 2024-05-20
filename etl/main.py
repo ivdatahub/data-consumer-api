@@ -1,9 +1,8 @@
 import os
 import random
-import sys
 import requests
 from dotenv import load_dotenv
-from etl import ExecutePipeline
+from etl.controller.pipeline import ExecutePipeline
 
 load_dotenv()
 
@@ -29,5 +28,5 @@ def GenerateRandomParams(ParamsQty: int) -> list:
 
 
 if __name__ == "__main__":
-    NewExec = ExecutePipeline(*GenerateRandomParams(300))
+    NewExec = ExecutePipeline(*GenerateRandomParams(2))
     

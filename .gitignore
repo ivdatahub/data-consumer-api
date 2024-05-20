@@ -163,5 +163,5 @@ cython_debug/
 #.idea/
 
 poetry.lock
-etl/logs/*
+etl/common/logs/*
 
