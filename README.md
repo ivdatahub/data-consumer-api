@@ -19,7 +19,7 @@ In summary, this project provides a complete solution for collecting, processing
 - [`notebooks/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/notebooks): Contains the `data_explorer.ipynb` notebook for data exploration.
 - [`etl/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl): Holds the project source code.
   - [`main.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/main.py): The entry point for the ETL Module.
-  - [`jobs/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/jobs): ETL Modules.
+  - [`models/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/jobs): ETL Modules.
     - [`ExtractApiData/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/jobs/ExtractApiData): Module for data extraction from API.
       - [`ApiToParquetFile.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/jobs/ExtractApiData/ApiToParquetFile.py): Extract API data to Parquet File and store in /data.
   - [`utils/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/utils)
@@ -69,4 +69,9 @@ In summary, this project provides a complete solution for collecting, processing
 </details>
 
 ## ETL and Data Analysis Results:
-You can see the complete data analysis [here](notebooks/data_explorer.ipynb).
+You can see the complete data analysis, see: 
+
+- [`Jupyter Notebook`] - [https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/notebooks/data_explorer.ipynby](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/notebooks/data_explorer.ipynb)
+- [`HTML Version`] - [https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/views/index.html](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/views/index.html)
+
+

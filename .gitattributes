@@ -2,6 +2,7 @@
 
 # Permite a detecção linguística apenas para células de código
 *.ipynb linguist-language=Python
+*.html linguist-language=Jupyter Notebook
 
 # Indica que apenas as células de código devem ser detectadas
 *.ipynb.diff linguist-language=Python

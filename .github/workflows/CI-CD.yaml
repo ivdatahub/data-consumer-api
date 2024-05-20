@@ -104,8 +104,8 @@ jobs:
   
       - name: Convert notebook to HTML
         run: |
-          jupyter nbconvert --to html notebooks/data_explorer.ipynb --output-dir=docs --output=index
-        
+          jupyter nbconvert --to html notebooks/data_explorer.ipynb --output-dir=views --output=index
+      
       - name: Setup Git
         run: |
           git config --global user.name 'GitHub Actions'
@@ -113,20 +113,10 @@ jobs:
         
       - name: Commit and Push Notebook
         run: |
-          git add docs/index.html
+          git add .
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Add generated HTML"
+            git commit -m "Add generated HTML to README"
             git push
           fi
-
-      # - name: Setup Pages
-      #   if: github.ref == 'refs/heads/main'
-      #   uses: actions/configure-pages@v5
-        
-      # - name: Upload artifact
-      #   if: github.ref == 'refs/heads/main'
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     path: './views/'
