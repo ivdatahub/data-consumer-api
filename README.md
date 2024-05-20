@@ -4,7 +4,7 @@
 
 ## Project Stack
 
-![GitHub Actions logo](https://github.com/devicons/devicon/blob/master/icons/githubactions/githubactions-original.svg)
+<img src="https://github.com/devicons/devicon/blob/master/icons/githubactions/githubactions-original.svg" alt="GitHub Actions logo" width="100" height="100">
 
 ## Project Description
 
