@@ -71,6 +71,7 @@ In summary, this project provides a complete solution for collecting, processing
 ## ETL and Data Analysis Results:
 You can see the complete data analysis, see: 
 
+<<<<<<< HEAD
 ---
 lang: en
 title: data\_explorer
@@ -9240,3 +9241,5 @@ a.anchor-link {
 </main>
 </body>
 </html>
+=======
+>>>>>>> 7c7cdd3 (refactor: Remove unnecessary append step in CI-CD.yaml)
