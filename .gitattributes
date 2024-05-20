@@ -5,5 +5,5 @@
 # *.html linguist-language=Jupyter Notebook
 
 # # Indica que apenas as células de código devem ser detectadas
-*.ipynb.diff linguist-language=Jupyter Notebook
-*.ipynb.merge linguist-language=Jupyter Notebook
+# *.ipynb.diff linguist-language=Jupyter Notebook
+# *.ipynb.merge linguist-language=Jupyter Notebook
