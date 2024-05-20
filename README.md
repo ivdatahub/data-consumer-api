@@ -71,4 +71,7 @@ In summary, this project provides a complete solution for collecting, processing
 ## ETL and Data Analysis Results:
 You can see the complete data analysis, see: 
 
+- [`Jupyter Notebook`] - [https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/notebooks/data_explorer.ipynby](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/notebooks/data_explorer.ipynb)
+- [`HTML Version`] - [https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/views/index.html](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/views/index.html)
+
 
