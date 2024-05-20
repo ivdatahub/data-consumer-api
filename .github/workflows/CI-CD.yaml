@@ -84,9 +84,9 @@ jobs:
   deploy:
     needs: build
     if: github.actor != 'actions[bot]'
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # environment:
+    #   name: github-pages
+    #   url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -121,10 +121,12 @@ jobs:
             git push
           fi
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      # - name: Setup Pages
+      #   if: github.ref == 'refs/heads/main'
+      #   uses: actions/configure-pages@v5
         
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './docs/'
+      # - name: Upload artifact
+      #   if: github.ref == 'refs/heads/main'
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: './views/'

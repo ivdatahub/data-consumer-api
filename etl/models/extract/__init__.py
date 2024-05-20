@@ -1,8 +1,8 @@
 # Auxiliar Dependencies
 import requests
 # Custom Logs
-from etl.utils.logs import loggingInfo, loggingError, loggingWarn
-from etl.utils.common import DefaultTimestampStr, DefaultOutputFolder, DefaultUTCDatetime
+from etl.common.utils.logs import loggingInfo, loggingError, loggingWarn
+from etl.common.utils.common import DefaultTimestampStr, DefaultOutputFolder, DefaultUTCDatetime
 import pandas
 import os
 from dotenv import load_dotenv

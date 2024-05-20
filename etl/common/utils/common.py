@@ -8,7 +8,7 @@ def DefaultOutputFolder():
     Returns:
         str: The default output folder path.
     """
-    return os.path.join(os.path.dirname(__file__), "../../data/")
+    return os.path.join(os.path.dirname(__file__), "../../../data/")
 
 def DefaultTimestampStr() -> str:
     """
