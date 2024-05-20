@@ -4,7 +4,14 @@
 
 ## Project Stack
 
-<img src="https://github.com/devicons/devicon/blob/master/icons/githubactions/githubactions-original.svg" alt="GitHub Actions logo" width="100" height="100">
+<img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" Alt="Python"width="50" height="50">
+<img src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original.svg" Alt="Docker"width="50" height="50">
+<img src="https://github.com/devicons/devicon/blob/master/icons/poetry/poetry-original.svg" Alt="Poetry"width="50" height="50">
+<img src="https://github.com/devicons/devicon/blob/master/icons/pandas/pandas-original.svg" Alt="Pandas"width="50" height="50">
+<img src="https://github.com/devicons/devicon/blob/master/icons/jupyter/jupyter-original.svg" Alt="Jupyter"width="50" height="50">
+<img src="https://github.com/devicons/devicon/blob/master/icons/matplotlib/matplotlib-original.svg" Alt="Matplotlib"width="50" height="50">
+<img src="https://github.com/devicons/devicon/blob/master/icons/github/github-original.svg" Alt="GitHub" width="50" height="50">
+<img src="https://github.com/devicons/devicon/blob/master/icons/githubactions/githubactions-original.svg" Alt="GitHub Actions" width="50" height="50">
 
 ## Project Description
 
