@@ -1,9 +1,13 @@
 # Awesome Project: ETL Process for Currency Quotes Data
 
-
 ![Project Status](https://img.shields.io/badge/status-in%20development-yellow) ![License](https://img.shields.io/badge/license-MIT-blue) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/IvanildoBarauna/ETL-awesome-api) ![Python Version](https://img.shields.io/badge/python-3.9-blue) ![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/CI-CD.yaml/badge.svg)
 
+## Project Stack
+
+<img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" Alt="Python" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original.svg" Alt="Docker" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/poetry/poetry-original.svg" Alt="Poetry" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/pandas/pandas-original.svg" Alt="Pandas" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/jupyter/jupyter-original.svg" Alt="Jupyter" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/matplotlib/matplotlib-original.svg" Alt="Matplotlib" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/github/github-original.svg" Alt="GitHub" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/githubactions/githubactions-original.svg" Alt="GitHub Actions" width="50" height="50">
+
 ## Project Description
+
 This project, called "Awesome Project: ETL Process for Currency Quotes Data", is a solution dedicated to extracting, transforming, and loading (ETL) currency quote data. It makes a single request to a specific endpoint to obtain quotes for multiple currencies.
 
 The request response is then processed, where each currency quote is separated and stored in individual files in Parquet format. This makes it easier to organize data and efficiently retrieve it for future analysis.
@@ -38,40 +42,41 @@ In summary, this project provides a complete solution for collecting, processing
      $ git clone https://github.com/IvanildoBarauna/ETL-awesome-api.git
      ```
 
-  2. Create a virtual environment and install dependencies:
+2. Create a virtual environment and install dependencies:
    Ensure you have Python 3.9 installed on your system.
-     ```sh
-     $ cd ETL-awesome-api
-     $ python -m venv .venv
-     $ source .venv/bin/activate  # On Windows use `venv\Scripts\activate`
-     $ .venv/bin/python -m pip install --upgrade pip 
-     $ echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env # Create enviroment variable for server URL`
-     $ pip install -e .
-     $ python etl/main.py
-     ```
 
-     Learn more about [venv module in python](https://docs.python.org/pt-br/3/library/venv.html)
+   ```sh
+   $ cd ETL-awesome-api
+   $ python -m venv .venv
+   $ source .venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   $ .venv/bin/python -m pip install --upgrade pip
+   $ echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env # Create enviroment variable for server URL`
+   $ pip install -e .
+   $ python etl/main.py
+   ```
 
-  3. Alternatively, you can run the project using [`Dockerfile`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/Dockerfile) or [`docker-compose`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/docker-compose.yml). To build and run the Docker image, use the following command:
-     ```sh
-     $ docker build -t etl-awesome-api . && docker run etl-awesome-api
-     ```
-     To run the project with Docker Compose, use the following command:
-     ```sh
-     $ docker-compose up --build
-     ```
-     Learn more about [docker](https://docs.docker.com/)
+   Learn more about [venv module in python](https://docs.python.org/pt-br/3/library/venv.html)
 
-  4. Or you can install and run the project using the dependency manager [`poetry`](https://python-poetry.org/):
-     ```sh
+3. Alternatively, you can run the project using [`Dockerfile`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/Dockerfile) or [`docker-compose`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/docker-compose.yml). To build and run the Docker image, use the following command:
+
+   ```sh
+   $ docker build -t etl-awesome-api . && docker run etl-awesome-api
+   ```
+
+   To run the project with Docker Compose, use the following command:
+
+   ```sh
+   $ docker-compose up --build
+   ```
+
+   Learn more about [docker](https://docs.docker.com/)
+
+4. Or you can install and run the project using the dependency manager [`poetry`](https://python-poetry.org/):
+`sh
      $ poetry install && poetry run python etl/main.py
-     ```
+     `
 </details>
 
 ## ETL and Data Analysis Results:
-You can see the complete data analysis, see: 
 
-- [`Jupyter Notebook`] - [https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/notebooks/data_explorer.ipynby](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/notebooks/data_explorer.ipynb)
-- [`HTML Version`] - [https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/views/index.html](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/views/index.html)
-
-
+You can see the complete data analysis, the Jupyter Notebook is deployed in [GitHub Pages](https://ivanildobarauna.github.io/ETL-awesome-api/)
