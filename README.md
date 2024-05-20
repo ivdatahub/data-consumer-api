@@ -69,4 +69,9 @@ In summary, this project provides a complete solution for collecting, processing
 </details>
 
 ## ETL and Data Analysis Results:
-You can see the complete data analysis [here](notebooks/data_explorer.ipynb).
+You can see the complete data analysis, see: 
+<details>
+<summary>Click here:</summary>
+  [Jupyter Notebook](notebooks/data_explorer.ipynb)
+  [HTML Version](views/index.html)
+</details>
