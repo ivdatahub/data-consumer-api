@@ -11,6 +11,7 @@ SRV_URL = str(os.getenv("SERVER_URL"))
 if SRV_URL == "None" or SRV_URL == "":
     raise Exception("SERVER_URL is not defined in the .env file.")
 
+
 def GenerateRandomParams(ParamsQty: int) -> list:
     """
     Generate a list of random parameters from the available list of parities.
@@ -28,5 +29,4 @@ def GenerateRandomParams(ParamsQty: int) -> list:
 
 
 if __name__ == "__main__":
-    NewExec = ExecutePipeline(*GenerateRandomParams(2))
-    
+    NewExec = ExecutePipeline(*GenerateRandomParams(1))

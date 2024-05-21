@@ -1,8 +1,6 @@
-import requests
-from etl.common.utils.logs import loggingWarn
-from etl.models.extract.ApiToParquetFile import extraction
 from dotenv import load_dotenv
 import os
+from etl.models.extract.ApiToParquetFile import extraction
 
 load_dotenv()
 
@@ -10,6 +8,7 @@ SRV_URL = str(os.getenv("SERVER_URL"))
 """ Reference for Server URL from enviroment variable """
 
 mdName = "extract_prepare"
+
 
 class ExecutePipeline:
     """
@@ -24,10 +23,9 @@ class ExecutePipeline:
         extractedFiles (list): List of extracted files from the pipeline execution.
 
     Raises:
-        TypeError: If all the parameters passed to the pipeline execution are invalid.
+        TypeError: If all type of parameters passed to the pipeline execution are invalid.
 
     Methods:
-        ValidParamsForCall: Returns a list of valid parameters for the pipeline execution.
         pipelineExecute: Executes the pipeline.
         GetExtractedFiles: Returns the list of extracted files.
 
@@ -46,34 +44,9 @@ class ExecutePipeline:
         if totalInvalidParams == self.params_count:
             raise TypeError(f"Invalid parameters >>>> {self.params}")
 
-        ValidParams = self.ValidParamsForCall()
-        self.pipelineExecute(ValidParameters=ValidParams)
+        self.pipelineExecute(InputParams=self.params)
 
-    def ValidParamsForCall(self) -> list:
-        """
-        Returns a list of valid parameters for the pipeline execution.
-
-        Returns:
-            list: List of valid parameters.
-
-        """
-        valParams = []
-        AvaliableList = requests.get(SRV_URL + '/json/available').json()
-
-        for param in self.params:
-            if param in AvaliableList:
-                valParams.append(param)
-            else:
-                loggingWarn(f"Param: {param} is not valid for call", mdName)
-                
-        if valParams:
-            return valParams
-        else: 
-            raise KeyError(
-                f"The informed params: {self.params} are not avaliable for extract, see available list in: {SRV_URL + '/json/available'}"
-            )
-
-    def pipelineExecute(self, ValidParameters: list):
+    def pipelineExecute(self, InputParams: list):
         """
         Executes the pipeline.
 
@@ -81,7 +54,7 @@ class ExecutePipeline:
             KeyError: If the informed parameters are not available for extraction.
 
         """
-        NewExt = extraction(ValidParameters)
+        NewExt = extraction(InputParams)
         self.extractedFiles = NewExt.GetGeneratedFiles()
 
     def GetExtractedFiles(self) -> list:
@@ -93,4 +66,3 @@ class ExecutePipeline:
 
         """
         return self.extractedFiles
-    
