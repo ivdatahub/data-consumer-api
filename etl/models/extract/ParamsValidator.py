@@ -14,9 +14,9 @@ SRV_URL = str(os.getenv("SERVER_URL"))
 class ParamsValidator:
     def __init__(self, params: list) -> None:
         self.params = params
-        self.ValidParamsForCall()
+        self.validParams = self.__ValidParamsForCall__()
 
-    def ValidParamsForCall(self) -> list:
+    def __ValidParamsForCall__(self) -> list:
         """
         Returns a list of valid parameters for the pipeline execution.
 
