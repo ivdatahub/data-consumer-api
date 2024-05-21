@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ETL-awesome-api"
-version = "v4.3.2"
+version = "v4.4.0"
 description = "Data Ingestion from public endpoint using pandas"
 authors = ["ivanildo.barauna <ivanildo.jnr@outlook.com>"]
 readme = "README.md"
