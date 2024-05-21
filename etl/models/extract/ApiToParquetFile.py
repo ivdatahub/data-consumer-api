@@ -1,24 +1,26 @@
+# Imports de Bibliotecas Padrão
+import os
+import time
+import concurrent.futures
+
+# Imports de Bibliotecas de Terceiros
+import requests
+import pandas as pd
+from tqdm import tqdm
+
+# Imports de Módulos Internos
 from etl.models.extract import (
-    requests,
-    pandas as pd,
     loggingInfo,
     loggingWarn,
     DefaultOutputFolder,
     DefaultTimestampStr,
     DefaultUTCDatetime,
-    SRV_URL,
-    WORK_DIR,
 )
-
-
+from etl.config.logFile import logFileName
+from etl.config.datasource import API
 from . import ParamsValidator as Validation
-import concurrent.futures
-import time
-from tqdm import tqdm
-import os
 
-counter = 0
-retry_time = 2
+WORK_DIR = logFileName(file=__file__)
 
 
 class extraction:
@@ -44,11 +46,14 @@ class extraction:
             list: A list of extracted file paths.
         """
         ## extract Data
-        maked_endpoint = SRV_URL + "/last/" + ",".join(ValidParams)
-        loggingInfo(f"Sending request to: {SRV_URL + '/last/'} :: 1 of 3", WORK_DIR)
+        maked_endpoint = API.ENDPOINT_LAST_COTATION + ",".join(ValidParams)
+        loggingInfo(
+            f"Sending request to: {API.ENDPOINT_LAST_COTATION} :: 1 of {API.RETRY_ATTEMPTS}",
+            WORK_DIR,
+        )
         response = requests.get(maked_endpoint)
 
-        for tryNumber in range(3):
+        for tryNumber in range(API.RETRY_ATTEMPTS):
             if response.ok:
                 loggingInfo(
                     f"Request finished with status {response.status_code}", WORK_DIR
@@ -56,15 +61,15 @@ class extraction:
                 json_data = response.json()
                 break
             else:
-                if tryNumber < 2:
+                if tryNumber < API.RETRY_ATTEMPTS - 1:
                     loggingWarn(
-                        f"response error, status_code {response.status_code}. Retrying in {retry_time} seconds...",
+                        f"response error, status_code {response.status_code}. Retrying in {API.RETRY_TIME_SECONDS} seconds...",
                         WORK_DIR,
                     )
                     for _ in tqdm(range(100), total=100, desc=f"loading"):
-                        time.sleep(retry_time / 100)
+                        time.sleep(API.RETRY_TIME_SECONDS / 100)
                     loggingInfo(
-                        f"Sending request to: {SRV_URL + '/last/'} :: {tryNumber + 2} of 3",
+                        f"Sending request to: {API.ENDPOINT_LAST_COTATION} :: {tryNumber + 2} of {API.RETRY_ATTEMPTS}",
                         WORK_DIR,
                     )
                 else:

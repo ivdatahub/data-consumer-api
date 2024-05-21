@@ -1,13 +1,7 @@
-from dotenv import load_dotenv
-import os
 from etl.models.extract.ApiToParquetFile import extraction
+from etl.config.logFile import logFileName
 
-load_dotenv()
-
-SRV_URL = str(os.getenv("SERVER_URL"))
-""" Reference for Server URL from enviroment variable """
-
-mdName = "extract_prepare"
+mdName = logFileName(file=__file__)
 
 
 class ExecutePipeline:
