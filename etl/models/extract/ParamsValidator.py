@@ -1,14 +1,9 @@
 import requests
-import os
-from dotenv import load_dotenv
 from etl.common.utils.logs import loggingWarn
+from etl.config.datasource import API
+from etl.config.logFile import logFileName
 
-mdName = "extract"
-
-load_dotenv()
-
-SRV_URL = str(os.getenv("SERVER_URL"))
-""" Reference for Server URL from enviroment variable """
+WORK_DIR = logFileName(file=__file__)
 
 
 class ParamsValidator:
@@ -25,17 +20,17 @@ class ParamsValidator:
 
         """
         valParams = []
-        AvaliableList = requests.get(SRV_URL + "/json/available").json()
+        AvaliableList = requests.get(API.ENDPOINT_AVALIABLE_PARITIES).json()
 
         for param in self.params:
             if param in AvaliableList:
                 valParams.append(param)
             else:
-                loggingWarn(f"Param: {param} is not valid for call", mdName)
+                loggingWarn(f"Param: {param} is not valid for call", WORK_DIR)
 
         if valParams:
             return valParams
         else:
             raise KeyError(
-                f"The informed params: {self.params} are not avaliable for extract, see available list in: {SRV_URL + '/json/available'}"
+                f"The informed params: {self.params} are not avaliable for extract, see available list in: {API.ENDPOINT_AVALIABLE_PARITIES}"
             )

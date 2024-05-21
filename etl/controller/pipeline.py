@@ -1,7 +1,4 @@
 from etl.models.extract.ApiToParquetFile import extraction
-from etl.config.logFile import logFileName
-
-mdName = logFileName(file=__file__)
 
 
 class ExecutePipeline:

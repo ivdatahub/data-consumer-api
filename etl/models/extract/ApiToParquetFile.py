@@ -9,11 +9,10 @@ import pandas as pd
 from tqdm import tqdm
 
 # Imports de Módulos Internos
-from etl.models.extract import (
-    loggingInfo,
-    loggingWarn,
-    DefaultOutputFolder,
+from etl.common.utils.logs import loggingInfo, loggingWarn
+from etl.common.utils.common import (
     DefaultTimestampStr,
+    DefaultOutputFolder,
     DefaultUTCDatetime,
 )
 from etl.config.logFile import logFileName
@@ -63,7 +62,8 @@ class extraction:
             else:
                 if tryNumber < API.RETRY_ATTEMPTS - 1:
                     loggingWarn(
-                        f"response error, status_code {response.status_code}. Retrying in {API.RETRY_TIME_SECONDS} seconds...",
+                        f"""response error, status_code {response.status_code}. 
+                        Retrying in {API.RETRY_TIME_SECONDS} seconds...""",
                         WORK_DIR,
                     )
                     for _ in tqdm(range(100), total=100, desc=f"loading"):
@@ -75,7 +75,9 @@ class extraction:
                 else:
                     loggingWarn("Attempt limits exceeded", WORK_DIR)
                     raise ConnectionError(
-                        f"Could not connect to the server after 3 attempts. Please try again later. Response status code: {response.status_code}"
+                        f"""Could not connect to the server after 3 attempts. 
+                        Please try again later. 
+                        Response status code: {response.status_code}"""
                     )
 
         output_path = DefaultOutputFolder()

@@ -1,5 +1,7 @@
-import random
+import time
 
+start = time.time()
+import random
 import requests
 
 from etl.controller.pipeline import ExecutePipeline
@@ -24,3 +26,5 @@ def GenerateRandomParams(ParamsQty: int) -> list:
 
 if __name__ == "__main__":
     NewExec = ExecutePipeline(*GenerateRandomParams(1))
+
+print("Tempo decorrido: ", time.time() - start, "segundos")
