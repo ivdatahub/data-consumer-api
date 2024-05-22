@@ -27,4 +27,4 @@ def GenerateRandomParams(ParamsQty: int) -> list:
 if __name__ == "__main__":
     NewExec = ExecutePipeline(*GenerateRandomParams(1))
 
-print("Tempo decorrido: ", time.time() - start, "segundos")
+print("Tempo decorrido: ", round(time.time() - start,2), "segundos")

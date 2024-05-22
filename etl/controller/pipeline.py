@@ -1,4 +1,5 @@
 from etl.models.extract.ApiToParquetFile import extraction
+from etl.models.transform.ResponseSplit import transformation
 
 
 class ExecutePipeline:
@@ -25,7 +26,6 @@ class ExecutePipeline:
     def __init__(self, *xargs) -> None:
         self.params = list(xargs)
         self.params_count = len(self.params)
-        self.extractedFiles = []
 
         totalInvalidParams = 0
         for arg in self.params:
@@ -35,9 +35,9 @@ class ExecutePipeline:
         if totalInvalidParams == self.params_count:
             raise TypeError(f"Invalid parameters >>>> {self.params}")
 
-        self.pipelineExecute(InputParams=self.params)
+        self.__pipelineExecute__(InputParams=self.params)
 
-    def pipelineExecute(self, InputParams: list):
+    def __pipelineExecute__(self, InputParams: list):
         """
         Executes the pipeline.
 
@@ -46,14 +46,4 @@ class ExecutePipeline:
 
         """
         NewExt = extraction(InputParams)
-        self.extractedFiles = NewExt.GetGeneratedFiles()
-
-    def GetExtractedFiles(self) -> list:
-        """
-        Returns the list of extracted files.
-
-        Returns:
-            list: List of extracted files.
-
-        """
-        return self.extractedFiles
+        NewTransform = transformation(NewExt.json_data, NewExt.ValidParams)
