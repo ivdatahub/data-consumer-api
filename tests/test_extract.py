@@ -12,8 +12,3 @@ def test_extraction_run_success():
     ext = extraction(params)
     json_data = ext.__run__(ext.ValidParams)
     assert isinstance(json_data, dict)
-
-
-# def test_extraction_run_failure():
-#     with pytest.raises(KeyError):
-#         ExecutePipeline("")
