@@ -1,4 +1,4 @@
-import os 
+import os
 
 import pandas as pd
 import concurrent.futures
@@ -14,15 +14,16 @@ from etl.config.logFile import logFileName
 
 WORK_DIR = logFileName(file=__file__)
 
+
 class transformation:
-    def __init__(self, json_response: dict, params) -> None:    
+    def __init__(self, json_response: dict, params) -> None:
         self.output_path = DefaultOutputFolder()
         self.insert_timestamp = DefaultTimestampStr()
         self.extracted_files = []
         self.json_response = json_response
         self.totalParams = len(json_response)
         self.validParams = params
-    
+
         ## Parallel Processing data
         with concurrent.futures.ThreadPoolExecutor(os.cpu_count()) as executor:
             list(
@@ -32,12 +33,12 @@ class transformation:
                     desc="Processing files",
                 )
             )
-        
-        loggingInfo(f"{self.totalParams} files extracted in: {self.output_path}", WORK_DIR)
 
+        loggingInfo(
+            f"{self.totalParams} files extracted in: {self.output_path}", WORK_DIR
+        )
 
-
-    def __process_param__(self,args):
+    def __process_param__(self, args):
 
         index, param = args
         dic = self.json_response[param.replace("-", "")]
@@ -53,9 +54,8 @@ class transformation:
 
         # Write the DataFrame to a Parquet file
         df.to_parquet(f"{self.output_path}{param}-{self.insert_timestamp}.parquet")
-        
+
         # Append list with the file path
-        self.extracted_files.append(f"{self.output_path}{param}-{self.insert_timestamp}.parquet")
+        self.extracted_files.append(f"{param}-{self.insert_timestamp}.parquet")
 
-
-        return True
+        return None
