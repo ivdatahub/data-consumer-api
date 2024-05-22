@@ -1,11 +1,14 @@
+# import time
 import threading
 import queue
+
+from tqdm import tqdm
 
 from etl.models.extract.ApiToParquetFile import extraction
 from etl.models.transform.ResponseSplit import transformation
 from etl.models.load.ToParquet import loadToParquet
 
-fila_unica = queue.Queue()
+ControllerQueue = queue.Queue()
 
 
 class ExecutePipeline:
@@ -56,21 +59,26 @@ class ExecutePipeline:
             # Define a função que será executada pelo thread do produtor
             def produce():
                 transformer = transformation(
-                    extractor.json_data, extractor.ValidParams, fila_unica
+                    extractor.json_data, extractor.ValidParams, ControllerQueue
                 )
                 transformer.publish()
-                fila_unica.put(None)  # Sinaliza que a produção está completa
+                ControllerQueue.put(None)  # Sinaliza que a produção está completa
 
             # Define a função que será executada pelo thread do consumidor
             def consume():
-                while True:
-                    item = fila_unica.get()
-                    if item is None:
-                        fila_unica.task_done()
-                        break
-                    loader = loadToParquet(item)
-                    loader.load()
-                    fila_unica.task_done()
+                with tqdm(
+                    desc="Consuming Data", unit=" item", total=len(InputParams)
+                ) as pbar:
+                    while True:
+                        # time.sleep(0.5)
+                        item = ControllerQueue.get()
+                        if item is None:
+                            ControllerQueue.task_done()
+                            break
+                        loader = loadToParquet(item)
+                        loader.load()
+                        ControllerQueue.task_done()
+                        pbar.update()
 
             # Criação dos threads
             thread_producer = threading.Thread(target=produce)
@@ -78,9 +86,12 @@ class ExecutePipeline:
 
             # Inicia os threads
             thread_producer.start()
+
             thread_consumer.start()
 
-            fila_unica.join()
+            thread_producer.join()
+            thread_consumer.join()
+            ControllerQueue.join()
 
         except Exception as e:
             # Tratamento genérico para outras exceções
