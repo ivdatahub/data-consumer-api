@@ -21,10 +21,14 @@ def GenerateRandomParams(ParamsQty: int) -> list:
     AvaliableList = list(requests.get(API.ENDPOINT_AVALIABLE_PARITIES).json())
     min = random.randint(0, len(AvaliableList) - ParamsQty)
     max = min + ParamsQty
-    return AvaliableList[min:max]
+    if max > len(AvaliableList):
+        max = len(AvaliableList)
+    if ParamsQty == len(AvaliableList):
+        max -= max
+    return AvaliableList[min : max - 1]
 
 
 if __name__ == "__main__":
-    NewExec = ExecutePipeline(*GenerateRandomParams(1))
+    NewExec = ExecutePipeline(*GenerateRandomParams(2))
 
-print("Tempo decorrido: ", round(time.time() - start,2), "segundos")
+print("Tempo decorrido: ", round(time.time() - start, 2), "segundos")
