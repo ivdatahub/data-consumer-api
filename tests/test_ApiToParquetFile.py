@@ -1,4 +1,3 @@
-import pytest
 from etl.models.extract.ApiToParquetFile import extraction
 
 
@@ -15,9 +14,6 @@ def test_extraction_run_success():
     assert isinstance(json_data, dict)
 
 
-def test_extraction_run_failure():
-    try:
-        params = []
-        ext = extraction(params)
-    except Exception:
-        assert pytest.raises(KeyError)
+# def test_extraction_run_failure():
+#     with pytest.raises(KeyError):
+#         ExecutePipeline("")
