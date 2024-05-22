@@ -26,7 +26,8 @@ class extraction:
             None
         """
         self.params = params
-        self.ValidParams = Validation.ParamsValidator(params).validParams
+        __validator__ = Validation.ParamsValidator(params)
+        self.ValidParams = __validator__.ValidParamsForCall()
         self.json_data = self.__run__(self.ValidParams)
 
     def __run__(self, ValidParams: list) -> dict:
@@ -71,4 +72,6 @@ class extraction:
                         Please try again later. 
                         Response status code: {response.status_code}"""
                     )
-        return {}  # Add this line to return an empty dictionary if no other return statement is reached
+        return (
+            {}
+        )  # Add this line to return an empty dictionary if no other return statement is reached

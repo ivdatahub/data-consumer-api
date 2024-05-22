@@ -9,9 +9,9 @@ WORK_DIR = logFileName(file=__file__)
 class ParamsValidator:
     def __init__(self, params: list) -> None:
         self.params = params
-        self.validParams = self.__ValidParamsForCall__()
+        # self.validParams = self.__ValidParamsForCall__()
 
-    def __ValidParamsForCall__(self) -> list:
+    def ValidParamsForCall(self) -> list:
         """
         Returns a list of valid parameters for the pipeline execution.
 
