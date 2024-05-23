@@ -1,96 +1,71 @@
-import requests
-from etl.common.utils.logs import loggingWarn
-from etl.models.extract.ApiToParquetFile import extraction
-from dotenv import load_dotenv
-import os
+import time
+import threading
+import queue
 
-load_dotenv()
+from tqdm import tqdm
 
-SRV_URL = str(os.getenv("SERVER_URL"))
-""" Reference for Server URL from enviroment variable """
+from etl.models.extract.api_data_extractor import extraction
+from etl.models.transform.publisher import transformation
+from etl.models.load.parquet_loader import load
 
-mdName = "extract_prepare"
 
-class ExecutePipeline:
-    """
-    Class representing a pipeline execution.
-
-    Args:
-        *xargs: Variable number of string arguments representing the parameters for the pipeline execution.
-
-    Attributes:
-        params (list): List of parameters passed to the pipeline execution.
-        params_count (int): Number of parameters passed to the pipeline execution.
-        extractedFiles (list): List of extracted files from the pipeline execution.
-
-    Raises:
-        TypeError: If all the parameters passed to the pipeline execution are invalid.
-
-    Methods:
-        ValidParamsForCall: Returns a list of valid parameters for the pipeline execution.
-        pipelineExecute: Executes the pipeline.
-        GetExtractedFiles: Returns the list of extracted files.
-
-    """
-
-    def __init__(self, *xargs) -> None:
+class PipelineExecutor:
+    def __init__(self, *xargs):
         self.params = list(xargs)
-        self.params_count = len(self.params)
-        self.extractedFiles = []
 
+    def pipeline_run(self):
         totalInvalidParams = 0
         for arg in self.params:
             if not isinstance(arg, str):
                 totalInvalidParams += 1
 
-        if totalInvalidParams == self.params_count:
+        if totalInvalidParams == len(self.params):
             raise TypeError(f"Invalid parameters >>>> {self.params}")
 
-        ValidParams = self.ValidParamsForCall()
-        self.pipelineExecute(ValidParameters=ValidParams)
+        self.controller_queue = queue.Queue()
 
-    def ValidParamsForCall(self) -> list:
-        """
-        Returns a list of valid parameters for the pipeline execution.
+        extractor = extraction(self.params)
 
-        Returns:
-            list: List of valid parameters.
+        try:
+            # Define a função que será executada pelo thread do produtor
+            def produce():
+                transformer = transformation(
+                    extractor.json_data, extractor.ValidParams, self.controller_queue
+                )
+                transformer.publish()
+                # Sinaliza que a produção está completa
+                self.controller_queue.put(None)
 
-        """
-        valParams = []
-        AvaliableList = requests.get(SRV_URL + '/json/available').json()
+            # Define a função que será executada pelo thread do consumidor
+            def consume():
+                with tqdm(
+                    desc="Consuming Data", unit=" item", total=len(extractor.ValidParams)
+                ) as pbar:
+                    while True:
+                        time.sleep(0.2)
+                        item = self.controller_queue.get()
+                        if item is None:
+                            self.controller_queue.task_done()
+                            break
+                        loader = load(item)
+                        loader.run()
+                        self.controller_queue.task_done()
+                        pbar.update()
 
-        for param in self.params:
-            if param in AvaliableList:
-                valParams.append(param)
-            else:
-                loggingWarn(f"Param: {param} is not valid for call", mdName)
-                
-        if valParams:
-            return valParams
-        else: 
-            raise KeyError(
-                f"The informed params: {self.params} are not avaliable for extract, see available list in: {SRV_URL + '/json/available'}"
-            )
+            # Criação dos threads
+            thread_producer = threading.Thread(target=produce)
+            thread_consumer = threading.Thread(target=consume)
 
-    def pipelineExecute(self, ValidParameters: list):
-        """
-        Executes the pipeline.
+            # Inicia os threads
+            thread_producer.start()
 
-        Raises:
-            KeyError: If the informed parameters are not available for extraction.
+            thread_consumer.start()
 
-        """
-        NewExt = extraction(ValidParameters)
-        self.extractedFiles = NewExt.GetGeneratedFiles()
+            thread_producer.join()
+            thread_consumer.join()
+            self.controller_queue.join()
 
-    def GetExtractedFiles(self) -> list:
-        """
-        Returns the list of extracted files.
-
-        Returns:
-            list: List of extracted files.
-
-        """
-        return self.extractedFiles
-    
+        except Exception as e:
+            # Tratamento genérico para outras exceções
+            print(f"Erro durante a execução do pipeline: {e}")
+            raise e

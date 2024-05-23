@@ -18,8 +18,5 @@ COPY . .
 # Install the dependencies
 RUN poetry install
 
-# Gerar o arquivo .env
-RUN echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env
-
 # Run the container
-CMD ["poetry", "run", "python", "etl/main.py"]
+CMD ["poetry", "run", "python", "etl/run.py"]
