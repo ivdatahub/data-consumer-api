@@ -1,7 +1,5 @@
 from setuptools import setup, find_packages
 
-
-# read the dependencies from requirements.txt
 def parse_requirements(filename):
     with open(filename, "r") as f:
         lines = f.read().splitlines()
