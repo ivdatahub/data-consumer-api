@@ -14,6 +14,8 @@ O projeto "Awesome Project: ETL Process for Currency Quotes Data" é uma soluç�
 
 - Arquitetura MVC: Implementação da arquitetura Model-View-Controller (MVC), separando a lógica de negócio, a interface do usuário e a manipulação de dados para uma melhor organização e manutenção do código.
 
+- Testes Abrangentes: Desenvolvimento de testes para garantir a qualidade e a robustez do código em diversas etapas do processo ETL
+
 - Paralelismo nos Modelos: Utilização de paralelismo nas etapas de transformação e carregamento dos dados, aumentando a eficiência e reduzindo o tempo de processamento.
 
 - Mensageria Fire-Forget: Uso de mensageria (queue.queue) no modelo fire-forget para gerenciar os arquivos gerados entre as etapas de transformação e carregamento, garantindo um fluxo de dados contínuo e eficiente.
