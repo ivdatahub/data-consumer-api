@@ -1,6 +1,6 @@
 from matplotlib.rcsetup import validate_ps_distiller
 import pytest
-from etl.models.extract.ParamsValidator import ParamsValidator
+from etl.models.extract.params_validator import ParamsValidator
 
 
 @pytest.fixture

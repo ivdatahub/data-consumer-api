@@ -1,10 +1,10 @@
-# import time
+import time
 import threading
 import queue
 
 from tqdm import tqdm
 
-from etl.models.extract.fromAPI import extraction
+from etl.models.extract.api_data_extractor import extraction
 from etl.models.transform.publisher import transformation
 from etl.models.load.parquet_loader import load
 
@@ -41,7 +41,7 @@ class PipelineExecutor:
                     desc="Consuming Data", unit=" item", total=len(extractor.ValidParams)
                 ) as pbar:
                     while True:
-                        # time.sleep(0.5)
+                        time.sleep(0.5)
                         item = self.controller_queue.get()
                         if item is None:
                             self.controller_queue.task_done()

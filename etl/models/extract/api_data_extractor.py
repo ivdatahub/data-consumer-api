@@ -9,7 +9,7 @@ from tqdm import tqdm
 from etl.common.utils.logs import loggingInfo, loggingWarn
 from etl.config.logFile import logFileName
 from etl.config.datasource import API
-from . import ParamsValidator as Validation
+from . import params_validator as Validation
 
 WORK_DIR = logFileName(file=__file__)
 

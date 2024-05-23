@@ -1,4 +1,4 @@
-from etl.models.extract.fromAPI import extraction
+from etl.models.extract.api_data_extractor import extraction
 
 
 def test_extraction_init():
