@@ -68,15 +68,14 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           .venv/bin/python -m pip install --upgrade pip
-          echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env
           pip install -e .
-          python etl/main.py
+          python etl/run.py
 
       - name: Run Application using Poetry
         run: |
           pip install poetry
           poetry install
-          poetry run python etl/main.py
+          poetry run python etl/run.py
 
   deploy:
     needs: build
