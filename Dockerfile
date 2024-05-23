@@ -19,4 +19,4 @@ COPY . .
 RUN poetry install
 
 # Run the container
-CMD ["poetry", "run", "python", "etl/main.py"]
+CMD ["poetry", "run", "python", "etl/run.py"]
