@@ -36,7 +36,8 @@ O projeto "Awesome Project: ETL Process for Currency Quotes Data" é uma soluç�
 
 Em resumo, o "Awesome Project: ETL Process for Currency Quotes Data" oferece uma solução robusta e eficiente para coleta, processamento e análise de dados de cotações de moedas, utilizando técnicas avançadas de arquitetura e paralelismo para otimizar cada etapa do processo ETL.
 
-## Project Structure
+  <details>
+    <summary>Estrutura do repositório</summary>
 
 - [`data/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/data): Armazena dados brutos no formato Parquet.
   - ETH-EUR-1713658884.parquet: Exemplo: Dados brutos para cotações ETH-EUR. nome_do_arquivo = símbolo + timestamp unix da extração
@@ -59,10 +60,10 @@ Em resumo, o "Awesome Project: ETL Process for Currency Quotes Data" oferece uma
       - [`parquet_loader.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/models/extract/parquet_loader.py): Em uma thread separada, recebe um novo dicionário da fila que o transformer está publicando e gera arquivos .parquet no diretório padrão.
   - [`views/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/views): Para armazenamento de análise de dados e visualização.
 
-## How to run this project and verify execution time:
+</details>
 
 <details>
-  <summary>Click here:</summary>
+  <summary>Como executar a aplicação localmente</summary>
   
   ## Step by Step
   1. Clone the repository:
@@ -70,38 +71,53 @@ Em resumo, o "Awesome Project: ETL Process for Currency Quotes Data" oferece uma
      $ git clone https://github.com/IvanildoBarauna/ETL-awesome-api.git
      ```
 
-2. Create a virtual environment and install dependencies:
-   Ensure you have Python 3.9 installed on your system.
+<details> 
+  <summary>Usando virtual enviroment (Python Nativo)</summary>
+    Garanta que o Python 3.9 ou superior esteja instalado em sua máquina
 
-   ```sh
-   $ cd ETL-awesome-api
-   $ python -m venv .venv
-   $ source .venv/bin/activate  # On Windows use `venv\Scripts\activate`
-   $ .venv/bin/python -m pip install --upgrade pip
-   $ pip install -e .
-   $ python etl/run.py
-   ```
+```sh
+$ cd ETL-awesome-api
+$ python -m venv .venv
+$ source .venv/bin/activate  # On Windows use `venv\Scripts\activate`
+$ .venv/bin/python -m pip install --upgrade pip
+$ pip install -e .
+$ python etl/run.py
+```
 
-   Learn more about [venv module in python](https://docs.python.org/pt-br/3/library/venv.html)
+Learn more about [venv module in python](https://docs.python.org/pt-br/3/library/venv.html)
 
-3. Alternatively, you can run the project using [`Dockerfile`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/Dockerfile) or [`docker-compose`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/docker-compose.yml). To build and run the Docker image, use the following command:
+  </details>
 
-   ```sh
-   $ docker build -t etl-awesome-api . && docker run etl-awesome-api
-   ```
+  <details> 
+    <summary>Usando Docker</summary>
+    Garanta que o Docker esteja instalado em sua máquina
 
-   To run the project with Docker Compose, use the following command:
+[`Dockerfile`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/Dockerfile)
 
-   ```sh
-   $ docker-compose up --build
-   ```
+```sh
+$ docker build -t etl-awesome-api . && docker run etl-awesome-api
+```
 
-   Learn more about [docker](https://docs.docker.com/)
+Ou:
 
-4. Or you can install and run the project using the dependency manager [`poetry`](https://python-poetry.org/):
-`sh
-     $ poetry install && poetry run python etl/run.py
-     `
+[`docker-compose`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/docker-compose.yml)
+
+```sh
+$ docker-compose up --build
+```
+
+Saiba mais sobre [docker](https://docs.docker.com/)
+
+</details>
+
+- Ou use o Poetry
+
+  ```sh
+  $ poetry install && poetry run python etl/run.py
+  ```
+
+  Saiba mais sobre [`poetry`](https://python-poetry.org/)
+
 </details>
 
 ## ETL and Data Analysis Results:
