@@ -1,11 +1,11 @@
+from etl.config.datasource import API
+import requests
+import random
 from etl.controller.pipeline import PipelineExecutor
 import time
+import sys
 
 start = time.time()
-import random
-import requests
-
-from etl.config.datasource import API
 
 
 def GenerateRandomParams(ParamsQty: int) -> list:
@@ -25,11 +25,22 @@ def GenerateRandomParams(ParamsQty: int) -> list:
         max = len(AvaliableList)
     if ParamsQty == len(AvaliableList):
         max -= max
-    return AvaliableList[min : max - 1]
+    return AvaliableList[min: max - 1]
+
+
+def main(total_files: int = 2):
+    NewExec = PipelineExecutor(*GenerateRandomParams(total_files))
+    NewExec.pipeline_run()
 
 
 if __name__ == "__main__":
-    NewExec = PipelineExecutor(*GenerateRandomParams(10))
-    NewExec.pipeline_run()
+    if len(sys.argv) > 1:
+        # Pega o número de parâmetros da linha de comando
+        params_count = int(sys.argv[1])
+    else:
+        # Gera um número aleatório de parâmetros
+        params_count = random.randint(3, 20)
+
+    main(params_count)
 
 print("Tempo decorrido: ", round(time.time() - start, 2), "segundos")

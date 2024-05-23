@@ -1,6 +1,6 @@
 import pytest
 import requests
-from etl.main import GenerateRandomParams
+from etl.run import GenerateRandomParams
 
 
 def test_generate_random_params():

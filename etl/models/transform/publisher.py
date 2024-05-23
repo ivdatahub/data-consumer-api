@@ -18,5 +18,5 @@ class transformation:
             self.validParams, total=len(self.validParams), desc="Producing Data"
         ):
             dic = self.json_response[param.replace("-", "")]
-            time.sleep(0.5)
+            time.sleep(0.2)
             self.fila.put(dic)  # type: ignore

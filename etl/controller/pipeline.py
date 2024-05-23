@@ -12,8 +12,8 @@ from etl.models.load.parquet_loader import load
 class PipelineExecutor:
     def __init__(self, *xargs):
         self.params = list(xargs)
-        self.controller_queue = queue.Queue()
 
+    def pipeline_run(self):
         totalInvalidParams = 0
         for arg in self.params:
             if not isinstance(arg, str):
@@ -22,7 +22,8 @@ class PipelineExecutor:
         if totalInvalidParams == len(self.params):
             raise TypeError(f"Invalid parameters >>>> {self.params}")
 
-    def pipeline_run(self):
+        self.controller_queue = queue.Queue()
+
         extractor = extraction(self.params)
 
         try:
@@ -41,7 +42,7 @@ class PipelineExecutor:
                     desc="Consuming Data", unit=" item", total=len(extractor.ValidParams)
                 ) as pbar:
                     while True:
-                        time.sleep(0.5)
+                        time.sleep(0.2)
                         item = self.controller_queue.get()
                         if item is None:
                             self.controller_queue.task_done()
