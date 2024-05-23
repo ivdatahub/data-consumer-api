@@ -1,4 +1,4 @@
-from etl.models.extract.ApiToParquetFile import extraction
+from etl.models.extract.fromAPI import extraction
 
 
 def test_extraction_init():

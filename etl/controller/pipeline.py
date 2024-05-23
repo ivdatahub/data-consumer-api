@@ -4,80 +4,51 @@ import queue
 
 from tqdm import tqdm
 
-from etl.models.extract.ApiToParquetFile import extraction
-from etl.models.transform.ResponseSplit import transformation
-from etl.models.load.ToParquet import loadToParquet
-
-ControllerQueue = queue.Queue()
+from etl.models.extract.fromAPI import extraction
+from etl.models.transform.publisher import transformation
+from etl.models.load.parquet_loader import load
 
 
-class ExecutePipeline:
-    """
-    Class representing a pipeline execution.
-
-    Args:
-        *xargs: Variable number of string arguments representing the parameters for the pipeline execution.
-
-    Attributes:
-        params (list): List of parameters passed to the pipeline execution.
-        params_count (int): Number of parameters passed to the pipeline execution.
-        extractedFiles (list): List of extracted files from the pipeline execution.
-
-    Raises:
-        TypeError: If all type of parameters passed to the pipeline execution are invalid.
-
-    Methods:
-        pipelineExecute: Executes the pipeline.
-        GetExtractedFiles: Returns the list of extracted files.
-
-    """
-
-    def __init__(self, *xargs) -> None:
+class PipelineExecutor:
+    def __init__(self, *xargs):
         self.params = list(xargs)
-        self.params_count = len(self.params)
+        self.controller_queue = queue.Queue()
 
         totalInvalidParams = 0
         for arg in self.params:
             if not isinstance(arg, str):
                 totalInvalidParams += 1
 
-        if totalInvalidParams == self.params_count:
+        if totalInvalidParams == len(self.params):
             raise TypeError(f"Invalid parameters >>>> {self.params}")
 
-        self._pipeline_execute(InputParams=self.params)
+    def pipeline_run(self):
+        extractor = extraction(self.params)
 
-    def _pipeline_execute(self, InputParams: list):
-        """
-        Executes the pipeline.
-
-        Raises:
-            KeyError: If the informed parameters are not available for extraction.
-        """
         try:
-            extractor = extraction(InputParams)
-
             # Define a função que será executada pelo thread do produtor
             def produce():
                 transformer = transformation(
-                    extractor.json_data, extractor.ValidParams, ControllerQueue
+                    extractor.json_data, extractor.ValidParams, self.controller_queue
                 )
                 transformer.publish()
-                ControllerQueue.put(None)  # Sinaliza que a produção está completa
+                # Sinaliza que a produção está completa
+                self.controller_queue.put(None)
 
             # Define a função que será executada pelo thread do consumidor
             def consume():
                 with tqdm(
-                    desc="Consuming Data", unit=" item", total=len(InputParams)
+                    desc="Consuming Data", unit=" item", total=len(extractor.ValidParams)
                 ) as pbar:
                     while True:
                         # time.sleep(0.5)
-                        item = ControllerQueue.get()
+                        item = self.controller_queue.get()
                         if item is None:
-                            ControllerQueue.task_done()
+                            self.controller_queue.task_done()
                             break
-                        loader = loadToParquet(item)
-                        loader.load()
-                        ControllerQueue.task_done()
+                        loader = load(item)
+                        loader.run()
+                        self.controller_queue.task_done()
                         pbar.update()
 
             # Criação dos threads
@@ -91,7 +62,7 @@ class ExecutePipeline:
 
             thread_producer.join()
             thread_consumer.join()
-            ControllerQueue.join()
+            self.controller_queue.join()
 
         except Exception as e:
             # Tratamento genérico para outras exceções

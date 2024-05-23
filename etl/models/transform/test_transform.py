@@ -1,5 +1,5 @@
 import pytest
-from etl.models.transform.ResponseSplit import transformation
+from etl.models.transform.publisher import transformation
 import queue
 
 fila = queue.Queue()

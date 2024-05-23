@@ -13,11 +13,11 @@ from etl.common.utils.common import (
 WORK_DIR = logFileName(file=__file__)
 
 
-class loadToParquet:
+class load:
     def __init__(self, item) -> None:
         self.dic = item
 
-    def load(self):
+    def run(self):
         extracted_files = []
         param = self.dic["code"] + "-" + self.dic["codein"]
         ts = DefaultTimestampStr()

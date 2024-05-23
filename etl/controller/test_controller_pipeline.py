@@ -1,29 +1,35 @@
 import pytest
-from etl.controller.pipeline import ExecutePipeline
+from etl.controller.pipeline import PipelineExecutor
 
 
 def test_pipelines_params_with_unique_param():
-    ExecutePipeline("USD-BRL")
+    NewExec = PipelineExecutor("USD-BRL")
+    NewExec.pipeline_run()
 
 
 def test_pipelines_params_with_two_param():
-    ExecutePipeline("USD-BRL", "USD-BRLT")
+    NewExec = PipelineExecutor("USD-BRL", "USD-BRLT")
+    NewExec.pipeline_run()
 
 
 def test_pipelines_params_with_one_invalid_params():
     with pytest.raises(TypeError):
-        ExecutePipeline(1)
+        newExec = PipelineExecutor(1)
+        newExec.pipeline_run()
+
 
 
 def test_pipelines_params_with_all_invalid_params():
     with pytest.raises(TypeError):
-        ExecutePipeline(1, 1, 1)
+        newExec = PipelineExecutor(1, 1, 1)
+        newExec.pipeline_run()
 
 
 def test_pipelines_params_with_all_invalid_keys_params():
     validator = None
     try:
         with pytest.raises(KeyError):
-            validator = ExecutePipeline("INVALID-QUOTE", "INVALID-QUOTE2")
+            validator = PipelineExecutor("INVALID-QUOTE", "INVALID-QUOTE2")
+            validator.pipeline_run()
     finally:
         validator = None

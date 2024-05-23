@@ -1,5 +1,5 @@
 import pytest
-from etl.models.load.ToParquet import loadToParquet
+from etl.models.load.parquet_loader import load
 
 
 def test_load_to_parquet():
@@ -7,10 +7,10 @@ def test_load_to_parquet():
     item = {"code": "USD", "codein": "BRL", "value": 5.0}
 
     # Instantiate the loadToParquet class
-    loader = loadToParquet(item)
+    loader = load(item)
 
     # Call the load method
-    extracted_files = loader.load()
+    extracted_files = loader.run()
 
     # Assert that the extracted_files list contains the expected file path
     assert len(extracted_files) == 1
