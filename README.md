@@ -55,7 +55,6 @@ In summary, this project provides a complete solution for collecting, processing
    $ python -m venv .venv
    $ source .venv/bin/activate  # On Windows use `venv\Scripts\activate`
    $ .venv/bin/python -m pip install --upgrade pip
-   $ echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env # Create enviroment variable for server URL`
    $ pip install -e .
    $ python etl/main.py
    ```

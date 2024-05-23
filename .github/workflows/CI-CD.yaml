@@ -31,15 +31,12 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Install dependencies
+      - name: Install and Run Tests
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          # Gerar o arquivo .env
-          echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env
-
-      - name: Run tests
-        run: pytest
+          python -m pip install poetry
+          poetry install
+          poetry run pytest
 
   build:
     needs: test
@@ -71,15 +68,14 @@ jobs:
           python -m venv .venv
           source .venv/bin/activate
           .venv/bin/python -m pip install --upgrade pip
-          echo "SERVER_URL=https://economia.awesomeapi.com.br" > .env
           pip install -e .
-          python etl/main.py
+          python etl/run.py
 
       - name: Run Application using Poetry
         run: |
           pip install poetry
           poetry install
-          poetry run python etl/main.py
+          poetry run python etl/run.py
 
   deploy:
     needs: build
