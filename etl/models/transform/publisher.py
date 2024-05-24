@@ -1,22 +1,21 @@
 import time
+import queue
 from tqdm import tqdm
-from etl.common.utils.logs import loggingInfo
-from etl.config.logFile import logFileName
+from etl.config.logFile import log_file_name
 
-
-WORK_DIR = logFileName(file=__file__)
+WORK_DIR = log_file_name(file=__file__)
 
 
 class transformation:
-    def __init__(self, json_response: dict, params, fila: object):
+    def __init__(self, json_response: dict, params, queue: queue.Queue):
         self.json_response = json_response
-        self.validParams = params
-        self.fila = fila
+        self.valid_params = params
+        self.queue = queue
 
     def publish(self):
         for param in tqdm(
-            self.validParams, total=len(self.validParams), desc="Producing Data"
+            self.valid_params, total=len(self.valid_params), desc="Producing Data"
         ):
             dic = self.json_response[param.replace("-", "")]
             time.sleep(0.2)
-            self.fila.put(dic)  # type: ignore
+            self.queue.put(dic)
