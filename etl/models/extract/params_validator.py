@@ -1,17 +1,16 @@
 import requests
-from etl.common.utils.logs import loggingWarn
+from etl.common.utils.logs import logging_warn
 from etl.config.datasource import API
-from etl.config.logFile import logFileName
+from etl.config.logFile import log_file_name
 
-WORK_DIR = logFileName(file=__file__)
+WORK_DIR = log_file_name(file=__file__)
 
 
 class ParamsValidator:
     def __init__(self, params: list) -> None:
         self.params = params
-        # self.validParams = self.__ValidParamsForCall__()
 
-    def ValidParamsForCall(self) -> list:
+    def valid_params_for_call(self) -> list:
         """
         Returns a list of valid parameters for the pipeline execution.
 
@@ -26,7 +25,7 @@ class ParamsValidator:
             if param in AvaliableList:
                 valParams.append(param)
             else:
-                loggingWarn(f"Param: {param} is not valid for call", WORK_DIR)
+                logging_warn(f"Param: {param} is not valid for call", WORK_DIR)
 
         if valParams:
             return valParams

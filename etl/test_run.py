@@ -1,6 +1,6 @@
 import pytest
 import requests
-from etl.run import GenerateRandomParams
+from etl.run import generate_random_params
 
 
 def test_generate_random_params():
@@ -9,7 +9,7 @@ def test_generate_random_params():
     requests.get = lambda url: MockResponse(mock_response)
 
     params_qty = 3
-    result = GenerateRandomParams(params_qty)
+    result = generate_random_params(params_qty)
 
     assert isinstance(result, list)
     assert len(result) == params_qty - 1

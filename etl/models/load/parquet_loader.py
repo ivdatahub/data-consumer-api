@@ -1,16 +1,15 @@
-from math import e
 from tqdm import tqdm
 import pandas as pd
 
-from etl.config.logFile import logFileName
-from etl.common.utils.logs import loggingError, loggingInfo
+from etl.config.logFile import log_file_name
+from etl.common.utils.logs import logging_error, logging_info
 from etl.common.utils.common import (
     DefaultTimestampStr,
     DefaultOutputFolder,
     DefaultUTCDatetime,
 )
 
-WORK_DIR = logFileName(file=__file__)
+dir = log_file_name(file=__file__)
 
 
 class load:
@@ -24,7 +23,7 @@ class load:
         df = pd.DataFrame([self.dic])
 
         if df.empty:
-            loggingError("DataFrame is empty", WORK_DIR)
+            logging_error("DataFrame is empty", dir)
             raise ValueError("DataFrame is empty")
 
         # Add new columns to the DataFrame
@@ -37,7 +36,7 @@ class load:
         try:
             df.to_parquet(f"{DefaultOutputFolder()}{param}-{ts}.parquet")
         except Exception as e:
-            loggingError(f"Error writing parquet file: {e}", WORK_DIR)
+            logging_error(f"Error writing parquet file: {e}", dir)
 
         # Append list with the file path
         extracted_files.append(f"{param}-{ts}.parquet")

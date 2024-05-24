@@ -14,23 +14,26 @@ class PipelineExecutor:
         self.params = list(xargs)
 
     def pipeline_run(self):
-        totalInvalidParams = 0
+        total_invalid_params = 0
         for arg in self.params:
             if not isinstance(arg, str):
-                totalInvalidParams += 1
+                total_invalid_params += 1
 
-        if totalInvalidParams == len(self.params):
+        if total_invalid_params == len(self.params):
             raise TypeError(f"Invalid parameters >>>> {self.params}")
 
-        self.controller_queue = queue.Queue()
-
         extractor = extraction(self.params)
+        response, valid_params = extractor.run()
+
+        self.controller_queue = queue.Queue()
 
         try:
             # Define a função que será executada pelo thread do produtor
             def produce():
                 transformer = transformation(
-                    extractor.json_data, extractor.ValidParams, self.controller_queue
+                    json_response=response,
+                    params=valid_params,
+                    queue=self.controller_queue,
                 )
                 transformer.publish()
                 # Sinaliza que a produção está completa
@@ -39,7 +42,9 @@ class PipelineExecutor:
             # Define a função que será executada pelo thread do consumidor
             def consume():
                 with tqdm(
-                    desc="Consuming Data", unit=" item", total=len(extractor.ValidParams)
+                    desc="Consuming Data",
+                    unit=" item",
+                    total=len(valid_params),
                 ) as pbar:
                     while True:
                         time.sleep(0.2)

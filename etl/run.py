@@ -8,28 +8,28 @@ import sys
 start = time.time()
 
 
-def GenerateRandomParams(ParamsQty: int) -> list:
+def generate_random_params(params_qty: int) -> list:
     """
     Generate a list of random parameters from the available list of parities.
 
     Args:
-        ParamsQty (int): The number of random parameters to generate.
+        params_qty (int): The number of random parameters to generate.
 
     Returns:
         list: A list of randomly generated parameters.
     """
-    AvaliableList = list(requests.get(API.ENDPOINT_AVALIABLE_PARITIES).json())
-    min = random.randint(0, len(AvaliableList) - ParamsQty)
-    max = min + ParamsQty
-    if max > len(AvaliableList):
-        max = len(AvaliableList)
-    if ParamsQty == len(AvaliableList):
+    avaliable_list = list(requests.get(API.ENDPOINT_AVALIABLE_PARITIES).json())
+    min = random.randint(0, len(avaliable_list) - params_qty)
+    max = min + params_qty
+    if max > len(avaliable_list):
+        max = len(avaliable_list)
+    if params_qty == len(avaliable_list):
         max -= max
-    return AvaliableList[min: max - 1]
+    return avaliable_list[min : max - 1]
 
 
 def main(total_files: int = 2):
-    NewExec = PipelineExecutor(*GenerateRandomParams(total_files))
+    NewExec = PipelineExecutor(*generate_random_params(total_files))
     NewExec.pipeline_run()
 
 
