@@ -1,9 +1,11 @@
-from etl.config.datasource import API
-import requests
-import random
-from etl.controller.pipeline import PipelineExecutor
 import time
 import sys
+import random
+
+import requests
+
+from etl.controller.pipeline import PipelineExecutor
+from etl.config.datasource import API
 
 start = time.time()
 
