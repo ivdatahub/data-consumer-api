@@ -7,11 +7,13 @@ from tqdm import tqdm
 from etl.models.extract.api_data_extractor import extraction
 from etl.models.transform.publisher import transformation
 from etl.models.load.parquet_loader import load
+from etl.views.make_dataset import DatasetSerializer
 
 
 class PipelineExecutor:
     def __init__(self, *xargs):
         self.params = list(xargs)
+        self.unserialized_files = []
 
     def pipeline_run(self):
         total_invalid_params = 0
@@ -53,7 +55,7 @@ class PipelineExecutor:
                             self.controller_queue.task_done()
                             break
                         loader = load(item)
-                        loader.run()
+                        self.unserialized_files.append(loader.run()[0])
                         self.controller_queue.task_done()
                         pbar.update()
 
@@ -69,6 +71,8 @@ class PipelineExecutor:
             thread_producer.join()
             thread_consumer.join()
             self.controller_queue.join()
+            
+            DatasetSerializer(unserialized_files=self.unserialized_files).serialize()
 
         except Exception as e:
             # Tratamento genérico para outras exceções
