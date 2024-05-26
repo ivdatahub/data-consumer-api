@@ -96,12 +96,16 @@ jobs:
           python-version: "3.9"
 
       - name: Install Jupyter
-        run: pip install notebook
+        run: | 
+          pip install notebook
+          pip install pandas
+          pip install pandasql
+          pip install matplotlib
 
       - name: Convert notebook to HTML
         run: |
-          jupyter nbconvert --to html notebooks/data_explorer.ipynb --output-dir=docs --output=index
-          jupyter nbconvert --to html notebooks/data_explorer.ipynb --output-dir=etl/views --output=index
+          jupyter nbconvert --execute --to html notebooks/data_explorer.ipynb --output-dir=docs --output=index
+          jupyter nbconvert --execute --to html notebooks/data_explorer.ipynb --output-dir=etl/views --output=index
 
       - name: Setup Git
         run: |

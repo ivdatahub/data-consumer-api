@@ -1,6 +1,8 @@
 import time
 import queue
+
 from tqdm import tqdm
+
 from etl.config.logFile import log_file_name
 
 WORK_DIR = log_file_name(file=__file__)
