@@ -1,4 +1,5 @@
 
+from matplotlib.pylab import f
 import pandas as pd
 
 from etl.config.logFile import log_file_name
@@ -31,6 +32,8 @@ class load:
 
         # Add two columns with the current date and time
         df["extracted_at"] = DefaultUTCDatetime()
+
+        df["id"] = f"{param}-{ts}"
 
         # Write the DataFrame to a Parquet file
         try:
