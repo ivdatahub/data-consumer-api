@@ -8,6 +8,7 @@ class DatasetSerializer:
         
     def serialize(self):
         serialized_df = pd.read_pickle("etl/views/" + "dataset.pkl")
+        print("Serialized Dataframe Before: ", serialized_df.shape[0])
         dfs = []
         for file in self.files:
             df = pd.read_parquet(dir() + file)
@@ -18,3 +19,6 @@ class DatasetSerializer:
         new_serialied_df = pd.concat([delta_df, serialized_df], ignore_index=True)
 
         pd.to_pickle(new_serialied_df, "etl/views/" + "dataset.pkl")
+        print("Serialized Dataframe After: ", new_serialied_df.shape[0])
+        print("New Registers: ",
+              new_serialied_df.shape[0] - serialized_df.shape[0])
