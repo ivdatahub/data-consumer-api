@@ -99,6 +99,8 @@ jobs:
         run: | 
           pip install notebook
           pip install pandas
+          pip install pandasql
+          pip install matplotlib
 
       - name: Convert notebook to HTML
         run: |
