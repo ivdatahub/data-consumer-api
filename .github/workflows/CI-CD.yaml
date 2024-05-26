@@ -116,8 +116,8 @@ jobs:
 
       - name: Convert notebook to HTML
         run: |
-          jupyter nbconvert --to html notebooks/data_explorer.ipynb --output-dir=docs --output=index
-          jupyter nbconvert --to html notebooks/data_explorer.ipynb --output-dir=etl/views --output=index
+          jupyter nbconvert --execute --to html notebooks/data_explorer.ipynb --output-dir=docs --output=index
+          jupyter nbconvert --execute --to html notebooks/data_explorer.ipynb --output-dir=etl/views --output=index
 
       - name: Setup Git
         run: |
