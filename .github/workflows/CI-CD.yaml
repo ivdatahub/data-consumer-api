@@ -96,7 +96,9 @@ jobs:
           python-version: "3.9"
 
       - name: Install Jupyter
-        run: pip install notebook
+        run: | 
+          pip install notebook
+          pip install pandas
 
       - name: Convert notebook to HTML
         run: |
