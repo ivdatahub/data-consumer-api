@@ -13,7 +13,8 @@ from etl.views.make_dataset import DatasetSerializer
 class PipelineExecutor:
     def __init__(self, *xargs):
         self.params = list(xargs)
-        self.unserialized_files = []
+        self.files_to_dataset = []
+        self.controller_queue = queue.Queue()
 
     def pipeline_run(self):
         total_invalid_params = 0
@@ -25,12 +26,9 @@ class PipelineExecutor:
             raise TypeError(f"Invalid parameters >>>> {self.params}")
 
         extractor = extraction(self.params)
-        response, valid_params = extractor.run()
-
-        self.controller_queue = queue.Queue()
+        response, valid_params = extractor.run
 
         try:
-            # Define a função que será executada pelo thread do produtor
             def produce():
                 transformer = transformation(
                     json_response=response,
@@ -38,10 +36,9 @@ class PipelineExecutor:
                     queue=self.controller_queue,
                 )
                 transformer.publish()
-                # Sinaliza que a produção está completa
+                # The production is finished
                 self.controller_queue.put(None)
 
-            # Define a função que será executada pelo thread do consumidor
             def consume():
                 with tqdm(
                     desc="Consuming Data",
@@ -55,15 +52,13 @@ class PipelineExecutor:
                             self.controller_queue.task_done()
                             break
                         loader = load(item)
-                        self.unserialized_files.append(loader.run()[0])
+                        self.files_to_dataset.append(loader.run()[0])
                         self.controller_queue.task_done()
                         pbar.update()
 
-            # Criação dos threads
             thread_producer = threading.Thread(target=produce)
             thread_consumer = threading.Thread(target=consume)
 
-            # Inicia os threads
             thread_producer.start()
 
             thread_consumer.start()
@@ -72,9 +67,7 @@ class PipelineExecutor:
             thread_consumer.join()
             self.controller_queue.join()
             
-            DatasetSerializer(unserialized_files=self.unserialized_files).serialize()
+            DatasetSerializer(self.files_to_dataset).serialize()
 
         except Exception as e:
-            # Tratamento genérico para outras exceções
-            print(f"Erro durante a execução do pipeline: {e}")
             raise e
