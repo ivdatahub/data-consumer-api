@@ -1,0 +1,4 @@
+2024-05-28 16:22:34 :: INFO :: Sending request to: https://economia.awesomeapi.com.br/last/ :: 1 of 3
+2024-05-28 16:22:34 :: DEBUG :: Starting new HTTPS connection (1): economia.awesomeapi.com.br:443
+2024-05-28 16:22:35 :: DEBUG :: https://economia.awesomeapi.com.br:443 "GET /last/BRL-PKR,BRL-PLN,BRL-QAR,BRL-RON,BRL-RUB,BRL-SAR,BRL-SEK,BRL-THB,BRL-TRY,BRL-VEF,BRL-XAF,BRL-XCD,BRL-XOF,BRL-ZAR,BRL-TWD HTTP/1.1" 200 None
+2024-05-28 16:22:35 :: INFO :: Request finished with status 200
