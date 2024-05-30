@@ -7,5 +7,5 @@ services:
     volumes:
       - .:/app
       - ./data:/usr/src/app/data
-    command: python ./etl/main.py
+    command: python ./etl/run.py
     tty: true
