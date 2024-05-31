@@ -167,3 +167,5 @@ etl/common/logs/*
 
 *.DS_Store
 
+*.vscode
+*.idea
