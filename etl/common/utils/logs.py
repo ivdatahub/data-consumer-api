@@ -1,6 +1,8 @@
 import logging
 import os
 
+## fix-FolderLogBug
+
 LOG_FORMAT = "%(asctime)s :: %(levelname)s :: %(message)s"
 
 
@@ -14,7 +16,7 @@ def ConsoleLogger(module):
     Returns:
         logging.Logger: The console logger instance.
     """
-    dir_name = f"etl/common/logs/"
+    dir_name = f"../logs/"
     os.makedirs(dir_name, exist_ok=True)
 
     with open(dir_name + f"{module}.log", "w") as f:
