@@ -1,5 +1,6 @@
 from .logs import CustomLogger
 import logging
+import os
 
 def test_custom_logger_contructor():
     new_logger = CustomLogger("test")
@@ -14,4 +15,12 @@ def test_custom_logger():
     
     assert isinstance(logger, logging.Logger)
 
+def test_make_file_log():
+    new_logger = CustomLogger("test")
+    
+    
+    new_logger._make_file_log()
+    
+    assert os.path.exists()
+    
     
