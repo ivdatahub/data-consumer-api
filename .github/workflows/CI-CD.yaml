@@ -4,16 +4,15 @@ on:
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - "**/README.md"
-      - "**/CONTRIBUTING.md"
-      - "**/CODE_OF_CONDUCT.md"
-      - ".github/**"
-      - "docs/**"
-      - "**/.editorconfig"
-      - "**/.gitignore"
-      - "**/LICENSE"
-      - "**/CREDITS"
+    # paths-ignore:
+    #   - "**/README.md"
+    #   - "**/CONTRIBUTING.md"
+    #   - "**/CODE_OF_CONDUCT.md"
+    #   - "docs/**"
+    #   - "**/.editorconfig"
+    #   - "**/.gitignore"
+    #   - "**/LICENSE"
+    #   - "**/CREDITS"
 
   workflow_dispatch:
 
@@ -49,6 +48,7 @@ jobs:
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
 
           
 
