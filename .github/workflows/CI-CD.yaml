@@ -34,12 +34,13 @@ jobs:
       - name: Setup tests
         run: |
           python -m pip install --upgrade pip
-          python -m pip install poetry
-          poetry install
       
       - name: Run tests & CodeCov
         run: |
-          poetry shell
+          python -m venv .venv
+          source .venv/bin/activate
+          .venv/bin/python -m pip install --upgrade pip
+          pip install -e .
           coverage run -m pytest
           coverage report
           coverage xml
