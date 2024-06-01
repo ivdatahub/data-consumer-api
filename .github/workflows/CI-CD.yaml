@@ -39,6 +39,7 @@ jobs:
       
       - name: Run tests & CodeCov
         run: |
+          poetry shell
           coverage run -m pytest
           coverage report
           coverage xml
