@@ -58,6 +58,8 @@ class CustomLogger():
             logger = CustomLogger(module=self.module)._logger()
 
         logger.info(msg=msg)
+        
+        return True
 
 
     def error(self, msg: str):
@@ -78,6 +80,7 @@ class CustomLogger():
 
         logger.error(msg=msg)
 
+        return True
 
     def warning(self, msg: str):
         """
@@ -94,3 +97,5 @@ class CustomLogger():
             logger = CustomLogger(module=self.module)._logger()
 
         logger.warn(msg=msg)
+        
+        return True

@@ -15,10 +15,28 @@ def test_custom_logger():
 def test_make_file_log():
     default_folder = DefaultOutputLogFolder()
     expected_file_log = "test.log"
-    expected_path = f"{default_folder}/{expected_file_log}"
+    expected_path = f"{default_folder}{expected_file_log}"
     
     new_logger = CustomLogger("test")
     result_path = new_logger._make_file_log()
     
     assert result_path == expected_path
     assert os.path.isfile(expected_path)
+
+
+def test_log_info():
+    new_logger = CustomLogger("test")
+
+    assert new_logger.info("This test message.")
+
+
+def test_log_error():
+    new_logger = CustomLogger("test")
+
+    assert new_logger.error("This test message.")
+
+
+def test_log_warning():
+    new_logger = CustomLogger("test")
+
+    assert new_logger.warning("This test message.")
