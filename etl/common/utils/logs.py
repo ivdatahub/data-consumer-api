@@ -1,5 +1,6 @@
 import logging
 import os
+from etl.common.utils.common import DefaultOutputLogFolder
 
 
 class CustomLogger():
@@ -8,7 +9,7 @@ class CustomLogger():
         self._log_format = "%(asctime)s :: %(levelname)s :: %(message)s"
     
     def _make_file_log(self):
-        dir_name = "../logs/"
+        dir_name = DefaultOutputLogFolder()
         os.makedirs(dir_name, exist_ok=True)
         
         with open(dir_name + f"{self.module}.log", "w") as f:
