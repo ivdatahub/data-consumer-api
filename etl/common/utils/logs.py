@@ -96,6 +96,6 @@ class CustomLogger():
         else:
             logger = CustomLogger(module=self.module)._logger()
 
-        logger.warn(msg=msg)
+        logger.warning(msg=msg)
         
         return True
