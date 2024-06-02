@@ -3,6 +3,8 @@
 ![Project Status](https://img.shields.io/badge/status-in%20development-yellow) ![License](https://img.shields.io/badge/license-MIT-blue) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/IvanildoBarauna/ETL-awesome-api) ![Python Version](https://img.shields.io/badge/python-3.9-blue) ![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/CI-CD.yaml/badge.svg)
 [![codecov](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api/branch/main/graph/badge.svg?token=GEGNHFM6P)](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api)
 
+## Code Coverage Graph
+
 [![codecov](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api/graphs/sunburst.svg?token=GEGNHFM6PS)](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api)
 
 ## Project Stack
