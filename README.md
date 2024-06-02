@@ -7,6 +7,10 @@
 
 [![codecov](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api/graphs/sunburst.svg?token=GEGNHFM6PS)](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api)
 
+[![codecov](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api/graphs/tree.svg?token=GEGNHFM6PS)](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api)
+
+[![codecov](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api/graphs/icicle.svg?token=GEGNHFM6PS)](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api)
+
 ## Project Stack
 
 <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" Alt="Python" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original.svg" Alt="Docker" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/poetry/poetry-original.svg" Alt="Poetry" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/pandas/pandas-original.svg" Alt="Pandas" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/jupyter/jupyter-original.svg" Alt="Jupyter" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/matplotlib/matplotlib-original.svg" Alt="Matplotlib" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/githubactions/githubactions-original.svg" Alt="GitHub Actions" width="50" height="50">
