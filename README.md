@@ -13,6 +13,7 @@ O projeto "Awesome Project: ETL Process for Currency Quotes Data" é uma soluç�
 
 ## Destaques do Projeto:
 
+
 - Arquitetura MVC: Implementação da arquitetura Model-View-Controller (MVC), separando a lógica de negócio, a interface do usuário e a manipulação de dados para uma melhor organização e manutenção do código.
 
 - Testes Abrangentes: Desenvolvimento de testes para garantir a qualidade e a robustez do código em diversas etapas do processo ETL
