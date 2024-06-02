@@ -68,6 +68,8 @@ class PipelineExecutor:
             self.controller_queue.join()
             
             DatasetSerializer(self.files_to_dataset).serialize()
+            
+            return valid_params
 
         except Exception as e:
             raise e
