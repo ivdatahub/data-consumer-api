@@ -1,17 +1,15 @@
 
-from matplotlib.pylab import f
 import pandas as pd
 
 from etl.config.logFile import log_file_name
-from etl.common.utils.logs import logging_error, logging_info
+from etl.common.utils.logs import CustomLogger
 from etl.common.utils.common import (
     DefaultTimestampStr,
     DefaultOutputFolder,
     DefaultUTCDatetime,
 )
 
-dir = log_file_name(file=__file__)
-
+logger = CustomLogger(log_file_name(file=__file__))
 
 class load:
     def __init__(self, item) -> None:
@@ -24,7 +22,7 @@ class load:
         df = pd.DataFrame([self.dic])
 
         if df.empty:
-            logging_error("DataFrame is empty", dir)
+            logger.error("DataFrame is empty")
             raise ValueError("DataFrame is empty")
 
         # Add new columns to the DataFrame
@@ -39,7 +37,7 @@ class load:
         try:
             df.to_parquet(f"{DefaultOutputFolder()}{param}-{ts}.parquet")
         except Exception as e:
-            logging_error(f"Error writing parquet file: {e}", dir)
+            logger.error(f"Error writing parquet file: {e}")
 
         # Append list with the file path
         extracted_files.append(f"{param}-{ts}.parquet")

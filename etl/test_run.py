@@ -1,4 +1,3 @@
-import pytest
 import requests
 from etl.run import generate_random_params
 
