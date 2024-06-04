@@ -1,23 +1,14 @@
-import requests
-from etl.run import generate_random_params
+from unittest.mock import patch
+from etl.run import main
 
 
-def test_generate_random_params():
-    # Mock the response from the API
-    mock_response = ["param1", "param2", "param3", "param4", "param5"]
-    requests.get = lambda url: MockResponse(mock_response)
-
-    params_qty = 3
-    result = generate_random_params(params_qty)
-
-    assert isinstance(result, list)
-    assert len(result) == params_qty - 1
-    assert all(param in mock_response for param in result)
+@patch("etl.run.PipelineExecutor", autospec=True)
+def test_main(MockPipelineExecutor):
+    main()
+    mock_executor_instance = MockPipelineExecutor.return_value
+    MockPipelineExecutor.assert_called_once_with("USD-BRL")
+    mock_executor_instance.pipeline_run.assert_called_once()
 
 
-class MockResponse:
-    def __init__(self, json_data):
-        self.json_data = json_data
-
-    def json(self):
-        return self.json_data
+if __name__ == "__main__":
+    test_main()
