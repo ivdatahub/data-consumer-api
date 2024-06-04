@@ -1,4 +1,4 @@
-name: CI/CD
+name: Tests and Builds
 
 on:
   pull_request:
@@ -33,7 +33,7 @@ jobs:
       - name: Setup tests
         run: |
           python -m pip install --upgrade pip
-      
+
       - name: Run tests & CodeCov
         run: |
           python -m venv .venv
@@ -43,14 +43,12 @@ jobs:
           coverage run -m pytest
           coverage report
           coverage xml
-          
+
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage.xml
-
-          
 
   build:
     needs: test
@@ -91,47 +89,47 @@ jobs:
           poetry install
           poetry run python etl/run.py
 
-  deploy:
-    needs: build
-    if: github.actor != 'actions[bot]'
-    # environment:
-    #   name: github-pages
-    #   url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
+  # deploy:
+  #   needs: build
+  #   if: github.actor != 'actions[bot]'
+  #   # environment:
+  #   #   name: github-pages
+  #   #   url: ${{ steps.deployment.outputs.page_url }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         ref: ${{ github.head_ref }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.9"
+  #     - name: Set up Python
+  #       uses: actions/setup-python@v2
+  #       with:
+  #         python-version: "3.9"
 
-      - name: Install Jupyter
-        run: | 
-          pip install notebook
-          pip install pandas
-          pip install pandasql
-          pip install matplotlib
+  #     - name: Install Jupyter
+  #       run: |
+  #         pip install notebook
+  #         pip install pandas
+  #         pip install pandasql
+  #         pip install matplotlib
 
-      - name: Convert notebook to HTML
-        run: |
-          jupyter nbconvert --execute --to html notebooks/data_explorer.ipynb --output-dir=docs --output=index
-          jupyter nbconvert --execute --to html notebooks/data_explorer.ipynb --output-dir=etl/views --output=index
+  #     - name: Convert notebook to HTML
+  #       run: |
+  #         jupyter nbconvert --execute --to html notebooks/data_explorer.ipynb --output-dir=docs --output=index
+  #         jupyter nbconvert --execute --to html notebooks/data_explorer.ipynb --output-dir=etl/views --output=index
 
-      - name: Setup Git
-        run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'actions@github.com'
+  #     - name: Setup Git
+  #       run: |
+  #         git config --global user.name 'GitHub Actions'
+  #         git config --global user.email 'actions@github.com'
 
-      - name: Commit and Push Notebook
-        run: |
-          git add .
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Add generated HTML to README"
-            git push
-          fi
+  #     - name: Commit and Push Notebook
+  #       run: |
+  #         git add .
+  #         if git diff --staged --quiet; then
+  #           echo "No changes to commit"
+  #         else
+  #           git commit -m "Add generated HTML to README"
+  #           git push
+  #         fi
