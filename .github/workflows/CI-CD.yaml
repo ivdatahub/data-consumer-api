@@ -4,15 +4,6 @@ on:
   pull_request:
     branches:
       - main
-    # paths-ignore:
-    #   - "**/README.md"
-    #   - "**/CONTRIBUTING.md"
-    #   - "**/CODE_OF_CONDUCT.md"
-    #   - "docs/**"
-    #   - "**/.editorconfig"
-    #   - "**/.gitignore"
-    #   - "**/LICENSE"
-    #   - "**/CREDITS"
 
   workflow_dispatch:
 
@@ -59,77 +50,7 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Build Docker Image using Dockerfile
+      - name: Build and Run Image
         run: |
           docker build -t etl-awesome-api .
-
-      - name: Run Docker Image using Dockerfile
-        run: |
           docker run etl-awesome-api
-
-      - name: Build Docker Image using Docker Compose
-        run: |
-          docker-compose up --build -d
-
-      - name: Run Docker image using Docker Compose
-        run: |
-          docker run etl-awesome-api-compose
-
-      - name: Run Application using Python Native
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate
-          .venv/bin/python -m pip install --upgrade pip
-          pip install -e .
-          python etl/run.py
-
-      - name: Run Application using Poetry
-        run: |
-          pip install poetry
-          poetry install
-          poetry run python etl/run.py
-
-  # deploy:
-  #   needs: build
-  #   if: github.actor != 'actions[bot]'
-  #   # environment:
-  #   #   name: github-pages
-  #   #   url: ${{ steps.deployment.outputs.page_url }}
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
-  #       with:
-  #         ref: ${{ github.head_ref }}
-
-  #     - name: Set up Python
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: "3.9"
-
-  #     - name: Install Jupyter
-  #       run: |
-  #         pip install notebook
-  #         pip install pandas
-  #         pip install pandasql
-  #         pip install matplotlib
-
-  #     - name: Convert notebook to HTML
-  #       run: |
-  #         jupyter nbconvert --execute --to html notebooks/data_explorer.ipynb --output-dir=docs --output=index
-  #         jupyter nbconvert --execute --to html notebooks/data_explorer.ipynb --output-dir=etl/views --output=index
-
-  #     - name: Setup Git
-  #       run: |
-  #         git config --global user.name 'GitHub Actions'
-  #         git config --global user.email 'actions@github.com'
-
-  #     - name: Commit and Push Notebook
-  #       run: |
-  #         git add .
-  #         if git diff --staged --quiet; then
-  #           echo "No changes to commit"
-  #         else
-  #           git commit -m "Add generated HTML to README"
-  #           git push
-  #         fi
