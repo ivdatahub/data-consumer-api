@@ -9,7 +9,7 @@ packages = [{ include = "etl" }]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-requests = "^2.31.0"
+requests = "^2.32.3"
 pandas = "^2.2.2"
 pyarrow = "^16.1.0"
 fastparquet = "^2024.2.0"
