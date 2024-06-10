@@ -17,7 +17,7 @@ executing==2.0.1
 fastjsonschema==2.19.1
 fastparquet==2024.5.0
 fonttools==4.51.0
-fsspec==2024.5.0
+fsspec==2024.6.0
 idna==3.7
 iniconfig==2.0.0
 ipykernel==6.29.4
