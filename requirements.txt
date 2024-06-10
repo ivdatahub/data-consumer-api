@@ -66,7 +66,7 @@ python-dotenv==1.0.1
 pytz==2024.1
 pyzmq==26.0.3
 referencing==0.35.1
-requests==2.32.2
+requests==2.32.3
 rpds-py==0.18.1
 six==1.16.0
 soupsieve==2.5
