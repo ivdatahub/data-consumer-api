@@ -19,7 +19,7 @@ executing==2.0.1
 fastjsonschema==2.19.1
 fastparquet==2024.5.0
 fonttools==4.53.0
-fsspec==2024.5.0
+fsspec==2024.6.0
 greenlet==3.0.3
 idna==3.7
 importlib_metadata==7.1.0
