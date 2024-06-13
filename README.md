@@ -12,79 +12,86 @@
 
 <img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" Alt="Python" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original.svg" Alt="Docker" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/poetry/poetry-original.svg" Alt="Poetry" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/pandas/pandas-original.svg" Alt="Pandas" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/jupyter/jupyter-original.svg" Alt="Jupyter" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/matplotlib/matplotlib-original.svg" Alt="Matplotlib" width="50" height="50"> <img src="https://github.com/devicons/devicon/blob/master/icons/githubactions/githubactions-original.svg" Alt="GitHub Actions" width="50" height="50">
 
-## Descrição do Projeto
+## Project description
 
-O projeto "Awesome Project: ETL Process for Currency Quotes Data" é uma solução completa dedicada à extração, transformação e carregamento (ETL) de dados de cotações de moedas. Este projeto utiliza diversas técnicas e arquiteturas avançadas para garantir a eficiência e a robustez do processo ETL.
+The "Awesome Project: ETL Process for Currency Quotes Data" project is a complete solution dedicated to extracting, transforming and loading (ETL) currency quote data. This project uses several advanced techniques and architectures to ensure the efficiency and robustness of the ETL process.
 
-## Destaques do Projeto:
+## Contributing
 
-- Arquitetura MVC: Implementação da arquitetura Model-View-Controller (MVC), separando a lógica de negócio, a interface do usuário e a manipulação de dados para uma melhor organização e manutenção do código.
+See the following docs:
 
-- Testes Abrangentes: Desenvolvimento de testes para garantir a qualidade e a robustez do código em diversas etapas do processo ETL
+- [Contributing Guide](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/CONTRIBUTING.md)
+- [Code Of Conduct](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/CODE_OF_CONDUCT.md)
 
-- Paralelismo nos Modelos: Utilização de paralelismo nas etapas de transformação e carregamento dos dados, aumentando a eficiência e reduzindo o tempo de processamento.
+## Project Highlights:
 
-- Mensageria Fire-Forget: Uso de mensageria (queue.queue) no modelo fire-forget para gerenciar os arquivos gerados entre as etapas de transformação e carregamento, garantindo um fluxo de dados contínuo e eficiente.
+- MVC Architecture: Implementation of the Model-View-Controller (MVC) architecture, separating business logic, user interface and data manipulation for better organization and code maintenance.
 
-- Validação de Parâmetros: Envio de parâmetros válidos baseados na própria fonte de dados de requisições, garantindo a integridade e a precisão das informações processadas.
+- Comprehensive Testing: Development of tests to ensure the quality and robustness of the code at various stages of the ETL process
 
-- Gestão de Configurações: Utilização de um módulo de configuração para gerenciar endpoints, tempos de retry e quantidade de tentativas, proporcionando flexibilidade e facilidade de ajustes.
+- Parallelism in Models: Use of parallelism in the data transformation and loading stages, increasing efficiency and reducing processing time.
 
-- Módulo Comum: Implementação de um módulo comum para reutilização de código em todo o projeto, promovendo a consistência e a redução de redundâncias.
+- Fire-Forget Messaging: Use of messaging (queue.queue) in the fire-forget model to manage files generated between the transformation and loading stages, ensuring a continuous and efficient data flow.
 
-- Views Dinâmicas: Geração de views com index.html utilizando nbConvert, baseado em dados consolidados de um Jupyter Notebook que integra os arquivos gerados em um único dataset para exploração e análise.
+- Parameter Validation: Sending valid parameters based on the request data source itself, ensuring the integrity and accuracy of the information processed.
 
-# Processo ETL:
+- Configuration Management: Use of a configuration module to manage endpoints, retry times and number of attempts, providing flexibility and ease of adjustment.
 
-- Extração: Uma única requisição é feita a um endpoint específico para obter cotações de múltiplas moedas.
-- Transformação: A resposta da requisição é processada, separando cada cotação de moeda e armazenando em arquivos individuais no formato Parquet, facilitando a organização e recuperação dos dados.
-- Carregamento: Os arquivos Parquet individuais são consolidados em um único dataset utilizando um Jupyter Notebook, permitindo uma análise abrangente e insights valiosos sobre as cotações de moedas.
+- Common Module: Implementation of a common module for code reuse across the project, promoting consistency and reducing redundancies.
 
-Em resumo, o "Awesome Project: ETL Process for Currency Quotes Data" oferece uma solução robusta e eficiente para coleta, processamento e análise de dados de cotações de moedas, utilizando técnicas avançadas de arquitetura e paralelismo para otimizar cada etapa do processo ETL.
+- Dynamic Views: Generation of views with index.html using nbConvert, based on consolidated data from a Jupyter Notebook that integrates the generated files into a single dataset for exploration and analysis.
 
-  <details>
-    <summary>Estrutura do repositório</summary>
+# ETL Process:
 
-- [`data/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/data): Armazena dados brutos no formato Parquet.
-  - ETH-EUR-1713658884.parquet: Exemplo: Dados brutos para cotações ETH-EUR. nome_do_arquivo = símbolo + timestamp unix da extração
-- [`notebooks/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/notebooks): Contém o notebook `data_explorer.ipynb` para exploração de dados.
-- [`etl/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl): Contém o código-fonte do projeto.
-  - [`run.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/run.py): Entrypoint da aplicação
-  - [`common/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/common): Biblioteca para reutilização e padronização de código.
-    - [`utils/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/utils)
-      - [`logs.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/utils/logs.py): Pacote para gerenciamento de logs.
-      - [`common.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/utils/common.py): Pacote para tarefas comuns no código como recuperação de diretório de saída ou timestamp default.
-    - [`logs/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/common/logs): Para armazenamento de logs de debug.
-  - [`controller/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/controller)
-    - [`pipeline.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/controller/pipeline.py): Recebe requisições de extração de dados e orquestra os modelos de ETL.
-  - [`models/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/models):
-    - [`extract/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/models/extract)
-      - [`api_data_extractor.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/models/extract/api_data_extractor.py): Recebe os parâmetros do controller envia a requisição e retorna em JSON.
-    - [`transform/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/models/transform)
-      - [`publisher.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/models/extract/publisher.py): Recebe o JSON do extrator, separa o dicionário por moeda e publica cada um deles para uma fila pra serem processados individualmente.
-    - [`load/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/models/load)
-      - [`parquet_loader.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/models/extract/parquet_loader.py): Em uma thread separada, recebe um novo dicionário da fila que o transformer está publicando e gera arquivos .parquet no diretório padrão.
-  - [`views/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/views): Para armazenamento de análise de dados e visualização.
+- Extraction: A single request is made to a specific endpoint to obtain quotes from multiple currencies.
+- Transformation: The request response is processed, separating each currency quote and storing it in individual files in Parquet format, facilitating data organization and retrieval.
+- Upload: Individual Parquet files are consolidated into a single dataset using a Jupyter Notebook, allowing for comprehensive analysis and valuable insights into currency quotes.
+
+In summary, "Awesome Project: ETL Process for Currency Quotes Data" offers a robust and efficient solution for collecting, processing and analyzing currency quote data, using advanced architecture and parallelism techniques to optimize each step of the ETL process.
+
+ <details>
+ <summary>Repository structure</summary>
+
+- [`data/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/data): Stores raw data in Parquet format.
+   - ETH-EUR-1713658884.parquet: Example: Raw data for ETH-EUR quotes. file_name = symbol + extraction unix timestamp
+- [`notebooks/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/notebooks): Contains the `data_explorer.ipynb` notebook for data exploration.
+- [`etl/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl): Contains the project's source code.
+    - [`run.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/run.py): Entrypoint of the application
+ - [`common/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/common): Library for code reuse and standardization.
+   - [`utils/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/utils)
+     - [`logs.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/utils/logs.py): Package for log management.
+   - [`common.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/utils/common.py): Package for common code tasks like output directory retrieval or default timestamp.
+   - [`logs/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/common/logs): For storing debug logs.
+ - [`controller/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/controller)
+   - [`pipeline.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/controller/pipeline.py): Receives data extraction requests and orchestrates ETL models .
+ - [`models/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/models):
+   - [`extract/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/models/extract)
+     - [`api_data_extractor.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/models/extract/api_data_extractor.py): Receives the parameters from the controller, sends the request and returns in JSON.
+   - [`transform/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/models/transform)
+     - [`publisher.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/models/extract/publisher.py): Receives the JSON from the extractor, separates the dictionary by currency and publishes each of them to a queue to be processed individually.
+   - [`load/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/models/load)
+     - [`parquet_loader.py`](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/etl/models/extract/parquet_loader.py): In a separate thread, receive a new dictionary from queue that the transformer is publishing and generates .parquet files in the default directory.
+ - [`views/`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/etl/views): For storing data analysis and visualization.
 
 </details>
 
 <details>
-  <summary>Como executar a aplicação localmente</summary>
-  
-  ## Step by Step
-  1. Clone the repository:
-     ```sh
-     $ git clone https://github.com/IvanildoBarauna/ETL-awesome-api.git
-     ```
+ <summary>How to run the application locally</summary>
 
-<details> 
-  <summary>Usando virtual enviroment (Python Nativo)</summary>
-    Garanta que o Python 3.9 ou superior esteja instalado em sua máquina
+ ## Step by Step
+ 1. Clone the repository:
+ ```sh
+ $ git clone https://github.com/IvanildoBarauna/ETL-awesome-api.git
+ ```
+
+<details>
+ <summary>Using virtual environment (Native Python)</summary>
+ Ensure Python 3.9 or higher is installed on your machine
 
 ```sh
 $ cd ETL-awesome-api
 $ python -m venv .venv
-$ source .venv/bin/activate  # On Windows use `venv\Scripts\activate`
+$ source .venv/bin/activate # On Windows use `venv\Scripts\activate`
 $ .venv/bin/python -m pip install --upgrade pip
 $ pip install -e .
 $ python etl/run.py
@@ -92,11 +99,11 @@ $ python etl/run.py
 
 Learn more about [venv module in python](https://docs.python.org/pt-br/3/library/venv.html)
 
-  </details>
+ </details>
 
-  <details> 
-    <summary>Usando Docker</summary>
-    Garanta que o Docker esteja instalado em sua máquina
+ <details>
+ <summary>Using Docker</summary>
+ Ensure Docker is installed on your machine
 
 [`Dockerfile`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/Dockerfile)
 
@@ -104,7 +111,7 @@ Learn more about [venv module in python](https://docs.python.org/pt-br/3/library
 $ docker build -t etl-awesome-api . && docker run etl-awesome-api
 ```
 
-Ou:
+Or:
 
 [`docker-compose`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/docker-compose.yml)
 
@@ -112,17 +119,17 @@ Ou:
 $ docker-compose up --build
 ```
 
-Saiba mais sobre [docker](https://docs.docker.com/)
+Learn more about [docker](https://docs.docker.com/)
 
 </details>
 
-- Ou use o Poetry
+- Or use Poetry
 
-  ```sh
-  $ poetry install && poetry run python etl/run.py
-  ```
+ ```sh
+ $ poetry install && poetry run python etl/run.py
+ ```
 
-  Saiba mais sobre [`poetry`](https://python-poetry.org/)
+ Learn more about [`poetry`](https://python-poetry.org/)
 
 </details>
 
