@@ -1,4 +1,3 @@
-
 import pandas as pd
 
 from etl.config.logFile import log_file_name

@@ -79,59 +79,24 @@ In summary, "Awesome Project: ETL Process for Currency Quotes Data" offers a rob
  <summary>How to run the application locally</summary>
 
  ## Step by Step
- 1. Clone the repository:
+
+Ensure Python 3.9 or higher is installed on your machine
+
+ - Clone the repository:
  ```sh
  $ git clone https://github.com/IvanildoBarauna/ETL-awesome-api.git
  ```
-
-<details>
- <summary>Using virtual environment (Native Python)</summary>
- Ensure Python 3.9 or higher is installed on your machine
-
+- Go to directory
 ```sh
 $ cd ETL-awesome-api
-$ python -m venv .venv
-$ source .venv/bin/activate # On Windows use `venv\Scripts\activate`
-$ .venv/bin/python -m pip install --upgrade pip
-$ pip install -e .
-$ python etl/run.py
 ```
-
-Learn more about [venv module in python](https://docs.python.org/pt-br/3/library/venv.html)
-
- </details>
-
- <details>
- <summary>Using Docker</summary>
- Ensure Docker is installed on your machine
-
-[`Dockerfile`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/Dockerfile)
-
-```sh
-$ docker build -t etl-awesome-api . && docker run etl-awesome-api
-```
-
-Or:
-
-[`docker-compose`](https://github.com/IvanildoBarauna/ETL-awesome-api/tree/main/docker-compose.yml)
-
-```sh
-$ docker-compose up --build
-```
-
-Learn more about [docker](https://docs.docker.com/)
-
-</details>
-
-- Or use Poetry
+- Install dependencies and execute project
 
  ```sh
  $ poetry install && poetry run python etl/run.py
  ```
 
- Learn more about [`poetry`](https://python-poetry.org/)
-
-</details>
+Learn more about [`poetry`](https://python-poetry.org/)
 
 ## ETL and Data Analysis Results:
 

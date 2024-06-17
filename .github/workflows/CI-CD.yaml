@@ -21,16 +21,15 @@ jobs:
         with:
           python-version: 3.9
 
-      - name: Setup tests
+      - name: Poetry Setup
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
+          curl -sSL https://install.python-poetry.org | python3 -
+          poetry config virtualenvs.create false
+          poetry install
 
       - name: Run tests & CodeCov
         run: |
-          python -m venv .venv
-          source .venv/bin/activate
-          .venv/bin/python -m pip install --upgrade pip
-          pip install -e .
           coverage run -m pytest
           coverage report
           coverage xml
@@ -40,17 +39,3 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage.xml
-
-  build:
-    needs: test
-    if: github.actor != 'actions[bot]'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-
-      - name: Build and Run Image
-        run: |
-          docker build -t etl-awesome-api .
-          docker run etl-awesome-api
