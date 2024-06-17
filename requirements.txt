@@ -16,7 +16,7 @@ defusedxml==0.7.1
 -e git+ssh://git@github.com/IvanildoBarauna/ETL-awesome-api.git@a50ffd5bb6ea3190b6abeb8a7a6a143f12eb398c#egg=ETL_awesome_api
 exceptiongroup==1.2.1
 executing==2.0.1
-fastjsonschema==2.19.1
+fastjsonschema==2.20.0
 fastparquet==2024.5.0
 fonttools==4.53.0
 fsspec==2024.6.0
