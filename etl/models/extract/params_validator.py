@@ -1,14 +1,14 @@
-import requests
+from api_to_dataframe import ClientBuilder, RetryStrategies
 from etl.common.utils.logs import CustomLogger
 from etl.config.datasource import API
 from etl.config.logFile import log_file_name
 
 logger = CustomLogger(log_file_name(file=__file__))
-class ParamsValidator:
-    def __init__(self, params: list) -> None:
-        self.params = params
 
-    def valid_params_for_call(self) -> list:
+
+class ParamsValidator:
+    @staticmethod
+    def valid_params_for_call(params) -> list:
         """
         Returns a list of valid parameters for the pipeline execution.
 
@@ -16,18 +16,27 @@ class ParamsValidator:
             list: List of valid parameters.
 
         """
-        valParams = []
-        AvaliableList = requests.get(API.ENDPOINT_AVALIABLE_PARITIES).json()
+        valid_params = []
 
-        for param in self.params:
-            if param in AvaliableList:
-                valParams.append(param)
+        client = ClientBuilder(
+            endpoint=API.ENDPOINT_AVALIABLE_PARITIES,
+            retry_strategy=RetryStrategies.LinearRetryStrategy,
+            connection_timeout=API.CONNECTION_TIMEOUT,
+            delay=API.RETRY_TIME_SECONDS,
+            retries=API.RETRY_ATTEMPTS
+        )
+
+        avaliable_list = client.get_api_data()
+
+        for param in params:
+            if param in avaliable_list:
+                valid_params.append(param)
             else:
                 logger.warning(f"Param: {param} is not valid for call")
 
-        if valParams:
-            return valParams
+        if valid_params:
+            return valid_params
         else:
             raise KeyError(
-                f"The informed params: {self.params} are not avaliable for extract, see available list in: {API.ENDPOINT_AVALIABLE_PARITIES}"
+                f"The informed params: {params} are not avaliable for extract, see available list in: {API.ENDPOINT_AVALIABLE_PARITIES}"
             )

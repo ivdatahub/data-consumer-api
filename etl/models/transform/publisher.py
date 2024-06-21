@@ -1,9 +1,8 @@
-import time
 import queue
-
 from tqdm import tqdm
 
-class transformation:
+
+class ResponseTransformation:
     def __init__(self, json_response: dict, params, queue: queue.Queue):
         self.json_response = json_response
         self.valid_params = params
@@ -14,5 +13,4 @@ class transformation:
             self.valid_params, total=len(self.valid_params), desc="Producing Data"
         ):
             dic = self.json_response[param.replace("-", "")]
-            time.sleep(0.2)
             self.queue.put(dic)

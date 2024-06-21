@@ -10,15 +10,14 @@ from etl.common.utils.common import (
 
 logger = CustomLogger(log_file_name(file=__file__))
 
-class load:
-    def __init__(self, item) -> None:
-        self.dic = item
 
-    def run(self):
+class ParquetLoader:
+    @staticmethod
+    def run(dic):
         extracted_files = []
-        param = self.dic["code"] + "-" + self.dic["codein"]
+        param = dic["code"] + "-" + dic["codein"]
         ts = DefaultTimestampStr()
-        df = pd.DataFrame([self.dic])
+        df = pd.DataFrame([dic])
 
         if df.empty:
             logger.error("DataFrame is empty")
