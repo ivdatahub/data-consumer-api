@@ -18,20 +18,15 @@ def mixed_params():
 
 
 def test_valid_params(valid_params):
-    validator = ParamsValidator(valid_params)
-    valid = validator.valid_params_for_call()
-    assert validator.params == valid_params
+    valid = ParamsValidator.valid_params_for_call(valid_params)
     assert valid_params == valid
 
 
 def test_invalid_params(invalid_params):
-    validator = ParamsValidator(invalid_params)
     with pytest.raises(KeyError):
-        validator.valid_params_for_call()
+        ParamsValidator.valid_params_for_call(invalid_params)
 
 
 def test_mixed_params(mixed_params, valid_params):
-    validator = ParamsValidator(mixed_params)
-    validated = validator.valid_params_for_call()
-    assert validator.params == mixed_params
+    validated = ParamsValidator.valid_params_for_call(mixed_params)
     assert validated == valid_params

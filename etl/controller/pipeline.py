@@ -4,9 +4,9 @@ import queue
 
 from tqdm import tqdm
 
-from etl.models.extract.api_data_extractor import extraction
-from etl.models.transform.publisher import transformation
-from etl.models.load.parquet_loader import load
+from etl.models.extract.api_data_extractor import APIExtraction
+from etl.models.transform.publisher import ResponseTransformation
+from etl.models.load.parquet_loader import ParquetLoader
 from etl.views.make_dataset import DatasetSerializer
 
 
@@ -25,12 +25,11 @@ class PipelineExecutor:
         if total_invalid_params == len(self.params):
             raise TypeError(f"Invalid parameters >>>> {self.params}")
 
-        extractor = extraction(self.params)
-        response, valid_params = extractor.run
+        response, valid_params = APIExtraction.run(self.params)
 
         try:
             def produce():
-                transformer = transformation(
+                transformer = ResponseTransformation(
                     json_response=response,
                     params=valid_params,
                     queue=self.controller_queue,
@@ -46,13 +45,11 @@ class PipelineExecutor:
                     total=len(valid_params),
                 ) as pbar:
                     while True:
-                        time.sleep(0.2)
                         item = self.controller_queue.get()
                         if item is None:
                             self.controller_queue.task_done()
                             break
-                        loader = load(item)
-                        self.files_to_dataset.append(loader.run()[0])
+                        self.files_to_dataset.append(ParquetLoader.run(item)[0])
                         self.controller_queue.task_done()
                         pbar.update()
 
@@ -67,7 +64,7 @@ class PipelineExecutor:
             thread_consumer.join()
             self.controller_queue.join()
             
-            DatasetSerializer(self.files_to_dataset).serialize()
+            DatasetSerializer.serialize(self.files_to_dataset)
             
             return valid_params
 

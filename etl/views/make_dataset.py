@@ -4,14 +4,12 @@ from etl.common.utils.common import DefaultOutputFolder as DefaultFolder
 
 
 class DatasetSerializer:
-    def __init__(self, source_files: list) -> None:
-        self.files = source_files
-        
-    def serialize(self):
+    @staticmethod
+    def serialize(files):
         serialized_df = pd.read_pickle("etl/views/dataset.pkl")
         print("Total rows before execution: ", serialized_df.shape[0])
         dfs = []
-        for file in self.files:
+        for file in files:
             df = pd.read_parquet(DefaultFolder() + file)
             dfs.append(df)
 

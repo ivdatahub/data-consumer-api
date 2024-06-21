@@ -1,5 +1,5 @@
 import pytest
-from etl.models.transform.publisher import transformation
+from etl.models.transform.publisher import ResponseTransformation
 import queue
 
 fila = queue.Queue()
@@ -44,11 +44,7 @@ def valid_params() -> list:
 
 def test_transformation_process_param(json_response, valid_params):
     # Create an instance of the transformation class
-    transform = transformation(json_response, valid_params, fila)
+    transform = ResponseTransformation(json_response, valid_params, fila)
     transform.publish()
 
     assert fila.qsize() == 2
-
-    # for extracted_file in transform.extracted_files:
-    #     assert extracted_file.startswith("BRL-")
-    #     assert extracted_file.endswith(".parquet")
