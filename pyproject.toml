@@ -19,7 +19,7 @@ api-to-dataframe = "^1.2.0"
 pandasql = "^0.7.3"
 ipykernel = "^6.29.4"
 nbconvert = "^7.16.4"
-coverage = "^7.5.3"
+coverage = "^7.5.4"
 pytest = "^8.2.2"
 poetry-dynamic-versioning = "^1.3.0"
 
