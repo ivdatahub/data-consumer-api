@@ -23,7 +23,7 @@ class ParamsValidator:
             retry_strategy=RetryStrategies.LinearRetryStrategy,
             connection_timeout=API.CONNECTION_TIMEOUT,
             delay=API.RETRY_TIME_SECONDS,
-            retries=API.RETRY_ATTEMPTS
+            retries=API.RETRY_ATTEMPTS,
         )
 
         avaliable_list = client.get_api_data()

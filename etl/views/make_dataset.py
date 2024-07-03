@@ -19,5 +19,4 @@ class DatasetSerializer:
 
         pd.to_pickle(new_df, "etl/views/dataset.pkl")
         print("Total rows after execution:: ", new_df.shape[0])
-        print("New rows added: ",
-              new_df.shape[0] - serialized_df.shape[0])
+        print("New rows added: ", new_df.shape[0] - serialized_df.shape[0])
