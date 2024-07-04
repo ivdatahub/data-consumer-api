@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 
 
 def default_output_folder():
+
     """
     Returns the default output folder path.
     """
@@ -22,6 +23,7 @@ def default_timestamp_str() -> str:
     """
     current = datetime.now().timestamp()
     return str(int(current))
+
 
 
 def default_utc_datetime() -> str:

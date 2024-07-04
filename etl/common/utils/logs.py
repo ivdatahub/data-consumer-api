@@ -8,6 +8,7 @@ class CustomLogger:
         self.module = module
         self._log_format = "%(asctime)s :: %(levelname)s :: %(message)s"
 
+
     def make_file_log(self):
         dir_name = default_output_log_folder()
         os.makedirs(dir_name, exist_ok=True)
@@ -30,6 +31,7 @@ class CustomLogger:
         console_log = logging.getLogger("consoleLogger")
 
         console_log.setLevel(logging.INFO)
+
         ch = logging.StreamHandler()
         ch.setLevel(logging.INFO)
         formatter = logging.Formatter(self._log_format)

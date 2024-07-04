@@ -19,7 +19,7 @@ class APIExtraction:
 
         client = ClientBuilder(
             endpoint=url_endpoint,
-            retry_strategy=RetryStrategies.LinearRetryStrategy,
+            retry_strategy=RetryStrategies.LINEAR_RETRY_STRATEGY,
             connection_timeout=API.CONNECTION_TIMEOUT,
             initial_delay=API.RETRY_TIME_SECONDS,
             retries=API.RETRY_ATTEMPTS,

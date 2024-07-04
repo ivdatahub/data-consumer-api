@@ -21,9 +21,7 @@ ipykernel = "^6.29.4"
 nbconvert = "^7.16.4"
 coverage = "^7.5.3"
 pytest = "^8.2.2"
-poetry-dynamic-versioning = "^1.4.0"
-black = {extras = ["jupyter"], version = "^24.4.2"}
-pylint = "^3.2.5"
+poetry-dynamic-versioning = "^1.3.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -32,13 +30,3 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry-dynamic-versioning]
 enable = true
 versioning = "semantic"
-
-[tool.black]
-
-[tool.pylint.'MESSAGES CONTROL']
-disable = [
-    "C0114", # missing-module-docstring
-    "C0115", # missing-class-docstring
-    "C0116", # missing-function-docstring
-    "R0903", # too-few-public-methods
-]
