@@ -1,6 +1,6 @@
 import pandas as pd
 
-from etl.config.logFile import log_file_name
+from etl.config.log_file import log_file_name
 from etl.common.utils.logs import CustomLogger
 from etl.common.utils.common import (
     DefaultTimestampStr,
@@ -34,7 +34,7 @@ class ParquetLoader:
         # Write the DataFrame to a Parquet file
         try:
             df.to_parquet(f"{DefaultOutputFolder()}{param}-{ts}.parquet")
-        except Exception as e:
+        except ValueError as e:
             logger.error(f"Error writing parquet file: {e}")
 
         # Append list with the file path

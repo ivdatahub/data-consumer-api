@@ -2,7 +2,7 @@ from typing import Tuple
 
 from api_to_dataframe import ClientBuilder, RetryStrategies
 from etl.common.utils.logs import CustomLogger
-from etl.config.logFile import log_file_name
+from etl.config.log_file import log_file_name
 from etl.config.datasource import API
 from etl.models.extract.params_validator import ParamsValidator
 
@@ -21,7 +21,7 @@ class APIExtraction:
             endpoint=url_endpoint,
             retry_strategy=RetryStrategies.LinearRetryStrategy,
             connection_timeout=API.CONNECTION_TIMEOUT,
-            delay=API.RETRY_TIME_SECONDS,
+            initial_delay=API.RETRY_TIME_SECONDS,
             retries=API.RETRY_ATTEMPTS,
         )
 

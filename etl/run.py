@@ -13,8 +13,8 @@ def main(params: str = "USD-BRL"):
 
 if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) > 1:
-        params = str(sys.argv[1])
-        main(params)
+        terminal_parameters = str(sys.argv[1])
+        main(terminal_parameters)
     else:
         main()
 
