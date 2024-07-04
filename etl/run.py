@@ -13,7 +13,7 @@ def main(params: str = "USD-BRL"):
 
 if __name__ == "__main__":  # pragma: no cover
     if len(sys.argv) > 1:
-        terminal_parameters = str(sys.argv[1])
+        terminal_parameters = str(sys.argv[1])  # pylint: disable=invalid-name
         main(terminal_parameters)
     else:
         main()
