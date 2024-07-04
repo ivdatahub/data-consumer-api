@@ -1,8 +1,16 @@
 # Awesome Project: ETL Process for Currency Quotes Data
 
-![Project Status](https://img.shields.io/badge/status-done-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/IvanildoBarauna/ETL-awesome-api) ![Python Version](https://img.shields.io/badge/python-3.9-blue) ![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/CI-CD.yaml/badge.svg)
-[![codecov](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api/branch/main/graph/badge.svg?token=GEGNHFM6P)](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api)
+![Project Status](https://img.shields.io/badge/status-done-brightgreen?style=for-the-badge)
+![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/IvanildoBarauna/ETL-awesome-api?style=for-the-badge)
+![Python Version](https://img.shields.io/badge/python-3.9-blue?style=for-the-badge)
+
+![Black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge)
+![pylint](https://img.shields.io/badge/pylint-10.00-green?style=for-the-badge)
+
+![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/CI-CD.yaml/badge.svg)
+[![codecov](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api/branch/main/graph/badge.svg?token=GEGNHFM6P?style=for-the-badge)](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api)
+
 
 ## Code Coverage KPI Graph
 
@@ -75,7 +83,6 @@ In summary, "Awesome Project: ETL Process for Currency Quotes Data" offers a rob
 
 </details>
 
-<details>
  <summary>How to run the application locally</summary>
 
  ## Step by Step
