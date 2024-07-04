@@ -1,6 +1,6 @@
 import logging
 import os
-from etl.common.utils.common import DefaultOutputLogFolder
+from etl.common.utils.common import default_output_log_folder
 
 
 class CustomLogger:
@@ -8,17 +8,18 @@ class CustomLogger:
         self.module = module
         self._log_format = "%(asctime)s :: %(levelname)s :: %(message)s"
 
-    def _make_file_log(self):
-        dir_name = DefaultOutputLogFolder()
+
+    def make_file_log(self):
+        dir_name = default_output_log_folder()
         os.makedirs(dir_name, exist_ok=True)
 
-        with open(dir_name + f"{self.module}.log", "w") as f:
+        with open(dir_name + f"{self.module}.log", "w", encoding="UTF-8") as f:
             f.write("")
 
         return dir_name + f"{self.module}.log"
 
-    def _logger(self):
-        file_log = self._make_file_log()
+    def logger(self):
+        file_log = self.make_file_log()
 
         logging.basicConfig(
             filename=file_log,
@@ -27,17 +28,18 @@ class CustomLogger:
             datefmt="%Y-%m-%d %H:%M:%S",
         )
 
-        consoleLog = logging.getLogger("consoleLogger")
+        console_log = logging.getLogger("consoleLogger")
 
-        consoleLog.setLevel(logging.INFO)
+        console_log.setLevel(logging.INFO)
+
         ch = logging.StreamHandler()
         ch.setLevel(logging.INFO)
         formatter = logging.Formatter(self._log_format)
         ch.setFormatter(formatter)
 
-        consoleLog.addHandler(ch)
+        console_log.addHandler(ch)
 
-        return consoleLog
+        return console_log
 
     def info(self, msg: str):
         """
@@ -53,7 +55,7 @@ class CustomLogger:
         if logging.getLogger("consoleLogger").hasHandlers():
             logger = logging.getLogger("consoleLogger")
         else:
-            logger = CustomLogger(module=self.module)._logger()
+            logger = CustomLogger(module=self.module).logger()
 
         logger.info(msg=msg)
 
@@ -73,7 +75,7 @@ class CustomLogger:
         if logging.getLogger("consoleLogger").hasHandlers():
             logger = logging.getLogger("consoleLogger")
         else:
-            logger = CustomLogger(module=self.module)._logger()
+            logger = CustomLogger(module=self.module).logger()
 
         logger.error(msg=msg)
 
@@ -91,7 +93,7 @@ class CustomLogger:
         if logging.getLogger("consoleLogger").hasHandlers():
             logger = logging.getLogger("consoleLogger")
         else:
-            logger = CustomLogger(module=self.module)._logger()
+            logger = CustomLogger(module=self.module).logger()
 
         logger.warning(msg=msg)
 

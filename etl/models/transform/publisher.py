@@ -3,10 +3,10 @@ from tqdm import tqdm
 
 
 class ResponseTransformation:
-    def __init__(self, json_response: dict, params, queue: queue.Queue):
+    def __init__(self, json_response: dict, params, etl_queue: queue.Queue):
         self.json_response = json_response
         self.valid_params = params
-        self.queue = queue
+        self.queue = etl_queue
 
     def publish(self):
         for param in tqdm(

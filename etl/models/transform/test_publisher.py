@@ -1,6 +1,6 @@
+import queue
 import pytest
 from etl.models.transform.publisher import ResponseTransformation
-import queue
 
 fila = queue.Queue()
 
@@ -42,9 +42,13 @@ def valid_params() -> list:
     return ["BRL-COP", "BRL-PEN"]
 
 
-def test_transformation_process_param(json_response, valid_params):
+def test_transformation_process_param(
+    json_response, valid_params
+):  # pylint: disable=redefined-outer-name
     # Create an instance of the transformation class
-    transform = ResponseTransformation(json_response, valid_params, fila)
+    transform = ResponseTransformation(
+        json_response, valid_params, fila
+    )  # pylint: disable=redefined-outer-name
     transform.publish()
 
     assert fila.qsize() == 2

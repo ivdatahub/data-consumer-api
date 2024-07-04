@@ -20,7 +20,7 @@ git clone https://github.com/seu-usuario/ETL-awesome-api.git
 ### 3. Create a Branch
 
 Create a branch for your feature or bug fix:
-```sh 
+```sh
 git checkout -b feat-branchname
 ```
 
@@ -31,10 +31,10 @@ Make the desired changes to the code. Be sure to follow code style and documenta
 ### 5. Commit your Changes
 
 Commit your changes with a clear and descriptive message:
-```sh 
+```sh
 git add .
 ```
-```sh 
+```sh
 git commit -m "Detailed description of changes"
 ```
 
@@ -42,7 +42,7 @@ git commit -m "Detailed description of changes"
 
 Push your changes to the remote repository:
 
-```sh 
+```sh
 git push origin branchname
 ```
 

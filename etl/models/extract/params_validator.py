@@ -1,7 +1,7 @@
 from api_to_dataframe import ClientBuilder, RetryStrategies
 from etl.common.utils.logs import CustomLogger
 from etl.config.datasource import API
-from etl.config.logFile import log_file_name
+from etl.config.log_file import log_file_name
 
 logger = CustomLogger(log_file_name(file=__file__))
 
@@ -34,9 +34,10 @@ class ParamsValidator:
             else:
                 logger.warning(f"Param: {param} is not valid for call")
 
-        if valid_params:
-            return valid_params
-        else:
+        if not valid_params:
             raise KeyError(
-                f"The informed params: {params} are not avaliable for extract, see available list in: {API.ENDPOINT_AVALIABLE_PARITIES}"
+                f"The informed params: {params} are not avaliable for extract, see available list in:"
+                f" {API.ENDPOINT_AVALIABLE_PARITIES}"
             )
+
+        return valid_params

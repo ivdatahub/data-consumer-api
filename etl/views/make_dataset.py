@@ -1,6 +1,6 @@
 import pandas as pd
 
-from etl.common.utils.common import DefaultOutputFolder as DefaultFolder
+from etl.common.utils.common import default_output_folder as DefaultFolder
 
 
 class DatasetSerializer:
