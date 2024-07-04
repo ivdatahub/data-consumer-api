@@ -3,9 +3,9 @@ import pandas as pd
 from etl.config.log_file import log_file_name
 from etl.common.utils.logs import CustomLogger
 from etl.common.utils.common import (
-    DefaultTimestampStr,
-    DefaultOutputFolder,
-    DefaultUTCDatetime,
+    default_timestamp_str,
+    default_output_folder,
+    default_utc_datetime,
 )
 
 logger = CustomLogger(log_file_name(file=__file__))
@@ -16,7 +16,7 @@ class ParquetLoader:
     def run(dic):
         extracted_files = []
         param = dic["code"] + "-" + dic["codein"]
-        ts = DefaultTimestampStr()
+        ts = default_timestamp_str()
         df = pd.DataFrame([dic])
 
         if df.empty:
@@ -27,13 +27,13 @@ class ParquetLoader:
         df["symbol"] = param
 
         # Add two columns with the current date and time
-        df["extracted_at"] = DefaultUTCDatetime()
+        df["extracted_at"] = default_utc_datetime()
 
         df["id"] = f"{param}-{ts}"
 
         # Write the DataFrame to a Parquet file
         try:
-            df.to_parquet(f"{DefaultOutputFolder()}{param}-{ts}.parquet")
+            df.to_parquet(f"{default_output_folder()}{param}-{ts}.parquet")
         except ValueError as e:
             logger.error(f"Error writing parquet file: {e}")
 

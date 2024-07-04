@@ -1,4 +1,3 @@
-import time
 import threading
 import queue
 
@@ -33,7 +32,7 @@ class PipelineExecutor:
                 transformer = ResponseTransformation(
                     json_response=response,
                     params=valid_params,
-                    queue=self.controller_queue,
+                    etl_queue=self.controller_queue,
                 )
                 transformer.publish()
                 # The production is finished
