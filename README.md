@@ -1,15 +1,16 @@
 # Awesome Project: ETL Process for Currency Quotes Data
 
-![Project Status](https://img.shields.io/badge/status-done-brightgreen?style=for-the-badge)
-![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/IvanildoBarauna/ETL-awesome-api?style=for-the-badge)
-![Python Version](https://img.shields.io/badge/python-3.9-blue?style=for-the-badge)
+![Project Status](https://img.shields.io/badge/status-done-brightgreen?style=for-the-badge&logo=github)
+![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=mit)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/IvanildoBarauna/ETL-awesome-api?style=for-the-badge&logo=github)
+![Python Version](https://img.shields.io/badge/python-3.9-blue?style=for-the-badge&logo=python)
 
-![Black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge)
-![pylint](https://img.shields.io/badge/pylint-10.00-green?style=for-the-badge)
+![Black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge&logo=python)
+![pylint](https://img.shields.io/badge/pylint-10.00-green?style=for-the-badge&logo=python)
 
-![GitHub Workflow Status](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/CI-CD.yaml/badge.svg)
-[![codecov](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api/branch/main/graph/badge.svg?token=GEGNHFM6P?style=for-the-badge)](https://codecov.io/gh/IvanildoBarauna/ETL-awesome-api)
+[![CI-CD](https://img.shields.io/github/actions/workflow/status/IvanildoBarauna/ETL-awesome-api/CI-CD.yaml?&style=for-the-badge&logo=githubactions&cacheSeconds=60&label=CI-CD)](https://github.com/IvanildoBarauna/currency-quote-wrapper/actions/workflows/CI.yaml)
+
+[![Codecov](https://img.shields.io/codecov/c/github/IvanildoBarauna/ETL-awesome-api?style=for-the-badge&logo=codecov)](https://app.codecov.io/gh/IvanildoBarauna/ETL-awesome-api)
 
 
 ## Code Coverage KPI Graph
