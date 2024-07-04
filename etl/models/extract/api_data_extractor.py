@@ -22,7 +22,7 @@ class APIExtraction:
             retry_strategy=RetryStrategies.LINEAR_RETRY_STRATEGY,
             connection_timeout=API.CONNECTION_TIMEOUT,
             initial_delay=API.RETRY_TIME_SECONDS,
-            retries=API.RETRY_ATTEMPTS
+            retries=API.RETRY_ATTEMPTS,
         )
 
         response = client.get_api_data()
