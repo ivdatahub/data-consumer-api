@@ -20,10 +20,10 @@ class ParamsValidator:
 
         client = ClientBuilder(
             endpoint=API.ENDPOINT_AVALIABLE_PARITIES,
-            retry_strategy=RetryStrategies.LinearRetryStrategy,
+            retry_strategy=RetryStrategies.LINEAR_RETRY_STRATEGY,
             connection_timeout=API.CONNECTION_TIMEOUT,
-            delay=API.RETRY_TIME_SECONDS,
-            retries=API.RETRY_ATTEMPTS
+            initial_delay=API.RETRY_TIME_SECONDS,
+            retries=API.RETRY_ATTEMPTS,
         )
 
         avaliable_list = client.get_api_data()

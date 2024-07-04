@@ -28,6 +28,7 @@ class PipelineExecutor:
         response, valid_params = APIExtraction.run(self.params)
 
         try:
+
             def produce():
                 transformer = ResponseTransformation(
                     json_response=response,
@@ -63,9 +64,9 @@ class PipelineExecutor:
             thread_producer.join()
             thread_consumer.join()
             self.controller_queue.join()
-            
+
             DatasetSerializer.serialize(self.files_to_dataset)
-            
+
             return valid_params
 
         except Exception as e:

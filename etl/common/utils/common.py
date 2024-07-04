@@ -1,6 +1,7 @@
 import os
 from datetime import datetime, timezone, timedelta
 
+
 def DefaultOutputFolder():
     """
     Returns the default output folder path.
@@ -21,6 +22,7 @@ def DefaultTimestampStr() -> str:
     """
     current = datetime.now().timestamp()
     return str(int(current))
+
 
 def DefaultUTCDatetime() -> str:
     """
