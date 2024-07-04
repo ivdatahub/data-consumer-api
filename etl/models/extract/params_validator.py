@@ -36,7 +36,7 @@ class ParamsValidator:
 
         if not valid_params:
             raise KeyError(
-                f"The informed params: {params} are not avaliable for extract, see available list in:"
+                f"The params: {params} are not avaliable for extract, see available list in:"
                 f" {API.ENDPOINT_AVALIABLE_PARITIES}"
             )
 

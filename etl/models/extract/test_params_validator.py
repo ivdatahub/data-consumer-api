@@ -17,16 +17,18 @@ def mixed_params():
     return ["BRL-COP", "BRL-PEN", "param1", "param2"]
 
 
-def test_valid_params(valid_params):
+def test_valid_params(valid_params):  # pylint: disable=redefined-outer-name
     valid = ParamsValidator.valid_params_for_call(valid_params)
     assert valid_params == valid
 
 
-def test_invalid_params(invalid_params):
+def test_invalid_params(invalid_params):  # pylint: disable=redefined-outer-name
     with pytest.raises(KeyError):
         ParamsValidator.valid_params_for_call(invalid_params)
 
 
-def test_mixed_params(mixed_params, valid_params):
+def test_mixed_params(
+    mixed_params, valid_params
+):  # pylint: disable=redefined-outer-name
     validated = ParamsValidator.valid_params_for_call(mixed_params)
     assert validated == valid_params
