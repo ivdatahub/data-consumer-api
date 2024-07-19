@@ -2,13 +2,13 @@
 
 [[package]]
 name = "api-to-dataframe"
-version = "1.3.0"
+version = "1.3.1"
 description = "A package to convert API responses to pandas dataframe"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "api_to_dataframe-1.3.0-py3-none-any.whl", hash = "sha256:c660df17b03ed60a882279285fd9537a665e0b639292ce9550c9ee8b5a9413ab"},
-    {file = "api_to_dataframe-1.3.0.tar.gz", hash = "sha256:ce08e52ee026ec8ea83d9452e69005a2c1b78a5bb412b50bad82e000db3767cf"},
+    {file = "api_to_dataframe-1.3.1-py3-none-any.whl", hash = "sha256:10d4598a89e1ac111b1e9fc53a9c39bb1189bf0645754e35f430c00f2d600bbc"},
+    {file = "api_to_dataframe-1.3.1.tar.gz", hash = "sha256:6d417b4856ba402c7e2eb5ef482e4fd874fcd62f646289a40454c7743fcad045"},
 ]
 
 [package.dependencies]
@@ -2182,4 +2182,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "jaraco.test", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "46f1a786c554022ead20a06d29cbd0ad485c560cb0792e8d610a8543ed721857"
+content-hash = "5cee0b0718aa1f90735c909fd5313e3f05fecb4220d56ed03c9bb64eacb4713e"
