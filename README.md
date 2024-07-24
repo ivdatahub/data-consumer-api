@@ -8,7 +8,8 @@
 ![Black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge&logo=python)
 ![pylint](https://img.shields.io/badge/pylint-10.00-green?style=for-the-badge&logo=python)
 
-[![CI-CD](https://img.shields.io/github/actions/workflow/status/IvanildoBarauna/ETL-awesome-api/CI-CD.yaml?&style=for-the-badge&logo=githubactions&cacheSeconds=60&label=CI-CD)](https://github.com/IvanildoBarauna/currency-quote-wrapper/actions/workflows/CI.yaml)
+[![CI-CD](https://img.shields.io/github/actions/workflow/status/IvanildoBarauna/ETL-awesome-api/CI-CD.yaml?&style=for-the-badge&logo=githubactions&cacheSeconds=60&label=CI-CD)](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/CI-CD.yml)
+[![DOCKER-DEPLOY](https://img.shields.io/github/actions/workflow/status/IvanildoBarauna/ETL-awesome-api/deploy-image.yml?&style=for-the-badge&logo=githubactions&cacheSeconds=60&label=DOCKER-DEPLOY)](https://github.com/IvanildoBarauna/ETL-awesome-api/actions/workflows/deploy-image.yml)
 
 [![Codecov](https://img.shields.io/codecov/c/github/IvanildoBarauna/ETL-awesome-api?style=for-the-badge&logo=codecov)](https://app.codecov.io/gh/IvanildoBarauna/ETL-awesome-api)
 
