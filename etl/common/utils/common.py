@@ -2,6 +2,13 @@ import os
 from datetime import datetime, timezone
 
 
+def dataset_path():
+    """
+    Returns the dataset path
+    """
+    return os.path.join(os.path.dirname(__file__), "../../../etl/views/dataset.pkl")
+
+
 def default_output_folder():
     """
     Returns the default output folder path.

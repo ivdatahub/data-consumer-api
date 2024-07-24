@@ -22,4 +22,4 @@ RUN poetry config virtualenvs.create false \
 COPY . .
 
 # Run the command to start the application \
-CMD ["python", "run.py"]
+CMD ["poetry", "run", "python", "etl/run.py"]
