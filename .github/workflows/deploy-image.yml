@@ -61,3 +61,8 @@ jobs:
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
 
+
+
+    environment:
+        name: production
+        url: ${{ steps.push.outputs.digest }}
