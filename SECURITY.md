@@ -30,7 +30,7 @@ Please do not disclose security vulnerabilities publicly until a fix has been ma
 
 If you can contribute with project in security and vulnerability topics, please use the following docs:
 
-- [Contributing Guide](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/CONTRIBUTING.md)
-- [Code Of Conduct](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/CODE_OF_CONDUCT.md)
+- [Contributing Guide](/CONTRIBUTING.md)
+- [Code Of Conduct](/CODE_OF_CONDUCT.md)
 
 Thank You
