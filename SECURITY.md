@@ -6,8 +6,7 @@ If you think you have identified a security issue with an Encode project, **do n
 
 To responsibly report a security issue, please navigate to the Security tab for the repo and click "Report a vulnerability."
 
-![Screenshot of repo security tab showing "Report a vulnerability" button](https://github.com/IvanildoBarauna/.github/raw/main/docs/img/github-demos-private-vulnerability-reporting.png)
-
+![Screenshot of repo security tab showing "Report a vulnerability" button](/docs/img/security-report.png)
 
 ## Reporting Guidelines
 
@@ -19,6 +18,7 @@ To responsibly report a security issue, please navigate to the Security tab for 
 ## Resolution Process
 
 Upon receiving a vulnerability report, we will:
+
 1. Acknowledge receipt within 2 days.
 2. Assess the issue and confirm its validity.
 3. Provide updates on the status of the resolution.
@@ -34,5 +34,3 @@ If you can contribute with project in security and vulnerability topics, please 
 - [Code Of Conduct](https://github.com/IvanildoBarauna/ETL-awesome-api/blob/main/CODE_OF_CONDUCT.md)
 
 Thank You
-
-
