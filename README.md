@@ -3,7 +3,7 @@
 ![Project Status](https://img.shields.io/badge/status-done-brightgreen?style=for-the-badge&logo=github)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=mit)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ivdatahub/data-consumer-api?style=for-the-badge&logo=github)
-![Python Version](https://img.shields.io/badge/python-3.9-blue?style=for-the-badge&logo=python)
+![Python Version](https://img.shields.io/badge/python-3.10-blue?style=for-the-badge&logo=python)
 
 ![Black](https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge&logo=python)
 ![pylint](https://img.shields.io/badge/pylint-10.00-green?style=for-the-badge&logo=python)
@@ -88,7 +88,7 @@ In summary, this project offers a robust and efficient solution for collecting, 
 
 ## Step by Step
 
-Ensure Python 3.9 or higher is installed on your machine
+Ensure Python 3.10 or higher is installed on your machine
 
 - Clone the repository:
 

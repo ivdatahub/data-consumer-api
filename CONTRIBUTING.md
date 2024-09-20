@@ -29,7 +29,7 @@ git checkout -b fix/branchname
 
 ## 3.1 Code Standards
 
-- Use Python 3.9.6 or later.
+- Use Python 3.10 or later.
 - Follow PEP 8 for code style.
 - Include unit tests for any new functionality or bug fixes.
 - Make sure all existing and new tests pass before submitting a Pull Request.
