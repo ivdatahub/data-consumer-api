@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ETL-awesome-api"
+name = "data-consumer-api"
 version = "4.5.0"
 description = "Data Ingestion and Data Analysis from public endpoint using pandas"
 authors = ["IvanildoBarauna <ivanildo.jnr@outlook.com>"]
