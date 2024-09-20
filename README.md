@@ -1,4 +1,4 @@
-# Data Consumer Pipeline Project: ETL Process for Currency Quotes Data
+# Data Consumer API Project: ETL Process for Currency Quotes Data
 
 ![Project Status](https://img.shields.io/badge/status-done-brightgreen?style=for-the-badge&logo=github)
 ![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge&logo=mit)
